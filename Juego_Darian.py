@@ -1,3 +1,6 @@
+#cambiar el hola perro por mi name
+#guardar el archivo con el nombre Juego_Darian
+
 # -*- coding: utf-8 -*-
 import pygame
 import numpy as np #alias de numpy
