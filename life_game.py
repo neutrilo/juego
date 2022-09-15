@@ -22,38 +22,38 @@ gameState = np.zeros((nxC,  nyC))
 dimCW = width / nxC
 dimCH = height / nyC
 
-# Oscilador.
-gameState[38, 20] = 1
-gameState[39, 20] = 1
-gameState[40, 20] = 1
+# # Oscilador.
+# gameState[38, 20] = 1
+# gameState[39, 20] = 1
+# gameState[40, 20] = 1
 
-# Runner 1
-gameState[10,5] = 1
-gameState[12,5] = 1
-gameState[11,6] = 1
-gameState[12,6] = 1
-gameState[11,7] = 1
+# # Runner 1
+# gameState[10,5] = 1
+# gameState[12,5] = 1
+# gameState[11,6] = 1
+# gameState[12,6] = 1
+# gameState[11,7] = 1
 
-#Runner 2
-gameState[5,10] = 1
-gameState[5,12] = 1
-gameState[6,11] = 1
-gameState[6,12] = 1
-gameState[7,11] = 1
+# #Runner 2
+# gameState[5,10] = 1
+# gameState[5,12] = 1
+# gameState[6,11] = 1
+# gameState[6,12] = 1
+# gameState[7,11] = 1
 
-#Box 1
-gameState[18,15] = 1
-gameState[17,16] = 1
-gameState[17,15] = 1
-gameState[18,16] = 1
+# #Box 1
+# gameState[18,15] = 1
+# gameState[17,16] = 1
+# gameState[17,15] = 1
+# gameState[18,16] = 1
 
-#Serpent 1
-gameState[30,20] = 1
-gameState[31,20] = 1
-gameState[32,20] = 1
-gameState[32,19] = 1
-gameState[33,19] = 1
-gameState[34,19] = 1
+# #Serpent 1
+# gameState[30,20] = 1
+# gameState[31,20] = 1
+# gameState[32,20] = 1
+# gameState[32,19] = 1
+# gameState[33,19] = 1
+# gameState[34,19] = 1
 
 #mensaje
 #H
@@ -105,6 +105,80 @@ gameState[19,58] = 1
 gameState[19,57] = 1
 gameState[19,56] = 1
 gameState[19,55] = 1
+#
+#P
+gameState[22,59] = 1
+gameState[22,58] = 1
+gameState[22,57] = 1
+gameState[22,56] = 1
+gameState[22,55] = 1
+gameState[23,55] = 1
+gameState[24,55] = 1
+gameState[24,56] = 1
+gameState[24,57] = 1
+gameState[23,57] = 1
+#
+#R
+gameState[26,59] = 1
+gameState[26,58] = 1
+gameState[26,57] = 1
+gameState[26,56] = 1
+gameState[26,55] = 1
+gameState[27,55] = 1
+gameState[28,55] = 1
+gameState[28,56] = 1
+gameState[28,57] = 1
+gameState[27,57] = 1
+gameState[27,58] = 1
+gameState[28,59] = 1
+#
+#R
+gameState[30,59] = 1
+gameState[30,58] = 1
+gameState[30,57] = 1
+gameState[30,56] = 1
+gameState[30,55] = 1
+gameState[31,55] = 1
+gameState[32,55] = 1
+gameState[32,56] = 1
+gameState[32,57] = 1
+gameState[31,57] = 1
+gameState[31,58] = 1
+gameState[32,59] = 1
+#
+#O
+gameState[34,59] = 1
+gameState[34,58] = 1
+gameState[34,57] = 1
+gameState[34,56] = 1
+gameState[34,55] = 1
+gameState[35,59] = 1
+gameState[35,55] = 1
+gameState[36,59] = 1
+gameState[36,58] = 1
+gameState[36,57] = 1
+gameState[36,56] = 1
+gameState[36,55] = 1
+#
+#S
+gameState[38,59] = 1
+gameState[38,58] = 0
+gameState[38,57] = 1
+gameState[38,56] = 1
+gameState[38,55] = 1
+gameState[39,59] = 1
+gameState[39,57] = 1
+gameState[39,55] = 1
+gameState[40,59] = 1
+gameState[40,58] = 1
+gameState[40,57] = 1
+gameState[40,56] = 0
+gameState[40,55] = 1
+
+
+
+
+
 
 
 
