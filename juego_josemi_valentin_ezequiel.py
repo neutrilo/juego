@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import pygame
-import numpy as np #alias de numpy
+import numpy as np
 import time
 
-pygame.init() 
+pygame.init()
 
-width, height = 400, 400
+width, height = 400, 400 #ancho y alto de la ventana.
 
-bg = 25, 25, 25
+bg = 25, 25 ,25
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 60, 60
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -267,3 +267,4 @@ while stay:
 
     # Mostramos el resultado
     pygame.display.flip()
+

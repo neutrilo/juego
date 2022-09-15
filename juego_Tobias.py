@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import pygame
-import numpy as np #alias de numpy
+import numpy as np
 import time
 
-pygame.init() 
+pygame.init()
 
 width, height = 400, 400
 
-bg = 25, 25, 25
+bg = 25, 25 ,25
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 60, 60
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -57,123 +57,123 @@ dimCH = height / nyC
 
 #mensaje
 #H
-gameState[5,59] = 1
-gameState[5,58] = 1
-gameState[5,57] = 1
-gameState[5,56] = 1
-gameState[5,55] = 1
-gameState[6,57] = 1
-gameState[7,59] = 1
-gameState[7,58] = 1
-gameState[7,57] = 1
-gameState[7,56] = 1
-gameState[7,55] = 1
-#
-#O
-gameState[9,59] = 1
-gameState[9,58] = 1
-gameState[9,57] = 1
-gameState[9,56] = 1
-gameState[9,55] = 1
-gameState[10,59] = 1
-gameState[10,55] = 1
-gameState[11,59] = 1
-gameState[11,58] = 1
-gameState[11,57] = 1
-gameState[11,56] = 1
-gameState[11,55] = 1
-#
-#L
-gameState[13,59] = 1
-gameState[13,58] = 1
-gameState[13,57] = 1
-gameState[13,56] = 1
-gameState[13,55] = 1
-gameState[14,59] = 1
-gameState[15,59] = 1
-#
-#A
-gameState[17,59] = 1
-gameState[17,58] = 1
-gameState[17,57] = 1
-gameState[17,56] = 1
-gameState[17,55] = 1
-gameState[18,55] = 1
-gameState[18,57] = 1
-gameState[19,59] = 1
-gameState[19,58] = 1
-gameState[19,57] = 1
-gameState[19,56] = 1
-gameState[19,55] = 1
-#
-#P
-gameState[22,59] = 1
-gameState[22,58] = 1
-gameState[22,57] = 1
-gameState[22,56] = 1
-gameState[22,55] = 1
-gameState[23,55] = 1
-gameState[24,55] = 1
-gameState[24,56] = 1
-gameState[24,57] = 1
-gameState[23,57] = 1
-#
-#R
-gameState[26,59] = 1
-gameState[26,58] = 1
-gameState[26,57] = 1
-gameState[26,56] = 1
-gameState[26,55] = 1
-gameState[27,55] = 1
-gameState[28,55] = 1
-gameState[28,56] = 1
-gameState[28,57] = 1
-gameState[27,57] = 1
-gameState[27,58] = 1
-gameState[28,59] = 1
-#
-#R
-gameState[30,59] = 1
-gameState[30,58] = 1
-gameState[30,57] = 1
-gameState[30,56] = 1
-gameState[30,55] = 1
-gameState[31,55] = 1
-gameState[32,55] = 1
-gameState[32,56] = 1
-gameState[32,57] = 1
-gameState[31,57] = 1
-gameState[31,58] = 1
-gameState[32,59] = 1
-#
-#O
-gameState[34,59] = 1
-gameState[34,58] = 1
-gameState[34,57] = 1
-gameState[34,56] = 1
-gameState[34,55] = 1
-gameState[35,59] = 1
-gameState[35,55] = 1
-gameState[36,59] = 1
-gameState[36,58] = 1
-gameState[36,57] = 1
-gameState[36,56] = 1
-gameState[36,55] = 1
-#
-#S
-gameState[38,59] = 1
-gameState[38,58] = 0
-gameState[38,57] = 1
-gameState[38,56] = 1
-gameState[38,55] = 1
-gameState[39,59] = 1
-gameState[39,57] = 1
-gameState[39,55] = 1
-gameState[40,59] = 1
-gameState[40,58] = 1
-gameState[40,57] = 1
-gameState[40,56] = 0
-gameState[40,55] = 1
+# gameState[5,59] = 1
+# gameState[5,58] = 1
+# gameState[5,57] = 1
+# gameState[5,56] = 1
+# gameState[5,55] = 1
+# gameState[6,57] = 1
+# gameState[7,59] = 1
+# gameState[7,58] = 1
+# gameState[7,57] = 1
+# gameState[7,56] = 1
+# gameState[7,55] = 1
+# #
+# #O
+# gameState[9,59] = 1
+# gameState[9,58] = 1
+# gameState[9,57] = 1
+# gameState[9,56] = 1
+# gameState[9,55] = 1
+# gameState[10,59] = 1
+# gameState[10,55] = 1
+# gameState[11,59] = 1
+# gameState[11,58] = 1
+# gameState[11,57] = 1
+# gameState[11,56] = 1
+# gameState[11,55] = 1
+# #
+# #L
+# gameState[13,59] = 1
+# gameState[13,58] = 1
+# gameState[13,57] = 1
+# gameState[13,56] = 1
+# gameState[13,55] = 1
+# gameState[14,59] = 1
+# gameState[15,59] = 1
+# #
+# #A
+# gameState[17,59] = 1
+# gameState[17,58] = 1
+# gameState[17,57] = 1
+# gameState[17,56] = 1
+# gameState[17,55] = 1
+# gameState[18,55] = 1
+# gameState[18,57] = 1
+# gameState[19,59] = 1
+# gameState[19,58] = 1
+# gameState[19,57] = 1
+# gameState[19,56] = 1
+# gameState[19,55] = 1
+# #
+# #P
+# gameState[22,59] = 1
+# gameState[22,58] = 1
+# gameState[22,57] = 1
+# gameState[22,56] = 1
+# gameState[22,55] = 1
+# gameState[23,55] = 1
+# gameState[24,55] = 1
+# gameState[24,56] = 1
+# gameState[24,57] = 1
+# gameState[23,57] = 1
+# #
+# #R
+# gameState[26,59] = 1
+# gameState[26,58] = 1
+# gameState[26,57] = 1
+# gameState[26,56] = 1
+# gameState[26,55] = 1
+# gameState[27,55] = 1
+# gameState[28,55] = 1
+# gameState[28,56] = 1
+# gameState[28,57] = 1
+# gameState[27,57] = 1
+# gameState[27,58] = 1
+# gameState[28,59] = 1
+# #
+# #R
+# gameState[30,59] = 1
+# gameState[30,58] = 1
+# gameState[30,57] = 1
+# gameState[30,56] = 1
+# gameState[30,55] = 1
+# gameState[31,55] = 1
+# gameState[32,55] = 1
+# gameState[32,56] = 1
+# gameState[32,57] = 1
+# gameState[31,57] = 1
+# gameState[31,58] = 1
+# gameState[32,59] = 1
+# #
+# #O
+# gameState[34,59] = 1
+# gameState[34,58] = 1
+# gameState[34,57] = 1
+# gameState[34,56] = 1
+# gameState[34,55] = 1
+# gameState[35,59] = 1
+# gameState[35,55] = 1
+# gameState[36,59] = 1
+# gameState[36,58] = 1
+# gameState[36,57] = 1
+# gameState[36,56] = 1
+# gameState[36,55] = 1
+# #
+# #S
+# gameState[38,59] = 1
+# gameState[38,58] = 0
+# gameState[38,57] = 1
+# gameState[38,56] = 1
+# gameState[38,55] = 1
+# gameState[39,59] = 1
+# gameState[39,57] = 1
+# gameState[39,55] = 1
+# gameState[40,59] = 1
+# gameState[40,58] = 1
+# gameState[40,57] = 1
+# gameState[40,56] = 0
+# gameState[40,55] = 1
 
 
 
@@ -267,3 +267,4 @@ while stay:
 
     # Mostramos el resultado
     pygame.display.flip()
+
