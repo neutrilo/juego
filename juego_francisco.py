@@ -188,7 +188,6 @@ gameState[40,55] = 1
 
 
 
-
 pauseExect = True
 stay = True
 
