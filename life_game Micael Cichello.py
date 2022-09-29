@@ -5,15 +5,15 @@ import time
 
 pygame.init() 
 
-width, height = 400, 400
+width, height = 800, 800
 
-bg = 25, 25, 25
+bg = 25, 25, 30
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 150, 150
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -187,19 +187,38 @@ gameState[40,55] = 1
 
 
 
-
 pauseExect = True
 stay = True
 
+pos=[20,20]
+
+
 # Bucle de ejecución
 while stay:
-
+    
+    gameState[pos[0]-4,pos[1]] = 1
+    gameState[pos[0]-5,pos[1]] = 1
+    gameState[pos[0]-6,pos[1]] = 1
+    gameState[pos[0]-7,pos[1]] = 1
+    gameState[pos[0],pos[1]] = 1
+    gameState[pos[0]-1,pos[1]-1] = 1
+    gameState[pos[0]-2,pos[1]-1] = 1
+    gameState[pos[0]-3,pos[1]-1] = 1
+    gameState[pos[0]-3,pos[1]-1] = 1
+    gameState[pos[0]-3,pos[1]] = 1
+    gameState[pos[0]-3,pos[1]+1] = 1
+    gameState[pos[0]-3,pos[1]+2] = 1
+    gameState[pos[0]-3,pos[1]+3] = 1
+    gameState[pos[0],pos[1]+1] = 1
+    gameState[pos[0]-1,pos[1]+2] = 1
+    gameState[pos[0]-2,pos[1]+3] = 1
+    gameState[pos[0]-3,pos[1]+3] = 1
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -213,8 +232,11 @@ while stay:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 pass
+            elif event.key == pygame.K_RIGHT:
+                pass
             else:
                 pauseExect = not pauseExect
+                
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
@@ -263,7 +285,7 @@ while stay:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (100, 100, 200), poly, 0)
 
     # Actualizamos el estado del juego.
     gameState = np.copy(newGameState)

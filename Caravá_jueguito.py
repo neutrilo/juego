@@ -5,7 +5,7 @@ import time
 
 pygame.init() 
 
-width, height = 400, 400
+width, height = 500, 500
 
 bg = 25, 25, 25
 
@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 70, 70
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -175,9 +175,50 @@ gameState[40,57] = 1
 gameState[40,56] = 0
 gameState[40,55] = 1
 
+#Avión
+
+#cuerpo
+gameState[50,50] = 1
+gameState[51,50] = 1
+gameState[52,50] = 1
+gameState[53,50] = 1
+gameState[54,50] = 1
+gameState[55,50] = 1
+gameState[56,50] = 1
+gameState[57,50] = 1
+gameState[58,50] = 1
+gameState[59,50] = 1
+gameState[60,50] = 1
+
+#cola trasera
+gameState[61,51] = 1
+gameState[61,49] = 1
+gameState[62,48] = 1
+gameState[62,52] = 1
+gameState[61,50] = 1
+gameState[62,51] = 1
+gameState[62,50] = 1
+gameState[62,49] = 1
+gameState[63,50] = 1
 
 
+#alas
+gameState[54,51] = 1
+gameState[55,52] = 1
+gameState[56,53] = 1
+gameState[54,49] = 1
+gameState[55,48] = 1
+gameState[56,47] = 1
+gameState[40,55] = 0
 
+#Cabezal
+gameState[49,50] = 1
+gameState[50,51] = 1
+gameState[50,49] = 1
+gameState[51,51] = 1
+gameState[51,49] = 1
+
+pos = [40,40]
 
 
 
@@ -199,7 +240,7 @@ while stay:
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.5)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -213,8 +254,10 @@ while stay:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 pass
+            elif event.key == pygame.K_RIGHT:
+                pass
             else:
-                pauseExect = not pauseExect
+                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
