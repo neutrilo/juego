@@ -1,6 +1,3 @@
-#cambiar el hola perro por mi name
-#guardar el archivo con el nombre Juego_Darian
-
 # -*- coding: utf-8 -*-
 import pygame
 import numpy as np #alias de numpy
@@ -214,7 +211,12 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            pauseExect = not pauseExect
+            if event.key == pygame.K_LEFT:
+                pass
+                    else if event.key == pygame.K_RIGHT:
+                            pass
+            else:
+                pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
