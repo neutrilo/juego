@@ -1,4 +1,20 @@
 # -*- coding: utf-8 -*-
+
+# Apunte clase 15/09
+
+#Juego de la vida 
+# Creado en 1970
+# Automata
+# Reglas sencillas
+# Comportamiento caotico
+
+#Reglas 
+# *Si viva: con menor de 2 vecinos 
+#           vivos, muere(soledad)
+#           con mas de 3 vecinos
+#           vivos, 3 mas alrededor se muere sobrepobacion
+
+
 import pygame
 import numpy as np
 import time
@@ -23,23 +39,23 @@ dimCW = width / nxC
 dimCH = height / nyC
 
 # # Oscilador.
-# gameState[38, 20] = 1
-# gameState[39, 20] = 1
-# gameState[40, 20] = 1
+gameState[38, 20] = 1
+gameState[39, 20] = 1
+gameState[40, 20] = 1
 
 # # Runner 1
-# gameState[10,5] = 1
-# gameState[12,5] = 1
-# gameState[11,6] = 1
-# gameState[12,6] = 1
-# gameState[11,7] = 1
+gameState[10,5] = 1
+gameState[12,5] = 1
+gameState[11,6] = 1
+gameState[12,6] = 1
+gameState[11,7] = 1
 
 # #Runner 2
-# gameState[5,10] = 1
-# gameState[5,12] = 1
-# gameState[6,11] = 1
-# gameState[6,12] = 1
-# gameState[7,11] = 1
+gameState[5,10] = 1
+gameState[5,12] = 1
+gameState[6,11] = 1
+gameState[6,12] = 1
+gameState[7,11] = 1
 
 # #Box 1
 # gameState[18,15] = 1
@@ -48,12 +64,12 @@ dimCH = height / nyC
 # gameState[18,16] = 1
 
 # #Serpent 1
-# gameState[30,20] = 1
-# gameState[31,20] = 1
-# gameState[32,20] = 1
-# gameState[32,19] = 1
-# gameState[33,19] = 1
-# gameState[34,19] = 1
+gameState[30,20] = 1
+gameState[31,20] = 1
+gameState[32,20] = 1
+gameState[32,19] = 1
+gameState[33,19] = 1
+gameState[34,19] = 1
 
 #mensaje
 #H
@@ -211,7 +227,10 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            pauseExect = not pauseExect
+            if event.key == pygame.K_LEFT:
+                pass
+            else:
+                pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
