@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 60, 60
+nxC, nyC = 100, 100
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -73,7 +73,7 @@ dimCH = height / nyC
 # gameState[14,30] = 1
 #
 
-pos=[20,20]
+pos=[0,0]
 
 
 pauseExect = True
@@ -82,24 +82,28 @@ stay = True
 # Bucle de ejecución
 while stay:
     
-    gameState[pos[0]+0,pos[1]+0]=1
-    gameState[pos[0]+1,pos[1]+1]=1
-    gameState[pos[0]+2,pos[1]-2]=1
-    gameState[pos[0]+3,pos[1]-3]=1
-    gameState[pos[0]+4,pos[1]-4]=1
-    gameState[pos[0]+2,pos[1]-2]=1
-    gameState[pos[0]+3,pos[1]-3]=1
-    gameState[pos[0]+5,pos[1]-4]=1
-    gameState[pos[0]+6,pos[1]-2]=1
-    gameState[pos[0]+7,pos[1]-3]=1
-    gameState[pos[0]+8,pos[1]-4]=1
+    # gameState[pos[0]+0,pos[1]+0]=1
+    # gameState[pos[0]+1,pos[1]+1]=1
+    # gameState[pos[0]+2,pos[1]-2]=1
+    # gameState[pos[0]+3,pos[1]-3]=1
+    # gameState[pos[0]+4,pos[1]-4]=1
+    # gameState[pos[0]+2,pos[1]-2]=1
+    # gameState[pos[0]+3,pos[1]-3]=1
+    # gameState[pos[0]+5,pos[1]-4]=1
+    # gameState[pos[0]+6,pos[1]-2]=1
+    # gameState[pos[0]+7,pos[1]-3]=1
+    # gameState[pos[0]+8,pos[1]-4]=1
+
+
+    #AVION 2
+
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.01)
+    time.sleep(0.1)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -111,16 +115,21 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
+            
             if event.key == pygame.K_LEFT:
-                pass
+                pos[0]=pos[0]-1
             elif event.key == pygame.K_RIGHT:
-                pass
+                pos[0]=pos[0]+1
+                
+            elif event.key == pygame.K_UP:
+                pos[1]=pos[1]-1
+            elif event.key == pygame.K_DOWN:
+                pos[1]=pos[1]+1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
-
         # Detectamos si se presiona el ratón.
         mouseClick = pygame.mouse.get_pressed()
 
@@ -161,6 +170,29 @@ while stay:
                     ((x)   * dimCW, (y+1) * dimCH)]
 
             # Si la celda está "muerta" pintamos un recuadro con borde gris
+            #cuerpo
+            newGameState[pos[0]+50,pos[1]+50] = 1
+            newGameState[pos[0]+50,pos[1]+51] = 1
+            newGameState[pos[0]+50,pos[1]+52] = 1
+            newGameState[pos[0]+50,pos[1]+53] = 1
+            newGameState[pos[0]+50,pos[1]+54] = 1
+            newGameState[pos[0]+50,pos[1]+55] = 1
+            newGameState[pos[0]+50,pos[1]+56] = 1
+            newGameState[pos[0]+50,pos[1]+57] = 1
+            newGameState[pos[0]+50,pos[1]+58] = 1
+            newGameState[pos[0]+50,pos[1]+59] = 1
+            newGameState[pos[0]+60,pos[1]+60] = 1
+
+        #alas
+            newGameState[pos[0]+51,pos[1]+56] = 1
+            newGameState[pos[0]+49,pos[1]+56] = 1
+            newGameState[pos[0]+52,pos[1]+55] = 1
+            newGameState[pos[0]+48,pos[1]+55] = 1
+            newGameState[pos[0]+53,pos[1]+54] = 1
+            newGameState[pos[0]+47,pos[1]+54] = 1
+            newGameState[pos[0]+51,pos[1]+50] = 1
+            newGameState[pos[0]+49,pos[1]+50] = 1
+                
             if newGameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
