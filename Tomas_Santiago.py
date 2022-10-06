@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 60, 60
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -46,223 +46,60 @@ dimCH = height / nyC
 # gameState[17,16] = 1
 # gameState[17,15] = 1
 # gameState[18,16] = 1
-
-# #Serpent 1
-# gameState[30,20] = 1
-# gameState[31,20] = 1
-# gameState[32,20] = 1
-# gameState[32,19] = 1
-# gameState[33,19] = 1
-# gameState[34,19] = 1
-
-
+#
+ #Serpent 1
+#gameState[30,20] = 1
+#gameState[31,20] = 1
+#gameState[32,20] = 1
+#gameState[32,19] = 1
+#gameState[33,19] = 1
+#ameState[34,19] = 1
+#
 #mensaje
 
-#H
-gameState[5,59] = 1
-gameState[5,58] = 1
-gameState[5,57] = 1
-gameState[5,56] = 1
-gameState[5,55] = 1
-gameState[6,57] = 1
-gameState[7,59] = 1
-gameState[7,58] = 1
-gameState[7,57] = 1
-gameState[7,56] = 1
-gameState[7,55] = 1
-#
-#O
-gameState[9,59] = 1
-gameState[9,58] = 1
-gameState[9,57] = 1
-gameState[9,56] = 1
-gameState[9,55] = 1
-gameState[10,59] = 1
-gameState[10,55] = 1
-gameState[11,59] = 1
-gameState[11,58] = 1
-gameState[11,57] = 1
-gameState[11,56] = 1
-gameState[11,55] = 1
-#
-#L
-gameState[13,59] = 1
-gameState[13,58] = 1
-gameState[13,57] = 1
-gameState[13,56] = 1
-gameState[13,55] = 1
-gameState[14,59] = 1
-gameState[15,59] = 1
-#
+
+
+
+
+
 #A
-gameState[17,59] = 1
-gameState[17,58] = 1
-gameState[17,57] = 1
-gameState[17,56] = 1
-gameState[17,55] = 1
-gameState[18,55] = 1
-gameState[18,57] = 1
-gameState[19,59] = 1
-gameState[19,58] = 1
-gameState[19,57] = 1
-gameState[19,56] = 1
-gameState[19,55] = 1
+# gameState[20,20] = 1
+# gameState[19,21] = 1
+# gameState[18,22] = 1
+# gameState[17,23] = 1
+# gameState[16,24] = 1
+# gameState[15,25] = 1
+# gameState[15,26] = 1
+# gameState[14,30] = 1
 #
-#P
-gameState[22,59] = 1
-gameState[22,58] = 1
-gameState[22,57] = 1
-gameState[22,56] = 1
-gameState[22,55] = 1
-gameState[23,55] = 1
-gameState[24,55] = 1
-gameState[24,56] = 1
-gameState[24,57] = 1
-gameState[23,57] = 1
-#
-#R
-gameState[26,59] = 1
-gameState[26,58] = 1
-gameState[26,57] = 1
-gameState[26,56] = 1
-gameState[26,55] = 1
-gameState[27,55] = 1
-gameState[28,55] = 1
-gameState[28,56] = 1
-gameState[28,57] = 1
-gameState[27,57] = 1
-gameState[27,58] = 1
-gameState[28,59] = 1
-#
-#R
-gameState[30,59] = 1
-gameState[30,58] = 1
-gameState[30,57] = 1
-gameState[30,56] = 1
-gameState[30,55] = 1
-gameState[31,55] = 1
-gameState[32,55] = 1
-gameState[32,56] = 1
-gameState[32,57] = 1
-gameState[31,57] = 1
-gameState[31,58] = 1
-gameState[32,59] = 1
-#
-#O
-gameState[34,59] = 1
-gameState[34,58] = 1
-gameState[34,57] = 1
-gameState[34,56] = 1
-gameState[34,55] = 1
-gameState[35,59] = 1
-gameState[35,55] = 1
-gameState[36,59] = 1
-gameState[36,58] = 1
-gameState[36,57] = 1
-gameState[36,56] = 1
-gameState[36,55] = 1
-#
-#S
-gameState[38,59] = 1
-gameState[38,58] = 0
-gameState[38,57] = 1
-gameState[38,56] = 1
-gameState[38,55] = 1
-gameState[39,59] = 1
-gameState[39,57] = 1
-gameState[39,55] = 1
-gameState[40,59] = 1
-gameState[40,58] = 1
-gameState[40,57] = 1
-gameState[40,56] = 0
-gameState[40,55] = 1
 
-xpos = 30
-ypos = 50
+pos=[20,20]
 
-
-#amongus
-gameState[xpos+0,ypos-3]=1
-gameState[xpos+0,ypos-4]=1
-gameState[xpos+0,ypos-5]=1
-gameState[xpos+0,ypos-6]=1
-gameState[xpos+0,ypos-7]=1
-gameState[xpos+0,ypos-8]=1
-gameState[xpos+0,ypos-9]=1
-gameState[xpos+0,ypos-10]=1
-gameState[xpos+0,ypos-11]=1
-gameState[xpos+0,ypos-12]=1
-gameState[xpos+0,ypos-13]=1
-gameState[xpos+0,ypos-14]=1
-#
-gameState[xpos+1,ypos-15]=1
-gameState[xpos+2,ypos-15]=1
-gameState[xpos+3,ypos-15]=1
-gameState[xpos+4,ypos-15]=1
-gameState[xpos+5,ypos-15]=1
-gameState[xpos+6,ypos-15]=1
-gameState[xpos+7,ypos-15]=1
-#
-gameState[xpos+8,ypos-14]=1
-gameState[xpos+8,ypos-13]=1
-gameState[xpos+9,ypos-12]=1
-gameState[xpos+9,ypos-11]=1
-gameState[xpos+8,ypos-10]=1
-gameState[xpos+8,ypos-9]=1
-gameState[xpos+8,ypos-8]=1
-gameState[xpos+8,ypos-7]=1
-gameState[xpos+8,ypos-6]=1
-gameState[xpos+8,ypos-5]=1
-gameState[xpos+8,ypos-4]=1
-gameState[xpos+8,ypos-3]=1
-#
-gameState[xpos+7,ypos-3]=1
-gameState[xpos+6,ypos-3]=1
-gameState[xpos+5,ypos-3]=1
-gameState[xpos+5,ypos-4]=1
-gameState[xpos+5,ypos-5]=1
-gameState[xpos+5,ypos-6]=1
-gameState[xpos+4,ypos-6]=1
-gameState[xpos+3,ypos-6]=1
-gameState[xpos+3,ypos-5]=1
-gameState[xpos+3,ypos-4]=1
-gameState[xpos+3,ypos-3]=1
-gameState[xpos+2,ypos-3]=1
-gameState[xpos+1,ypos-3]=1
-#
-gameState[xpos-1,ypos-7]=1
-gameState[xpos-2,ypos-7]=1
-gameState[xpos-2,ypos-8]=1
-gameState[xpos-2,ypos-9]=1
-gameState[xpos-2,ypos-10]=1
-gameState[xpos-2,ypos-11]=1
-gameState[xpos-2,ypos-12]=1
-gameState[xpos-1,ypos-12]=1
-
-#
-gameState[xpos+7,ypos-13]=1
-gameState[xpos+6,ypos-13]=1
-gameState[xpos+5,ypos-13]=1
-gameState[xpos+4,ypos-13]=1
-gameState[xpos+3,ypos-12]=1
-gameState[xpos+3,ypos-11]=1
-gameState[xpos+7,ypos-10]=1
-gameState[xpos+6,ypos-10]=1
-gameState[xpos+5,ypos-10]=1
-gameState[xpos+4,ypos-10]=1
 
 pauseExect = True
 stay = True
 
 # Bucle de ejecución
 while stay:
+    
+    gameState[pos[0]+0,pos[1]+0]=1
+    gameState[pos[0]+1,pos[1]+1]=1
+    gameState[pos[0]+2,pos[1]-2]=1
+    gameState[pos[0]+3,pos[1]-3]=1
+    gameState[pos[0]+4,pos[1]-4]=1
+    gameState[pos[0]+2,pos[1]-2]=1
+    gameState[pos[0]+3,pos[1]-3]=1
+    gameState[pos[0]+5,pos[1]-4]=1
+    gameState[pos[0]+6,pos[1]-2]=1
+    gameState[pos[0]+7,pos[1]-3]=1
+    gameState[pos[0]+8,pos[1]-4]=1
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -328,13 +165,12 @@ while stay:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (200, 200, 100), poly, 0)
 
     # Actualizamos el estado del juego.
     gameState = np.copy(newGameState)
 
     # Mostramos el resultado
-
     pygame.display.flip()
 
 #Lista de teclas y como llamarlas

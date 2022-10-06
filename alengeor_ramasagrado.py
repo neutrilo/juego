@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 100, 100
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -55,9 +55,7 @@ dimCH = height / nyC
 # gameState[33,19] = 1
 # gameState[34,19] = 1
 
-
 #mensaje
-
 #H
 gameState[5,59] = 1
 gameState[5,58] = 1
@@ -177,79 +175,13 @@ gameState[40,57] = 1
 gameState[40,56] = 0
 gameState[40,55] = 1
 
-xpos = 30
-ypos = 50
 
 
-#amongus
-gameState[xpos+0,ypos-3]=1
-gameState[xpos+0,ypos-4]=1
-gameState[xpos+0,ypos-5]=1
-gameState[xpos+0,ypos-6]=1
-gameState[xpos+0,ypos-7]=1
-gameState[xpos+0,ypos-8]=1
-gameState[xpos+0,ypos-9]=1
-gameState[xpos+0,ypos-10]=1
-gameState[xpos+0,ypos-11]=1
-gameState[xpos+0,ypos-12]=1
-gameState[xpos+0,ypos-13]=1
-gameState[xpos+0,ypos-14]=1
-#
-gameState[xpos+1,ypos-15]=1
-gameState[xpos+2,ypos-15]=1
-gameState[xpos+3,ypos-15]=1
-gameState[xpos+4,ypos-15]=1
-gameState[xpos+5,ypos-15]=1
-gameState[xpos+6,ypos-15]=1
-gameState[xpos+7,ypos-15]=1
-#
-gameState[xpos+8,ypos-14]=1
-gameState[xpos+8,ypos-13]=1
-gameState[xpos+9,ypos-12]=1
-gameState[xpos+9,ypos-11]=1
-gameState[xpos+8,ypos-10]=1
-gameState[xpos+8,ypos-9]=1
-gameState[xpos+8,ypos-8]=1
-gameState[xpos+8,ypos-7]=1
-gameState[xpos+8,ypos-6]=1
-gameState[xpos+8,ypos-5]=1
-gameState[xpos+8,ypos-4]=1
-gameState[xpos+8,ypos-3]=1
-#
-gameState[xpos+7,ypos-3]=1
-gameState[xpos+6,ypos-3]=1
-gameState[xpos+5,ypos-3]=1
-gameState[xpos+5,ypos-4]=1
-gameState[xpos+5,ypos-5]=1
-gameState[xpos+5,ypos-6]=1
-gameState[xpos+4,ypos-6]=1
-gameState[xpos+3,ypos-6]=1
-gameState[xpos+3,ypos-5]=1
-gameState[xpos+3,ypos-4]=1
-gameState[xpos+3,ypos-3]=1
-gameState[xpos+2,ypos-3]=1
-gameState[xpos+1,ypos-3]=1
-#
-gameState[xpos-1,ypos-7]=1
-gameState[xpos-2,ypos-7]=1
-gameState[xpos-2,ypos-8]=1
-gameState[xpos-2,ypos-9]=1
-gameState[xpos-2,ypos-10]=1
-gameState[xpos-2,ypos-11]=1
-gameState[xpos-2,ypos-12]=1
-gameState[xpos-1,ypos-12]=1
 
-#
-gameState[xpos+7,ypos-13]=1
-gameState[xpos+6,ypos-13]=1
-gameState[xpos+5,ypos-13]=1
-gameState[xpos+4,ypos-13]=1
-gameState[xpos+3,ypos-12]=1
-gameState[xpos+3,ypos-11]=1
-gameState[xpos+7,ypos-10]=1
-gameState[xpos+6,ypos-10]=1
-gameState[xpos+5,ypos-10]=1
-gameState[xpos+4,ypos-10]=1
+pos=[20,20]
+
+
+
 
 pauseExect = True
 stay = True
@@ -261,7 +193,7 @@ while stay:
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
-    # Ralentizamos la ejecución a 0.1 segundos
+    # Ralentizamos la ejecución a 0.01 segundos
     time.sleep(0.1)
 
     # Limpiamos la pantalla
@@ -275,9 +207,9 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                pass
+                pos[0]=pos[0]-1
             elif event.key == pygame.K_RIGHT:
-                pass
+                pos[0]=pos[0]+1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -322,6 +254,52 @@ while stay:
                     ((x+1) * dimCW, y * dimCH),
                     ((x+1) * dimCW, (y+1) * dimCH),
                     ((x)   * dimCW, (y+1) * dimCH)]
+            
+            
+            #fuselaje referenciado
+            newGameState[pos[0]+20,pos[1]+21] = 1
+            newGameState[pos[0]+20,pos[1]+22] = 1
+            newGameState[pos[0]+20,pos[1]+23] = 1
+            newGameState[pos[0]+20,pos[1]+24] = 1
+            newGameState[pos[0]+20,pos[1]+25] = 1
+            newGameState[pos[0]+20,pos[1]+26] = 1
+            newGameState[pos[0]+20,pos[1]+27] = 1
+            newGameState[pos[0]+20,pos[1]+28] = 1
+            newGameState[pos[0]+20,pos[1]+29] = 1
+            newGameState[pos[0]+20,pos[1]+30] = 1
+            
+            
+            newGameState[pos[0]+21,pos[1]+21] = 1
+            newGameState[pos[0]+21,pos[1]+22] = 1
+            newGameState[pos[0]+21,pos[1]+23] = 1
+            newGameState[pos[0]+21,pos[1]+24] = 1
+            newGameState[pos[0]+21,pos[1]+25] = 1
+            newGameState[pos[0]+21,pos[1]+26] = 1
+            newGameState[pos[0]+21,pos[1]+27] = 1
+            newGameState[pos[0]+21,pos[1]+28] = 1
+            newGameState[pos[0]+21,pos[1]+29] = 1
+            newGameState[pos[0]+21,pos[1]+30] = 1
+            
+            
+            #alas referenciadas
+            newGameState[pos[0]+19,pos[1]+25] = 1
+            newGameState[pos[0]+19,pos[1]+26] = 1
+            newGameState[pos[0]+18,pos[1]+26] = 1
+            newGameState[pos[0]+18,pos[1]+27] = 1
+            newGameState[pos[0]+17,pos[1]+27] = 1
+            
+            newGameState[pos[0]+22,pos[1]+25] = 1
+            newGameState[pos[0]+22,pos[1]+26] = 1
+            newGameState[pos[0]+23,pos[1]+26] = 1
+            newGameState[pos[0]+23,pos[1]+27] = 1
+            newGameState[pos[0]+24,pos[1]+27] = 1
+            
+            #cola referenciada
+            newGameState[pos[0]+19,pos[1]+30] = 1
+            newGameState[pos[0]+22,pos[1]+30] = 1
+
+
+
 
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             if newGameState[x, y] == 0:
@@ -333,8 +311,7 @@ while stay:
     # Actualizamos el estado del juego.
     gameState = np.copy(newGameState)
 
-    # Mostramos el resultado
-
+    # Mostramos el resultadox
     pygame.display.flip()
 
 #Lista de teclas y como llamarlas

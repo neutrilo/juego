@@ -5,15 +5,15 @@ import time
 
 pygame.init() 
 
-width, height = 400, 400
+width, height = 800, 800
 
-bg = 25, 25, 25
+bg = 25, 25, 30
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 150, 150
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -55,9 +55,7 @@ dimCH = height / nyC
 # gameState[33,19] = 1
 # gameState[34,19] = 1
 
-
 #mensaje
-
 #H
 gameState[5,59] = 1
 gameState[5,58] = 1
@@ -177,92 +175,51 @@ gameState[40,57] = 1
 gameState[40,56] = 0
 gameState[40,55] = 1
 
-xpos = 30
-ypos = 50
 
 
-#amongus
-gameState[xpos+0,ypos-3]=1
-gameState[xpos+0,ypos-4]=1
-gameState[xpos+0,ypos-5]=1
-gameState[xpos+0,ypos-6]=1
-gameState[xpos+0,ypos-7]=1
-gameState[xpos+0,ypos-8]=1
-gameState[xpos+0,ypos-9]=1
-gameState[xpos+0,ypos-10]=1
-gameState[xpos+0,ypos-11]=1
-gameState[xpos+0,ypos-12]=1
-gameState[xpos+0,ypos-13]=1
-gameState[xpos+0,ypos-14]=1
-#
-gameState[xpos+1,ypos-15]=1
-gameState[xpos+2,ypos-15]=1
-gameState[xpos+3,ypos-15]=1
-gameState[xpos+4,ypos-15]=1
-gameState[xpos+5,ypos-15]=1
-gameState[xpos+6,ypos-15]=1
-gameState[xpos+7,ypos-15]=1
-#
-gameState[xpos+8,ypos-14]=1
-gameState[xpos+8,ypos-13]=1
-gameState[xpos+9,ypos-12]=1
-gameState[xpos+9,ypos-11]=1
-gameState[xpos+8,ypos-10]=1
-gameState[xpos+8,ypos-9]=1
-gameState[xpos+8,ypos-8]=1
-gameState[xpos+8,ypos-7]=1
-gameState[xpos+8,ypos-6]=1
-gameState[xpos+8,ypos-5]=1
-gameState[xpos+8,ypos-4]=1
-gameState[xpos+8,ypos-3]=1
-#
-gameState[xpos+7,ypos-3]=1
-gameState[xpos+6,ypos-3]=1
-gameState[xpos+5,ypos-3]=1
-gameState[xpos+5,ypos-4]=1
-gameState[xpos+5,ypos-5]=1
-gameState[xpos+5,ypos-6]=1
-gameState[xpos+4,ypos-6]=1
-gameState[xpos+3,ypos-6]=1
-gameState[xpos+3,ypos-5]=1
-gameState[xpos+3,ypos-4]=1
-gameState[xpos+3,ypos-3]=1
-gameState[xpos+2,ypos-3]=1
-gameState[xpos+1,ypos-3]=1
-#
-gameState[xpos-1,ypos-7]=1
-gameState[xpos-2,ypos-7]=1
-gameState[xpos-2,ypos-8]=1
-gameState[xpos-2,ypos-9]=1
-gameState[xpos-2,ypos-10]=1
-gameState[xpos-2,ypos-11]=1
-gameState[xpos-2,ypos-12]=1
-gameState[xpos-1,ypos-12]=1
 
-#
-gameState[xpos+7,ypos-13]=1
-gameState[xpos+6,ypos-13]=1
-gameState[xpos+5,ypos-13]=1
-gameState[xpos+4,ypos-13]=1
-gameState[xpos+3,ypos-12]=1
-gameState[xpos+3,ypos-11]=1
-gameState[xpos+7,ypos-10]=1
-gameState[xpos+6,ypos-10]=1
-gameState[xpos+5,ypos-10]=1
-gameState[xpos+4,ypos-10]=1
+
+
+
+
+
+
+
+
 
 pauseExect = True
 stay = True
 
+pos=[20,20]
+
+
 # Bucle de ejecución
 while stay:
-
-    # Copiamos la matriz del estado anterior
+    
+    # gameState[pos[0]-4,pos[1]] = 1
+    # gameState[pos[0]-5,pos[1]] = 1
+    # gameState[pos[0]-6,pos[1]] = 1
+    # gameState[pos[0]-7,pos[1]] = 1
+    # gameState[pos[0],pos[1]] = 1
+    # gameState[pos[0]-1,pos[1]-1] = 1
+    # gameState[pos[0]-2,pos[1]-1] = 1
+    # gameState[pos[0]-3,pos[1]-1] = 1
+    # gameState[pos[0]-3,pos[1]-1] = 1
+    # gameState[pos[0]-3,pos[1]] = 1
+    # gameState[pos[0]-3,pos[1]+1] = 1
+    # gameState[pos[0]-3,pos[1]+2] = 1
+    # gameState[pos[0]-3,pos[1]+3] = 1
+    # gameState[pos[0],pos[1]+1] = 1
+    # gameState[pos[0]-1,pos[1]+2] = 1
+    # gameState[pos[0]-2,pos[1]+3] = 1
+    # gameState[pos[0]-3,pos[1]+3] = 1
+    
+    # Copiamosla matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -275,11 +232,17 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                pass
+                pos[0]=pos[0]-1
+                
             elif event.key == pygame.K_RIGHT:
-                pass
+                pos[0]=pos[0]+1
+            elif event.key == pygame.K_DOWN:
+                pos[1]=pos[1]+1
+            elif event.key == pygame.K_UP:
+                pos[1]=pos[1]+1
             else:
                 pauseExect = not pauseExect
+                
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
@@ -322,19 +285,57 @@ while stay:
                     ((x+1) * dimCW, y * dimCH),
                     ((x+1) * dimCW, (y+1) * dimCH),
                     ((x)   * dimCW, (y+1) * dimCH)]
-
+            
+            newGameState[pos[0]+30,pos[1]+30] = 1
+            newGameState[pos[0]+31,pos[1]+31] = 1
+            newGameState[pos[0]+32,pos[1]+32] = 1
+            newGameState[pos[0]+33,pos[1]+33] = 1
+            newGameState[pos[0]+34,pos[1]+34] = 1
+            newGameState[pos[0]+35,pos[1]+35] = 1
+            newGameState[pos[0]+36,pos[1]+36] = 1
+            newGameState[pos[0]+36,pos[1]+37] = 1
+            newGameState[pos[0]+37,pos[1]+37] = 1
+            newGameState[pos[0]+37,pos[1]+36] = 1
+            newGameState[pos[0]+30,pos[1]+28] = 1
+            newGameState[pos[0]+30,pos[1]+27] = 1
+            newGameState[pos[0]+29,pos[1]+30] = 1
+            newGameState[pos[0]+28,pos[1]+30] = 1
+            newGameState[pos[0]+30,pos[1]+29] = 1
+            newGameState[pos[0]+26,pos[1]+29] = 1
+            newGameState[pos[0]+27,pos[1]+30] = 1
+            newGameState[pos[0]+25,pos[1]+28] = 1
+            newGameState[pos[0]+24,pos[1]+27] = 1
+            newGameState[pos[0]+23,pos[1]+26] = 1
+            newGameState[pos[0]+22,pos[1]+25] = 1
+            newGameState[pos[0]+21,pos[1]+24] = 1
+            newGameState[pos[0]+20,pos[1]+23] = 1
+            newGameState[pos[0]+19,pos[1]+22] = 1
+            newGameState[pos[0]+18,pos[1]+21] = 1
+            newGameState[pos[0]+18,pos[1]+20] = 1
+            newGameState[pos[0]+18,pos[1]+19] = 1
+            newGameState[pos[0]+18,pos[1]+18] = 1
+            newGameState[pos[0]+19,pos[1]+18] = 1
+            newGameState[pos[0]+20,pos[1]+18] = 1
+            newGameState[pos[0]+21,pos[1]+18] = 1
+            newGameState[pos[0]+22,pos[1]+19] = 1
+            newGameState[pos[0]+23,pos[1]+20] = 1
+            newGameState[pos[0]+24,pos[1]+21] = 1
+            newGameState[pos[0]+25,pos[1]+22] = 1
+            newGameState[pos[0]+26,pos[1]+23] = 1
+            newGameState[pos[0]+27,pos[1]+24] = 1
+            newGameState[pos[0]+28,pos[1]+25] = 1
+            newGameState[pos[0]+29,pos[1]+26] = 1
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             if newGameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (100, 100, 200), poly, 0)
 
     # Actualizamos el estado del juego.
     gameState = np.copy(newGameState)
 
     # Mostramos el resultado
-
     pygame.display.flip()
 
 #Lista de teclas y como llamarlas

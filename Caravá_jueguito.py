@@ -5,7 +5,7 @@ import time
 
 pygame.init() 
 
-width, height = 400, 400
+width, height = 500, 500
 
 bg = 25, 25, 25
 
@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 70, 70
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -55,9 +55,7 @@ dimCH = height / nyC
 # gameState[33,19] = 1
 # gameState[34,19] = 1
 
-
 #mensaje
-
 #H
 gameState[5,59] = 1
 gameState[5,58] = 1
@@ -177,92 +175,100 @@ gameState[40,57] = 1
 gameState[40,56] = 0
 gameState[40,55] = 1
 
-xpos = 30
-ypos = 50
+#Avión
+
+# #cuerpo
+# gameState[50,50] = 1
+# gameState[51,50] = 1
+# gameState[52,50] = 1
+# gameState[53,50] = 1
+# gameState[54,50] = 1
+# gameState[55,50] = 1
+# gameState[56,50] = 1
+# gameState[57,50] = 1
+# gameState[58,50] = 1
+# gameState[59,50] = 1
+# gameState[60,50] = 1
+
+# #cola trasera
+# gameState[61,51] = 1
+# gameState[61,49] = 1
+# gameState[62,48] = 1
+# gameState[62,52] = 1
+# gameState[61,50] = 1
+# gameState[62,51] = 1
+# gameState[62,50] = 1
+# gameState[62,49] = 1
+# gameState[63,50] = 1
 
 
-#amongus
-gameState[xpos+0,ypos-3]=1
-gameState[xpos+0,ypos-4]=1
-gameState[xpos+0,ypos-5]=1
-gameState[xpos+0,ypos-6]=1
-gameState[xpos+0,ypos-7]=1
-gameState[xpos+0,ypos-8]=1
-gameState[xpos+0,ypos-9]=1
-gameState[xpos+0,ypos-10]=1
-gameState[xpos+0,ypos-11]=1
-gameState[xpos+0,ypos-12]=1
-gameState[xpos+0,ypos-13]=1
-gameState[xpos+0,ypos-14]=1
-#
-gameState[xpos+1,ypos-15]=1
-gameState[xpos+2,ypos-15]=1
-gameState[xpos+3,ypos-15]=1
-gameState[xpos+4,ypos-15]=1
-gameState[xpos+5,ypos-15]=1
-gameState[xpos+6,ypos-15]=1
-gameState[xpos+7,ypos-15]=1
-#
-gameState[xpos+8,ypos-14]=1
-gameState[xpos+8,ypos-13]=1
-gameState[xpos+9,ypos-12]=1
-gameState[xpos+9,ypos-11]=1
-gameState[xpos+8,ypos-10]=1
-gameState[xpos+8,ypos-9]=1
-gameState[xpos+8,ypos-8]=1
-gameState[xpos+8,ypos-7]=1
-gameState[xpos+8,ypos-6]=1
-gameState[xpos+8,ypos-5]=1
-gameState[xpos+8,ypos-4]=1
-gameState[xpos+8,ypos-3]=1
-#
-gameState[xpos+7,ypos-3]=1
-gameState[xpos+6,ypos-3]=1
-gameState[xpos+5,ypos-3]=1
-gameState[xpos+5,ypos-4]=1
-gameState[xpos+5,ypos-5]=1
-gameState[xpos+5,ypos-6]=1
-gameState[xpos+4,ypos-6]=1
-gameState[xpos+3,ypos-6]=1
-gameState[xpos+3,ypos-5]=1
-gameState[xpos+3,ypos-4]=1
-gameState[xpos+3,ypos-3]=1
-gameState[xpos+2,ypos-3]=1
-gameState[xpos+1,ypos-3]=1
-#
-gameState[xpos-1,ypos-7]=1
-gameState[xpos-2,ypos-7]=1
-gameState[xpos-2,ypos-8]=1
-gameState[xpos-2,ypos-9]=1
-gameState[xpos-2,ypos-10]=1
-gameState[xpos-2,ypos-11]=1
-gameState[xpos-2,ypos-12]=1
-gameState[xpos-1,ypos-12]=1
+# #alas
+# gameState[54,51] = 1
+# gameState[55,52] = 1
+# gameState[56,53] = 1
+# gameState[54,49] = 1
+# gameState[55,48] = 1
+# gameState[56,47] = 1
+# gameState[40,55] = 0
 
-#
-gameState[xpos+7,ypos-13]=1
-gameState[xpos+6,ypos-13]=1
-gameState[xpos+5,ypos-13]=1
-gameState[xpos+4,ypos-13]=1
-gameState[xpos+3,ypos-12]=1
-gameState[xpos+3,ypos-11]=1
-gameState[xpos+7,ypos-10]=1
-gameState[xpos+6,ypos-10]=1
-gameState[xpos+5,ypos-10]=1
-gameState[xpos+4,ypos-10]=1
+# #Cabezal
+# gameState[49,50] = 1
+# gameState[50,51] = 1
+# gameState[50,49] = 1
+# gameState[51,51] = 1
+# gameState[51,49] = 1
+
+pos = [0,0]
+# #AVION 2
+# #cuerpo
+# gameState[pos[0]+50,pos[1]+50] = 1
+# gameState[pos[0]+50,pos[1]+51] = 1
+# gameState[pos[0]+50,pos[1]+52] = 1
+# gameState[pos[0]+50,pos[1]+53] = 1
+# gameState[pos[0]+50,pos[1]+54] = 1
+# gameState[pos[0]+50,pos[1]+55] = 1
+# gameState[pos[0]+50,pos[1]+56] = 1
+# gameState[pos[0]+50,pos[1]+57] = 1
+# gameState[pos[0]+50,pos[1]+58] = 1
+# gameState[pos[0]+50,pos[1]+59] = 1
+# gameState[pos[0]+60,pos[1]+60] = 1
+
+# #alas
+# gameState[pos[0]+51,pos[1]+53] = 1
+# gameState[pos[0]+49,pos[1]+53] = 1
+# gameState[pos[0]+52,pos[1]+54] = 1
+# gameState[pos[0]+48,pos[1]+54] = 1
+# gameState[pos[0]+53,pos[1]+55] = 1
+# gameState[pos[0]+47,pos[1]+55] = 1
+
+# gameState[pos[0]+51,pos[1]+59] = 1
+# gameState[pos[0]+49,pos[1]+59] = 1
+# gameState[50,58] = 1
+# gameState[50,59] = 1
+# gameState[60,60] = 1
+
+
+
+
+
+
+
+
+
 
 pauseExect = True
 stay = True
 
 # Bucle de ejecución
 while stay:
+ 
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.5)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -274,13 +280,17 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                pass
+            if event.key == pygame.K_UP:
+                pos[1]=pos[1] -1
+            elif event.key == pygame.K_DOWN:
+                pos[1]=pos[1] +1
+            elif event.key == pygame.K_LEFT:
+                pos[0]=pos[0]-1
             elif event.key == pygame.K_RIGHT:
-                pass
+                pos[0]=pos[0]+1
             else:
-                pauseExect = not pauseExect
-        if event.type == pygame.QUIT:
+                 pauseExect = not pauseExect
+        if event.type == pygame.QUIT:   
             stay = False
             pygame.quit()
 
@@ -291,7 +301,32 @@ while stay:
             posX, posY = pygame.mouse.get_pos()
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
             newGameState[celX, celY] = 1
-
+        #AVION
+        #cuerpo
+          
+        newGameState[pos[0]+50,pos[1]+50] = 1
+        newGameState[pos[0]+50,pos[1]+51] = 1
+        newGameState[pos[0]+50,pos[1]+52] = 1
+        newGameState[pos[0]+50,pos[1]+53] = 1
+        newGameState[pos[0]+50,pos[1]+54] = 1
+        newGameState[pos[0]+50,pos[1]+55] = 1
+        newGameState[pos[0]+50,pos[1]+56] = 1
+        newGameState[pos[0]+50,pos[1]+57] = 1
+        newGameState[pos[0]+50,pos[1]+58] = 1
+        newGameState[pos[0]+50,pos[1]+59] = 1
+        newGameState[pos[0]+60,pos[1]+60] = 1
+        
+          #alas
+        newGameState[pos[0]+51,pos[1]+53] = 1
+        newGameState[pos[0]+49,pos[1]+53] = 1
+        newGameState[pos[0]+52,pos[1]+54] = 1
+        newGameState[pos[0]+48,pos[1]+54] = 1
+        newGameState[pos[0]+53,pos[1]+55] = 1
+        newGameState[pos[0]+47,pos[1]+55] = 1
+        
+        newGameState[pos[0]+51,pos[1]+59] = 1
+        newGameState[pos[0]+49,pos[1]+59] = 1
+        
     for y in range(0, nxC):
         for x in range (0, nyC):
 
@@ -323,6 +358,33 @@ while stay:
                     ((x+1) * dimCW, (y+1) * dimCH),
                     ((x)   * dimCW, (y+1) * dimCH)]
 
+        #AVION
+        #cuerpo
+          
+            newGameState[pos[0]+50,pos[1]+50] = 1
+            newGameState[pos[0]+50,pos[1]+51] = 1
+            newGameState[pos[0]+50,pos[1]+52] = 1
+            newGameState[pos[0]+50,pos[1]+53] = 1
+            newGameState[pos[0]+50,pos[1]+54] = 1
+            newGameState[pos[0]+50,pos[1]+55] = 1
+            newGameState[pos[0]+50,pos[1]+56] = 1
+            newGameState[pos[0]+50,pos[1]+57] = 1
+            newGameState[pos[0]+50,pos[1]+58] = 1
+            newGameState[pos[0]+50,pos[1]+59] = 1
+            newGameState[pos[0]+60,pos[1]+60] = 1
+            
+              #alas
+            newGameState[pos[0]+51,pos[1]+53] = 1
+            newGameState[pos[0]+49,pos[1]+53] = 1
+            newGameState[pos[0]+52,pos[1]+54] = 1
+            newGameState[pos[0]+48,pos[1]+54] = 1
+            newGameState[pos[0]+53,pos[1]+55] = 1
+            newGameState[pos[0]+47,pos[1]+55] = 1
+            
+            newGameState[pos[0]+51,pos[1]+59] = 1
+            newGameState[pos[0]+49,pos[1]+59] = 1
+        
+        
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             if newGameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
@@ -334,7 +396,6 @@ while stay:
     gameState = np.copy(newGameState)
 
     # Mostramos el resultado
-
     pygame.display.flip()
 
 #Lista de teclas y como llamarlas
