@@ -57,134 +57,173 @@ dimCH = height / nyC
 # gameState[34,19] = 1
 
 #mensaje
-#H
-gameState[5,59] = 1
-gameState[5,58] = 1
-gameState[5,57] = 1
-gameState[5,56] = 1
-gameState[5,55] = 1
-gameState[6,57] = 1
-gameState[7,59] = 1
-gameState[7,58] = 1
-gameState[7,57] = 1
-gameState[7,56] = 1
-gameState[7,55] = 1
-#
-#O
-gameState[9,59] = 1
-gameState[9,58] = 1
-gameState[9,57] = 1
-gameState[9,56] = 1
-gameState[9,55] = 1
-gameState[10,59] = 1
-gameState[10,55] = 1
-gameState[11,59] = 1
-gameState[11,58] = 1
-gameState[11,57] = 1
-gameState[11,56] = 1
-gameState[11,55] = 1
-#
-#L
-gameState[13,59] = 1
-gameState[13,58] = 1
-gameState[13,57] = 1
-gameState[13,56] = 1
-gameState[13,55] = 1
-gameState[14,59] = 1
-gameState[15,59] = 1
-#
-#A
-gameState[17,59] = 1
-gameState[17,58] = 1
-gameState[17,57] = 1
-gameState[17,56] = 1
-gameState[17,55] = 1
-gameState[18,55] = 1
-gameState[18,57] = 1
-gameState[19,59] = 1
-gameState[19,58] = 1
-gameState[19,57] = 1
-gameState[19,56] = 1
-gameState[19,55] = 1
-#
-#P
-gameState[22,59] = 1
-gameState[22,58] = 1
-gameState[22,57] = 1
-gameState[22,56] = 1
-gameState[22,55] = 1
-gameState[23,55] = 1
-gameState[24,55] = 1
-gameState[24,56] = 1
-gameState[24,57] = 1
-gameState[23,57] = 1
-#
-#R
-gameState[26,59] = 1
-gameState[26,58] = 1
-gameState[26,57] = 1
-gameState[26,56] = 1
-gameState[26,55] = 1
-gameState[27,55] = 1
-gameState[28,55] = 1
-gameState[28,56] = 1
-gameState[28,57] = 1
-gameState[27,57] = 1
-gameState[27,58] = 1
-gameState[28,59] = 1
-#
-#R
-gameState[30,59] = 1
-gameState[30,58] = 1
-gameState[30,57] = 1
-gameState[30,56] = 1
-gameState[30,55] = 1
-gameState[31,55] = 1
-gameState[32,55] = 1
-gameState[32,56] = 1
-gameState[32,57] = 1
-gameState[31,57] = 1
-gameState[31,58] = 1
-gameState[32,59] = 1
-#
-#O
-gameState[34,59] = 1
-gameState[34,58] = 1
-gameState[34,57] = 1
-gameState[34,56] = 1
-gameState[34,55] = 1
-gameState[35,59] = 1
-gameState[35,55] = 1
-gameState[36,59] = 1
-gameState[36,58] = 1
-gameState[36,57] = 1
-gameState[36,56] = 1
-gameState[36,55] = 1
-#
-#S
-gameState[38,59] = 1
-gameState[38,58] = 0
-gameState[38,57] = 1
-gameState[38,56] = 1
-gameState[38,55] = 1
-gameState[39,59] = 1
-gameState[39,57] = 1
-gameState[39,55] = 1
-gameState[40,59] = 1
-gameState[40,58] = 1
-gameState[40,57] = 1
-gameState[40,56] = 0
-gameState[40,55] = 1
+# #H
+# gameState[5,59] = 1
+# gameState[5,58] = 1
+# gameState[5,57] = 1
+# gameState[5,56] = 1
+# gameState[5,55] = 1
+# gameState[6,57] = 1
+# gameState[7,59] = 1
+# gameState[7,58] = 1
+# gameState[7,57] = 1
+# gameState[7,56] = 1
+# gameState[7,55] = 1
+# #
+# #O
+# gameState[9,59] = 1
+# gameState[9,58] = 1
+# gameState[9,57] = 1
+# gameState[9,56] = 1
+# gameState[9,55] = 1
+# gameState[10,59] = 1
+# gameState[10,55] = 1
+# gameState[11,59] = 1
+# gameState[11,58] = 1
+# gameState[11,57] = 1
+# gameState[11,56] = 1
+# gameState[11,55] = 1
+# #
+# #L
+# gameState[13,59] = 1
+# gameState[13,58] = 1
+# gameState[13,57] = 1
+# gameState[13,56] = 1
+# gameState[13,55] = 1
+# gameState[14,59] = 1
+# gameState[15,59] = 1
+# #
+# #A
+# gameState[17,59] = 1
+# gameState[17,58] = 1
+# gameState[17,57] = 1
+# gameState[17,56] = 1
+# gameState[17,55] = 1
+# gameState[18,55] = 1
+# gameState[18,57] = 1
+# gameState[19,59] = 1
+# gameState[19,58] = 1
+# gameState[19,57] = 1
+# gameState[19,56] = 1
+# gameState[19,55] = 1
+# #
+# #P
+# gameState[22,59] = 1
+# gameState[22,58] = 1
+# gameState[22,57] = 1
+# gameState[22,56] = 1
+# gameState[22,55] = 1
+# gameState[23,55] = 1
+# gameState[24,55] = 1
+# gameState[24,56] = 1
+# gameState[24,57] = 1
+# gameState[23,57] = 1
+# #
+# #R
+# gameState[26,59] = 1
+# gameState[26,58] = 1
+# gameState[26,57] = 1
+# gameState[26,56] = 1
+# gameState[26,55] = 1
+# gameState[27,55] = 1
+# gameState[28,55] = 1
+# gameState[28,56] = 1
+# gameState[28,57] = 1
+# gameState[27,57] = 1
+# gameState[27,58] = 1
+# gameState[28,59] = 1
+# #
+# #R
+# gameState[30,59] = 1
+# gameState[30,58] = 1
+# gameState[30,57] = 1
+# gameState[30,56] = 1
+# gameState[30,55] = 1
+# gameState[31,55] = 1
+# gameState[32,55] = 1
+# gameState[32,56] = 1
+# gameState[32,57] = 1
+# gameState[31,57] = 1
+# gameState[31,58] = 1
+# gameState[32,59] = 1
+# #
+# #O
+# gameState[34,59] = 1
+# gameState[34,58] = 1
+# gameState[34,57] = 1
+# gameState[34,56] = 1
+# gameState[34,55] = 1
+# gameState[35,59] = 1
+# gameState[35,55] = 1
+# gameState[36,59] = 1
+# gameState[36,58] = 1
+# gameState[36,57] = 1
+# gameState[36,56] = 1
+# gameState[36,55] = 1
+# #
+# #S
+# gameState[38,59] = 1
+# gameState[38,58] = 0
+# gameState[38,57] = 1
+# gameState[38,56] = 1
+# gameState[38,55] = 1
+# gameState[39,59] = 1
+# gameState[39,57] = 1
+# gameState[39,55] = 1
+# gameState[40,59] = 1
+# gameState[40,58] = 1
+# gameState[40,57] = 1
+# gameState[40,56] = 0
+# gameState[40,55] = 1
+xpos=30
+ypos=10
+# gameState[xpos+20,20+ypos] = 1
+# gameState[xpos+19,20+ypos] = 1
+# gameState[xpos+18,20+ypos] = 1
+# gameState[xpos+17,20+ypos] = 1
+# gameState[xpos+16,20+ypos] = 1
+# gameState[xpos+15,20+ypos] = 1
+# gameState[xpos+14,20+ypos] = 1
+# gameState[xpos+13,20+ypos] = 1
+# gameState[xpos+12,20+ypos] = 1
+# gameState[xpos+11,20+ypos] = 1
+# gameState[xpos+10,20+ypos] = 1
+# gameState[xpos+20,30+ypos] = 1
+# gameState[xpos+19,30+ypos] = 1
+# gameState[xpos+18,30+ypos] = 1
+# gameState[xpos+17,30+ypos] = 1
+# gameState[xpos+16,30+ypos] = 1
+# gameState[xpos+15,30+ypos] = 1
+# gameState[xpos+14,30+ypos] = 1
+# gameState[xpos+13,30+ypos] = 1
+# gameState[xpos+12,30+ypos] = 1
+# gameState[xpos+11,30+ypos] = 1
+# gameState[xpos+10,30+ypos] = 1
 
-
-
-
-
-
-
-
-
-
+# gameState[xpos+10,20+ypos] = 1
+# gameState[xpos+10,21+ypos] = 1
+# gameState[xpos+10,22+ypos] = 1
+# gameState[xpos+10,23+ypos] = 1
+# gameState[xpos+10,24+ypos] = 1
+# gameState[xpos+10,25+ypos] = 1
+# gameState[xpos+10,26+ypos] = 1
+# gameState[xpos+10,27+ypos] = 1
+# gameState[xpos+10,28+ypos] = 1
+# gameState[xpos+10,29+ypos] = 1
+# gameState[xpos+10,30+ypos] = 1
+# gameState[xpos+10,20+ypos] = 1
+# gameState[xpos+20,20+ypos] = 1
+# gameState[xpos+20,21+ypos] = 1
+# gameState[xpos+20,22+ypos] = 1
+# gameState[xpos+20,23+ypos] = 1
+# gameState[xpos+20,24+ypos] = 1
+# gameState[xpos+20,25+ypos] = 1
+# gameState[xpos+20,26+ypos] = 1
+# gameState[xpos+20,27+ypos] = 1
+# gameState[xpos+20,28+ypos] = 1
+# gameState[xpos+20,29+ypos] = 1
+# gameState[xpos+20,30+ypos] = 1
+# gameState[xpos+20,20+ypos] = 1
 
 
 
@@ -212,7 +251,13 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            pauseExect = not pauseExect
+            if event.key == pygame.K_LEFT:
+                xpos=xpos-1
+            elif event.key == pygame.K_RIGHT:
+                xpos=xpos-1
+            else:
+                pauseExect = not pauseExect
+        
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
@@ -249,6 +294,59 @@ while stay:
 
                 elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
                     newGameState[x, y] = 0
+
+
+            newGameState[xpos+20,20+ypos] = 1
+            newGameState[xpos+19,20+ypos] = 1
+            newGameState[xpos+18,20+ypos] = 1
+            newGameState[xpos+17,20+ypos] = 1
+            newGameState[xpos+16,20+ypos] = 1
+            newGameState[xpos+15,20+ypos] = 1
+            newGameState[xpos+14,20+ypos] = 1
+            newGameState[xpos+13,20+ypos] = 1
+            newGameState[xpos+12,20+ypos] = 1
+            newGameState[xpos+11,20+ypos] = 1
+            newGameState[xpos+10,20+ypos] = 1
+            newGameState[xpos+20,30+ypos] = 1
+            newGameState[xpos+19,30+ypos] = 1
+            newGameState[xpos+18,30+ypos] = 1
+            newGameState[xpos+17,30+ypos] = 1
+            newGameState[xpos+16,30+ypos] = 1
+            newGameState[xpos+15,30+ypos] = 1
+            newGameState[xpos+14,30+ypos] = 1
+            newGameState[xpos+13,30+ypos] = 1
+            newGameState[xpos+12,30+ypos] = 1
+            newGameState[xpos+11,30+ypos] = 1
+            newGameState[xpos+10,30+ypos] = 1
+            
+            newGameState[xpos+10,20+ypos] = 1
+            newGameState[xpos+10,21+ypos] = 1
+            newGameState[xpos+10,22+ypos] = 1
+            newGameState[xpos+10,23+ypos] = 1
+            newGameState[xpos+10,24+ypos] = 1
+            newGameState[xpos+10,25+ypos] = 1
+            newGameState[xpos+10,26+ypos] = 1
+            newGameState[xpos+10,27+ypos] = 1
+            newGameState[xpos+10,28+ypos] = 1
+            newGameState[xpos+10,29+ypos] = 1
+            newGameState[xpos+10,30+ypos] = 1
+            newGameState[xpos+10,20+ypos] = 1
+            newGameState[xpos+20,20+ypos] = 1
+            newGameState[xpos+20,21+ypos] = 1
+            newGameState[xpos+20,22+ypos] = 1
+            newGameState[xpos+20,23+ypos] = 1
+            newGameState[xpos+20,24+ypos] = 1
+            newGameState[xpos+20,25+ypos] = 1
+            newGameState[xpos+20,26+ypos] = 1
+            newGameState[xpos+20,27+ypos] = 1
+            newGameState[xpos+20,28+ypos] = 1
+            newGameState[xpos+20,29+ypos] = 1
+            newGameState[xpos+20,30+ypos] = 1
+            newGameState[xpos+20,20+ypos] = 1
+
+
+
+
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
