@@ -282,6 +282,7 @@ while stay:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 pos[1]=pos[1] -1
+                pos[1]=pos[1] -1
             elif event.key == pygame.K_DOWN:
                 pos[1]=pos[1] +1
             elif event.key == pygame.K_LEFT:
@@ -326,6 +327,31 @@ while stay:
         
         newGameState[pos[0]+51,pos[1]+59] = 1
         newGameState[pos[0]+49,pos[1]+59] = 1
+        
+        pos2=pos
+        
+        newGameState[pos2[0]+50,pos2[1]+50] = 0
+        newGameState[pos2[0]+50,pos2[1]+51] = 0
+        newGameState[pos2[0]+50,pos2[1]+52] = 0
+        newGameState[pos2[0]+50,pos2[1]+53] = 0
+        newGameState[pos2[0]+50,pos2[1]+54] = 0
+        newGameState[pos2[0]+50,pos2[1]+55] = 0
+        newGameState[pos2[0]+50,pos2[1]+56] = 0
+        newGameState[pos2[0]+50,pos2[1]+57] = 0
+        newGameState[pos2[0]+50,pos2[1]+58] = 0
+        newGameState[pos2[0]+50,pos2[1]+59] = 0
+        newGameState[pos2[0]+60,pos2[1]+60] = 0
+        
+          #alas
+        newGameState[pos2[0]+51,pos2[1]+53] = 0
+        newGameState[pos2[0]+49,pos2[1]+53] = 0
+        newGameState[pos2[0]+52,pos2[1]+54] = 0
+        newGameState[pos2[0]+48,pos2[1]+54] = 0
+        newGameState[pos2[0]+53,pos2[1]+55] = 0
+        newGameState[pos2[0]+47,pos2[1]+55] = 0
+        
+        newGameState[pos2[0]+51,pos2[1]+59] = 0
+        newGameState[pos2[0]+49,pos2[1]+59] = 0
         
     for y in range(0, nxC):
         for x in range (0, nyC):
