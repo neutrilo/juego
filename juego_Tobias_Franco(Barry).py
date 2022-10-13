@@ -29,7 +29,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 60, 60
+nxC, nyC = 100, 100
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -64,12 +64,57 @@ gameState[7,11] = 1
 # gameState[18,16] = 1
 
 # #Serpent 1
-gameState[30,20] = 1
-gameState[31,20] = 1
-gameState[32,20] = 1
-gameState[32,19] = 1
-gameState[33,19] = 1
-gameState[34,19] = 1
+# gameState[30,20] = 1
+# gameState[31,20] = 1
+# gameState[32,20] = 1
+# gameState[32,19] = 1
+# gameState[33,19] = 1
+# gameState[34,19] = 1
+
+xpos = -10
+ypos = -10
+
+#espada
+gameState[xpos+13, ypos-10]
+gameState[xpos+30,ypos+30] = 1
+gameState[xpos+31,ypos+31] = 1
+gameState[xpos+32,ypos+32] = 1
+gameState[xpos+33,ypos+33] = 1
+gameState[xpos+34,ypos+34] = 1
+gameState[xpos+35,ypos+35] = 1
+gameState[xpos+36,ypos+36] = 1
+gameState[xpos+36,ypos+37] = 1
+gameState[xpos+37,ypos+37] = 1
+gameState[xpos+37,ypos+36] = 1
+gameState[xpos+30,ypos+28] = 1
+gameState[xpos+30,ypos+27] = 1
+gameState[xpos+29,ypos+30] = 1
+gameState[xpos+28,ypos+30] = 1
+gameState[xpos+30,ypos+29] = 1
+gameState[xpos+26,ypos+29] = 1
+gameState[xpos+27,ypos+30] = 1
+gameState[xpos+25,ypos+28] = 1
+gameState[xpos+24,ypos+27] = 1
+gameState[xpos+23,ypos+26] = 1
+gameState[xpos+22,ypos+25] = 1
+gameState[xpos+21,ypos+24] = 1
+gameState[xpos+20,ypos+23] = 1
+gameState[xpos+19,ypos+22] = 1
+gameState[xpos+18,ypos+21] = 1
+gameState[xpos+18,ypos+20] = 1
+gameState[xpos+18,ypos+19] = 1
+gameState[xpos+18,ypos+18] = 1
+gameState[xpos+19,ypos+18] = 1
+gameState[xpos+20,ypos+18] = 1
+gameState[xpos+21,ypos+18] = 1
+gameState[xpos+22,ypos+19] = 1
+gameState[xpos+23,ypos+20] = 1
+gameState[xpos+24,ypos+21] = 1
+gameState[xpos+25,ypos+22] = 1
+gameState[xpos+26,ypos+23] = 1
+gameState[xpos+27,ypos+24] = 1
+gameState[xpos+28,ypos+25] = 1
+gameState[xpos+29,ypos+26] = 1
 
 #mensaje
 #H
@@ -84,7 +129,7 @@ gameState[34,19] = 1
 # gameState[7,57] = 1
 # gameState[7,56] = 1
 # gameState[7,55] = 1
-# #
+
 # #O
 # gameState[9,59] = 1
 # gameState[9,58] = 1
@@ -228,7 +273,13 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                pass
+                xpos = xpos-2
+            elif event.key == pygame.K_RIGHT:
+                xpos = xpos+2
+            elif event.key == pygame.K_UP:
+                ypos = ypos-2
+            elif event.key == pygame.K_DOWN:
+                ypos = ypos+2
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -269,6 +320,45 @@ while stay:
                     newGameState[x, y] = 0
 
             # Calculamos el polígono que forma la celda.
+            newGameState[xpos+30,ypos+30] = 1
+            newGameState[xpos+31,ypos+31] = 1
+            newGameState[xpos+32,ypos+32] = 1
+            newGameState[xpos+33,ypos+33] = 1
+            newGameState[xpos+34,ypos+34] = 1
+            newGameState[xpos+35,ypos+35] = 1
+            newGameState[xpos+36,ypos+36] = 1
+            newGameState[xpos+36,ypos+37] = 1
+            newGameState[xpos+37,ypos+37] = 1
+            newGameState[xpos+37,ypos+36] = 1
+            newGameState[xpos+30,ypos+28] = 1
+            newGameState[xpos+30,ypos+27] = 1
+            newGameState[xpos+29,ypos+30] = 1
+            newGameState[xpos+28,ypos+30] = 1
+            newGameState[xpos+30,ypos+29] = 1
+            newGameState[xpos+26,ypos+29] = 1
+            newGameState[xpos+27,ypos+30] = 1
+            newGameState[xpos+25,ypos+28] = 1
+            newGameState[xpos+24,ypos+27] = 1
+            newGameState[xpos+23,ypos+26] = 1
+            newGameState[xpos+22,ypos+25] = 1
+            newGameState[xpos+21,ypos+24] = 1
+            newGameState[xpos+20,ypos+23] = 1
+            newGameState[xpos+19,ypos+22] = 1
+            newGameState[xpos+18,ypos+21] = 1
+            newGameState[xpos+18,ypos+20] = 1
+            newGameState[xpos+18,ypos+19] = 1
+            newGameState[xpos+18,ypos+18] = 1
+            newGameState[xpos+19,ypos+18] = 1
+            newGameState[xpos+20,ypos+18] = 1
+            newGameState[xpos+21,ypos+18] = 1
+            newGameState[xpos+22,ypos+19] = 1
+            newGameState[xpos+23,ypos+20] = 1
+            newGameState[xpos+24,ypos+21] = 1
+            newGameState[xpos+25,ypos+22] = 1
+            newGameState[xpos+26,ypos+23] = 1
+            newGameState[xpos+27,ypos+24] = 1
+            newGameState[xpos+28,ypos+25] = 1
+            newGameState[xpos+29,ypos+26] = 1
             poly = [((x)   * dimCW, y * dimCH),
                     ((x+1) * dimCW, y * dimCH),
                     ((x+1) * dimCW, (y+1) * dimCH),
