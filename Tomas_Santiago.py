@@ -118,13 +118,16 @@ while stay:
             
             if event.key == pygame.K_LEFT:
                 pos[0]=pos[0]-1
+                pos2[0]=pos[0]+1
             elif event.key == pygame.K_RIGHT:
                 pos[0]=pos[0]+1
-                
+                pos2[0]=pos[0]-1
             elif event.key == pygame.K_UP:
                 pos[1]=pos[1]-1
+                pos2[1]=pos[1]+1
             elif event.key == pygame.K_DOWN:
                 pos[1]=pos[1]+1
+                pos2[1]=pos[1]-1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -214,10 +217,12 @@ while stay:
             newGameState[pos[0]+51,pos[1]+50] = 1
             newGameState[pos[0]+49,pos[1]+50] = 1
             
+            
+           
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             #cuerpo
             
-            pos2=pos;
+            # pos2 = pos
             
             
                 
