@@ -14,7 +14,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 60, 60
+nxC, nyC = 200, 200
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -175,8 +175,7 @@ dimCH = height / nyC
 # gameState[40,57] = 1
 # gameState[40,56] = 0
 # gameState[40,55] = 1
-xpos=30
-ypos=10
+
 # gameState[xpos+20,20+ypos] = 1
 # gameState[xpos+19,20+ypos] = 1
 # gameState[xpos+18,20+ypos] = 1
@@ -226,7 +225,13 @@ ypos=10
 # gameState[xpos+20,20+ypos] = 1
 
 
-
+xpos=30
+ypos=10
+xvel=0
+yvel=0
+xace=0
+yace=0
+paso=0
 
 pauseExect = True
 stay = True
@@ -234,12 +239,26 @@ stay = True
 # Bucle de ejecución
 while stay:
 
+    paso = paso +1
+    
+    if paso == 3:
+        paso = 1
+    
+    xvel = xvel + xace
+    
+    if xvel>3:
+       xvel= 3
+    if xvel<-3:
+       xvel=-3
+
+    xpos= xpos+int(xvel*paso/2)
+
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.001)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -252,9 +271,13 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xpos=xpos-1
+                xace=xace-1
             elif event.key == pygame.K_RIGHT:
-                xpos=xpos-1
+                xace=xace+1
+            elif event.key == pygame.K_UP:
+                ypos=ypos-1
+            elif event.key == pygame.K_DOWN:
+                ypos=ypos+1
             else:
                 pauseExect = not pauseExect
         
