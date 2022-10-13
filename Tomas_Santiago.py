@@ -74,7 +74,7 @@ dimCH = height / nyC
 #
 
 pos=[0,0]
-
+pos2=[0,0]
 
 pauseExect = True
 stay = True
@@ -168,9 +168,30 @@ while stay:
                     ((x+1) * dimCW, y * dimCH),
                     ((x+1) * dimCW, (y+1) * dimCH),
                     ((x)   * dimCW, (y+1) * dimCH)]
+            
+            newGameState[pos2[0]+50,pos2[1]+50] = 0
+            newGameState[pos2[0]+50,pos2[1]+51] = 0
+            newGameState[pos2[0]+50,pos2[1]+52] = 0
+            newGameState[pos2[0]+50,pos2[1]+53] = 0
+            newGameState[pos2[0]+50,pos2[1]+54] = 0
+            newGameState[pos2[0]+50,pos2[1]+55] = 0
+            newGameState[pos2[0]+50,pos2[1]+56] = 0
+            newGameState[pos2[0]+50,pos2[1]+57] = 0
+            newGameState[pos2[0]+50,pos2[1]+58] = 0
+            newGameState[pos2[0]+50,pos2[1]+59] = 0
+            newGameState[pos2[0]+60,pos2[1]+60] = 0
+            
+            #alas
+            newGameState[pos2[0]+51,pos2[1]+56] = 0
+            newGameState[pos2[0]+49,pos2[1]+56] = 0
+            newGameState[pos2[0]+52,pos2[1]+55] = 0
+            newGameState[pos2[0]+48,pos2[1]+55] = 0
+            newGameState[pos2[0]+53,pos2[1]+54] = 0
+            newGameState[pos2[0]+47,pos2[1]+54] = 0
+            newGameState[pos2[0]+51,pos2[1]+50] = 0
+            newGameState[pos2[0]+49,pos2[1]+50] = 0
 
-            # Si la celda está "muerta" pintamos un recuadro con borde gris
-            #cuerpo
+
             newGameState[pos[0]+50,pos[1]+50] = 1
             newGameState[pos[0]+50,pos[1]+51] = 1
             newGameState[pos[0]+50,pos[1]+52] = 1
@@ -192,6 +213,13 @@ while stay:
             newGameState[pos[0]+47,pos[1]+54] = 1
             newGameState[pos[0]+51,pos[1]+50] = 1
             newGameState[pos[0]+49,pos[1]+50] = 1
+            
+            # Si la celda está "muerta" pintamos un recuadro con borde gris
+            #cuerpo
+            
+            pos2=pos;
+            
+            
                 
             if newGameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
