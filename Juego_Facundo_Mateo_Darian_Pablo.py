@@ -7,13 +7,13 @@ pygame.init()
 
 width, height = 400, 400
 
-bg = 25, 50, 25
+bg = 25, 70, 100
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 200, 200
+nxC, nyC = 100, 100
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -186,6 +186,8 @@ xace = 0
 yace = 0
 paso = 0
 
+xpos2=xpos
+ypos2=ypos
 
 
 pauseExect = True
@@ -200,7 +202,7 @@ while stay:
     if xvel>3:
       xvel=3
     xpos = xpos + int ((xvel*paso)/3)
-
+    
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
     newGameState = np.copy(gameState)
@@ -241,29 +243,98 @@ while stay:
             newGameState[celX, celY] = 1
 
     for y in range(0, nxC):
-        for x in range (0, nyC):
+         for x in range (0, nyC):
+         
+        #     if not pauseExect:
 
-            if not pauseExect:
+        #         # Calculamos el número de vecinos cercanos.
+        #         n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
+        #                     gameState[(x)     % nxC, (y - 1)  % nyC] + \
+        #                     gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
+        #                     gameState[(x - 1) % nxC, (y)      % nyC] + \
+        #                     gameState[(x + 1) % nxC, (y)      % nyC] + \
+        #                     gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
+        #                     gameState[(x)     % nxC, (y + 1)  % nyC] + \
+        #                     gameState[(x + 1) % nxC, (y + 1)  % nyC]
 
-                # Calculamos el número de vecinos cercanos.
-                n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y - 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x - 1) % nxC, (y)      % nyC] + \
-                            gameState[(x + 1) % nxC, (y)      % nyC] + \
-                            gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y + 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y + 1)  % nyC]
+        #         # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
 
-                # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
+        #         if gameState[x, y] == 0 and n_neigh == 3:
+        #             newGameState[x, y] = 1
 
-                if gameState[x, y] == 0 and n_neigh == 3:
-                    newGameState[x, y] = 1
+        #         # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vivas, "muere".
 
-                # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
-
-                elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
-                    newGameState[x, y] = 0
+        #         elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
+        #             newGameState[x, y] = 0
+        
+        
+            newGameState[xpos2+0,ypos2-3]=0
+            newGameState[xpos2+0,ypos2-4]=0
+            newGameState[xpos2+0,ypos2-5]=0
+            newGameState[xpos2+0,ypos2-6]=0
+            newGameState[xpos2+0,ypos2-7]=0
+            newGameState[xpos2+0,ypos2-8]=0
+            newGameState[xpos2+0,ypos2-9]=0
+            newGameState[xpos2+0,ypos2-10]=0
+            newGameState[xpos2+0,ypos2-11]=0
+            newGameState[xpos2+0,ypos2-12]=0
+            newGameState[xpos2+0,ypos2-13]=0
+            newGameState[xpos2+0,ypos2-14]=0
+            #
+            newGameState[xpos2+1,ypos2-15]=0
+            newGameState[xpos2+2,ypos2-15]=0
+            newGameState[xpos2+3,ypos2-15]=0
+            newGameState[xpos2+4,ypos2-15]=0
+            newGameState[xpos2+5,ypos2-15]=0
+            newGameState[xpos2+6,ypos2-15]=0
+            newGameState[xpos2+7,ypos2-15]=0
+            #
+            newGameState[xpos2+8,ypos2-14]=0
+            newGameState[xpos2+8,ypos2-13]=0
+            newGameState[xpos2+9,ypos2-12]=0
+            newGameState[xpos2+9,ypos2-11]=0
+            newGameState[xpos2+8,ypos2-10]=0
+            newGameState[xpos2+8,ypos2-9]=0
+            newGameState[xpos2+8,ypos2-8]=0
+            newGameState[xpos2+8,ypos2-7]=0
+            newGameState[xpos2+8,ypos2-6]=0
+            newGameState[xpos2+8,ypos2-5]=0
+            newGameState[xpos2+8,ypos2-4]=0
+            newGameState[xpos2+8,ypos2-3]=0
+            #
+            newGameState[xpos2+7,ypos2-3]=0
+            newGameState[xpos2+6,ypos2-3]=0
+            newGameState[xpos2+5,ypos2-3]=0
+            newGameState[xpos2+5,ypos2-4]=0
+            newGameState[xpos2+5,ypos2-5]=0
+            newGameState[xpos2+5,ypos2-6]=0
+            newGameState[xpos2+4,ypos2-6]=0
+            newGameState[xpos2+3,ypos2-6]=0
+            newGameState[xpos2+3,ypos2-5]=0
+            newGameState[xpos2+3,ypos2-4]=0
+            newGameState[xpos2+3,ypos2-3]=0
+            newGameState[xpos2+2,ypos2-3]=0
+            newGameState[xpos2+1,ypos2-3]=0
+            #
+            newGameState[xpos2-1,ypos2-7]=0
+            newGameState[xpos2-2,ypos2-7]=0
+            newGameState[xpos2-2,ypos2-8]=0
+            newGameState[xpos2-2,ypos2-9]=0
+            newGameState[xpos2-2,ypos2-10]=0
+            newGameState[xpos2-2,ypos2-11]=0
+            newGameState[xpos2-2,ypos2-12]=0
+            newGameState[xpos2-1,ypos2-12]=0
+            #
+            newGameState[xpos2+7,ypos2-13]=0
+            newGameState[xpos2+6,ypos2-13]=0
+            newGameState[xpos2+5,ypos2-13]=0
+            newGameState[xpos2+4,ypos2-13]=0
+            newGameState[xpos2+3,ypos2-12]=0
+            newGameState[xpos2+3,ypos2-11]=0
+            newGameState[xpos2+7,ypos2-10]=0
+            newGameState[xpos2+6,ypos2-10]=0
+            newGameState[xpos2+5,ypos2-10]=0
+            newGameState[xpos2+4,ypos2-10]=0
 
 
             #amongus
@@ -350,6 +421,8 @@ while stay:
 
     # Actualizamos el estado del juego.
     gameState = np.copy(newGameState)
+    xpos2=xpos
+    ypos2=ypos
 
     # Mostramos el resultado
 
