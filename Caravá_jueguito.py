@@ -57,123 +57,123 @@ dimCH = height / nyC
 
 #mensaje
 #H
-gameState[5,59] = 1
-gameState[5,58] = 1
-gameState[5,57] = 1
-gameState[5,56] = 1
-gameState[5,55] = 1
-gameState[6,57] = 1
-gameState[7,59] = 1
-gameState[7,58] = 1
-gameState[7,57] = 1
-gameState[7,56] = 1
-gameState[7,55] = 1
-#
-#O
-gameState[9,59] = 1
-gameState[9,58] = 1
-gameState[9,57] = 1
-gameState[9,56] = 1
-gameState[9,55] = 1
-gameState[10,59] = 1
-gameState[10,55] = 1
-gameState[11,59] = 1
-gameState[11,58] = 1
-gameState[11,57] = 1
-gameState[11,56] = 1
-gameState[11,55] = 1
-#
-#L
-gameState[13,59] = 1
-gameState[13,58] = 1
-gameState[13,57] = 1
-gameState[13,56] = 1
-gameState[13,55] = 1
-gameState[14,59] = 1
-gameState[15,59] = 1
-#
-#A
-gameState[17,59] = 1
-gameState[17,58] = 1
-gameState[17,57] = 1
-gameState[17,56] = 1
-gameState[17,55] = 1
-gameState[18,55] = 1
-gameState[18,57] = 1
-gameState[19,59] = 1
-gameState[19,58] = 1
-gameState[19,57] = 1
-gameState[19,56] = 1
-gameState[19,55] = 1
-#
-#P
-gameState[22,59] = 1
-gameState[22,58] = 1
-gameState[22,57] = 1
-gameState[22,56] = 1
-gameState[22,55] = 1
-gameState[23,55] = 1
-gameState[24,55] = 1
-gameState[24,56] = 1
-gameState[24,57] = 1
-gameState[23,57] = 1
-#
-#R
-gameState[26,59] = 1
-gameState[26,58] = 1
-gameState[26,57] = 1
-gameState[26,56] = 1
-gameState[26,55] = 1
-gameState[27,55] = 1
-gameState[28,55] = 1
-gameState[28,56] = 1
-gameState[28,57] = 1
-gameState[27,57] = 1
-gameState[27,58] = 1
-gameState[28,59] = 1
-#
-#R
-gameState[30,59] = 1
-gameState[30,58] = 1
-gameState[30,57] = 1
-gameState[30,56] = 1
-gameState[30,55] = 1
-gameState[31,55] = 1
-gameState[32,55] = 1
-gameState[32,56] = 1
-gameState[32,57] = 1
-gameState[31,57] = 1
-gameState[31,58] = 1
-gameState[32,59] = 1
-#
-#O
-gameState[34,59] = 1
-gameState[34,58] = 1
-gameState[34,57] = 1
-gameState[34,56] = 1
-gameState[34,55] = 1
-gameState[35,59] = 1
-gameState[35,55] = 1
-gameState[36,59] = 1
-gameState[36,58] = 1
-gameState[36,57] = 1
-gameState[36,56] = 1
-gameState[36,55] = 1
-#
-#S
-gameState[38,59] = 1
-gameState[38,58] = 0
-gameState[38,57] = 1
-gameState[38,56] = 1
-gameState[38,55] = 1
-gameState[39,59] = 1
-gameState[39,57] = 1
-gameState[39,55] = 1
-gameState[40,59] = 1
-gameState[40,58] = 1
-gameState[40,57] = 1
-gameState[40,56] = 0
-gameState[40,55] = 1
+# gameState[5,59] = 1
+# gameState[5,58] = 1
+# gameState[5,57] = 1
+# gameState[5,56] = 1
+# gameState[5,55] = 1
+# gameState[6,57] = 1
+# gameState[7,59] = 1
+# gameState[7,58] = 1
+# gameState[7,57] = 1
+# gameState[7,56] = 1
+# gameState[7,55] = 1
+# #
+# #O
+# gameState[9,59] = 1
+# gameState[9,58] = 1
+# gameState[9,57] = 1
+# gameState[9,56] = 1
+# gameState[9,55] = 1
+# gameState[10,59] = 1
+# gameState[10,55] = 1
+# gameState[11,59] = 1
+# gameState[11,58] = 1
+# gameState[11,57] = 1
+# gameState[11,56] = 1
+# gameState[11,55] = 1
+# #
+# #L
+# gameState[13,59] = 1
+# gameState[13,58] = 1
+# gameState[13,57] = 1
+# gameState[13,56] = 1
+# gameState[13,55] = 1
+# gameState[14,59] = 1
+# gameState[15,59] = 1
+# #
+# #A
+# gameState[17,59] = 1
+# gameState[17,58] = 1
+# gameState[17,57] = 1
+# gameState[17,56] = 1
+# gameState[17,55] = 1
+# gameState[18,55] = 1
+# gameState[18,57] = 1
+# gameState[19,59] = 1
+# gameState[19,58] = 1
+# gameState[19,57] = 1
+# gameState[19,56] = 1
+# gameState[19,55] = 1
+# #
+# #P
+# gameState[22,59] = 1
+# gameState[22,58] = 1
+# gameState[22,57] = 1
+# gameState[22,56] = 1
+# gameState[22,55] = 1
+# gameState[23,55] = 1
+# gameState[24,55] = 1
+# gameState[24,56] = 1
+# gameState[24,57] = 1
+# gameState[23,57] = 1
+# #
+# #R
+# gameState[26,59] = 1
+# gameState[26,58] = 1
+# gameState[26,57] = 1
+# gameState[26,56] = 1
+# gameState[26,55] = 1
+# gameState[27,55] = 1
+# gameState[28,55] = 1
+# gameState[28,56] = 1
+# gameState[28,57] = 1
+# gameState[27,57] = 1
+# gameState[27,58] = 1
+# gameState[28,59] = 1
+# #
+# #R
+# gameState[30,59] = 1
+# gameState[30,58] = 1
+# gameState[30,57] = 1
+# gameState[30,56] = 1
+# gameState[30,55] = 1
+# gameState[31,55] = 1
+# gameState[32,55] = 1
+# gameState[32,56] = 1
+# gameState[32,57] = 1
+# gameState[31,57] = 1
+# gameState[31,58] = 1
+# gameState[32,59] = 1
+# #
+# #O
+# gameState[34,59] = 1
+# gameState[34,58] = 1
+# gameState[34,57] = 1
+# gameState[34,56] = 1
+# gameState[34,55] = 1
+# gameState[35,59] = 1
+# gameState[35,55] = 1
+# gameState[36,59] = 1
+# gameState[36,58] = 1
+# gameState[36,57] = 1
+# gameState[36,56] = 1
+# gameState[36,55] = 1
+# #
+# #S
+# gameState[38,59] = 1
+# gameState[38,58] = 0
+# gameState[38,57] = 1
+# gameState[38,56] = 1
+# gameState[38,55] = 1
+# gameState[39,59] = 1
+# gameState[39,57] = 1
+# gameState[39,55] = 1
+# gameState[40,59] = 1
+# gameState[40,58] = 1
+# gameState[40,57] = 1
+# gameState[40,56] = 0
+# gameState[40,55] = 1
 
 #Avión
 
@@ -219,6 +219,11 @@ gameState[40,55] = 1
 # gameState[51,49] = 1
 
 pos = [0,0]
+
+vel = [0,0]
+
+
+
 # #AVION 2
 # #cuerpo
 # gameState[pos[0]+50,pos[1]+50] = 1
@@ -276,19 +281,20 @@ while stay:
     # Registramos eventos de teclado y ratón.
     ev = pygame.event.get()
 
+    pos[0] = pos[0] + vel[0]
+    pos[1] = pos[1] + vel[1]
     # Cada vez que identificamos un evento lo procesamos
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                pos[1]=pos[1] -1
-                pos[1]=pos[1] -1
+                vel[1]=vel[1] -1
             elif event.key == pygame.K_DOWN:
-                pos[1]=pos[1] +1
+                vel[1]=vel[1] +1
             elif event.key == pygame.K_LEFT:
-                pos[0]=pos[0]-1
+                vel[0]=vel[0]-1
             elif event.key == pygame.K_RIGHT:
-                pos[0]=pos[0]+1
+                vel[0]=vel[0]+1
             else:
                  pauseExect = not pauseExect
         if event.type == pygame.QUIT:   
@@ -356,27 +362,27 @@ while stay:
     for y in range(0, nxC):
         for x in range (0, nyC):
 
-            if not pauseExect:
+            # if not pauseExect:
 
                 # Calculamos el número de vecinos cercanos.
-                n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y - 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x - 1) % nxC, (y)      % nyC] + \
-                            gameState[(x + 1) % nxC, (y)      % nyC] + \
-                            gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y + 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y + 1)  % nyC]
+                # n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x)     % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x - 1) % nxC, (y)      % nyC] + \
+                #             gameState[(x + 1) % nxC, (y)      % nyC] + \
+                #             gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
+                #             gameState[(x)     % nxC, (y + 1)  % nyC] + \
+                #             gameState[(x + 1) % nxC, (y + 1)  % nyC]
 
                 # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
 
-                if gameState[x, y] == 0 and n_neigh == 3:
-                    newGameState[x, y] = 1
+                # if gameState[x, y] == 0 and n_neigh == 3:
+                #     newGameState[x, y] = 1
 
-                # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
+                # # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
 
-                elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
-                    newGameState[x, y] = 0
+                # elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
+                #     newGameState[x, y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
@@ -418,8 +424,8 @@ while stay:
             else:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
-    # Actualizamos el estado del juego.
-    gameState = np.copy(newGameState)
+    # Actualizvemos el estado del juego.
+    # gameState = np.copy(newGameState)
 
     # Mostramos el resultado
     pygame.display.flip()
