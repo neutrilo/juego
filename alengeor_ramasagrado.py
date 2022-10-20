@@ -179,12 +179,15 @@ gameState[40,55] = 1
 
 
 pos=[20,20]
+vel = [0,0]
 
 
 
 
 pauseExect = True
 stay = True
+
+
 
 # Bucle de ejecución
 while stay:
@@ -203,13 +206,16 @@ while stay:
     ev = pygame.event.get()
 
     # Cada vez que identificamos un evento lo procesamos
+    
+    pos[0] = pos[0] + vel[0]
+    
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                pos[0]=pos[0]-1
+                vel[0]=vel[0]-1
             elif event.key == pygame.K_RIGHT:
-                pos[0]=pos[0]+1
+                vel[0]=vel[0]+1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -227,27 +233,27 @@ while stay:
     for y in range(0, nxC):
         for x in range (0, nyC):
 
-            if not pauseExect:
+            # if not pauseExect:
 
                 # Calculamos el número de vecinos cercanos.
-                n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y - 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
-                            gameState[(x - 1) % nxC, (y)      % nyC] + \
-                            gameState[(x + 1) % nxC, (y)      % nyC] + \
-                            gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
-                            gameState[(x)     % nxC, (y + 1)  % nyC] + \
-                            gameState[(x + 1) % nxC, (y + 1)  % nyC]
+                # n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x)     % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
+                #             gameState[(x - 1) % nxC, (y)      % nyC] + \
+                #             gameState[(x + 1) % nxC, (y)      % nyC] + \
+                #             gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
+                #             gameState[(x)     % nxC, (y + 1)  % nyC] + \
+                #             gameState[(x + 1) % nxC, (y + 1)  % nyC]
 
                 # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
 
-                if gameState[x, y] == 0 and n_neigh == 3:
-                    newGameState[x, y] = 1
+                # if gameState[x, y] == 0 and n_neigh == 3:
+                #     newGameState[x, y] = 1
 
-                # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
+                # # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
 
-                elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
-                    newGameState[x, y] = 0
+                # elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
+                #     newGameState[x, y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
@@ -309,7 +315,7 @@ while stay:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
     # Actualizamos el estado del juego.
-    gameState = np.copy(newGameState)
+    # gameState = np.copy(newGameState)
 
     # Mostramos el resultadox
     pygame.display.flip()
