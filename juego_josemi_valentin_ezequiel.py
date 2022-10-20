@@ -12,6 +12,20 @@ bg = 25, 25 ,25
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
+#Juego de la vida 
+#Creado en 1970
+#Automata 
+#Reglas sencillas
+#Comportamiento caotico
+#
+#Reglas 
+#
+#si vivira:Con menor de 2 vecinos vivos , muere (soledad),
+#Con mas de 3 vecinos se muere de sobre poblacion
+#
+
+
+
 # Tamaño de nuestra matriz
 nxC, nyC = 60, 60
 
