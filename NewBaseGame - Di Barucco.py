@@ -54,15 +54,15 @@ while stay:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 pass
-                if ypos < nyC+60:
+                if ypos < nyC+80:
                     xpos = xpos -1
             elif event.key == pygame.K_RIGHT:
                 pass
-                if ypos < nyC-60:
+                if ypos < nyC-80:
                     xpos = xpos +1
             elif event.key == pygame.K_UP:
                 if ypos < nyC+80:
-                    ypos = ypos -9
+                    ypos = ypos -1
             elif event.key == pygame.K_DOWN:
                 if ypos < nyC-80:
                     ypos =  ypos +1
