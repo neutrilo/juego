@@ -24,9 +24,12 @@ dimCH = height / nyC
 
 xpos = 0 
 ypos = 0
+xvel = 0
+yvel = 0 
+xace = 0
 bxpos = xpos
 bypos = ypos
-
+paso=0
 
 
 pauseExect = True
@@ -34,6 +37,13 @@ stay = True
 
 # Bucle de ejecución
 while stay:
+    paso=paso+1
+    if paso == 4:
+        paso = 1
+    xvel = xvel + xace
+    if xvel>3:
+        xvel=3
+    xpos = xpos +int ((xvel*paso)/3)
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
@@ -53,14 +63,16 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xpos = xpos - 1
+                if xpos > -nxC+2:
+                    xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                xpos = xpos + 1
+                if xpos < nxC-11:
+                    xpos = xpos + 1
             elif event.key == pygame.K_UP:
                 if ypos > -nyC+15:
                     ypos = ypos - 1
             elif event.key == pygame.K_DOWN:
-                ypos =  ypos + 1                
+                    ypos =  ypos + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
