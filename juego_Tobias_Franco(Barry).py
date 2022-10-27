@@ -73,48 +73,19 @@ gameState[7,11] = 1
 
 xpos = -10
 ypos = -10
+xpos2 = xpos
+ypos2 = ypos
 
 #espada
-gameState[xpos+13, ypos-10]
-gameState[xpos+30,ypos+30] = 1
-gameState[xpos+31,ypos+31] = 1
-gameState[xpos+32,ypos+32] = 1
-gameState[xpos+33,ypos+33] = 1
-gameState[xpos+34,ypos+34] = 1
-gameState[xpos+35,ypos+35] = 1
-gameState[xpos+36,ypos+36] = 1
-gameState[xpos+36,ypos+37] = 1
-gameState[xpos+37,ypos+37] = 1
-gameState[xpos+37,ypos+36] = 1
-gameState[xpos+30,ypos+28] = 1
-gameState[xpos+30,ypos+27] = 1
-gameState[xpos+29,ypos+30] = 1
-gameState[xpos+28,ypos+30] = 1
-gameState[xpos+30,ypos+29] = 1
-gameState[xpos+26,ypos+29] = 1
-gameState[xpos+27,ypos+30] = 1
-gameState[xpos+25,ypos+28] = 1
-gameState[xpos+24,ypos+27] = 1
-gameState[xpos+23,ypos+26] = 1
-gameState[xpos+22,ypos+25] = 1
-gameState[xpos+21,ypos+24] = 1
-gameState[xpos+20,ypos+23] = 1
-gameState[xpos+19,ypos+22] = 1
-gameState[xpos+18,ypos+21] = 1
-gameState[xpos+18,ypos+20] = 1
-gameState[xpos+18,ypos+19] = 1
-gameState[xpos+18,ypos+18] = 1
-gameState[xpos+19,ypos+18] = 1
-gameState[xpos+20,ypos+18] = 1
-gameState[xpos+21,ypos+18] = 1
-gameState[xpos+22,ypos+19] = 1
-gameState[xpos+23,ypos+20] = 1
-gameState[xpos+24,ypos+21] = 1
-gameState[xpos+25,ypos+22] = 1
-gameState[xpos+26,ypos+23] = 1
-gameState[xpos+27,ypos+24] = 1
-gameState[xpos+28,ypos+25] = 1
-gameState[xpos+29,ypos+26] = 1
+#gameState[xpos+13,ypos-10] = 1
+#gameState[xpos+30,ypos+30] = 1
+#gameState[xpos+31,ypos+31] = 1
+#gameState[xpos+32,ypos+32] = 1
+#gameState[xpos+33,ypos+33] = 1
+#gameState[xpos+34,ypos+34] = 1
+#gameState[xpos+35,ypos+35] = 1
+#gameState[xpos+36,ypos+36] = 1
+
 
 #mensaje
 #H
@@ -242,18 +213,24 @@ gameState[xpos+29,ypos+26] = 1
 
 
 
-
-
-
-
-
+xvel = 0
+yvel = 0
+xace = 0
+yace = 0
+paso = 0
 
 
 pauseExect = True
 stay = True
 
-# Bucle de ejecución
 while stay:
+    paso=paso+1
+    if paso == 4:
+       paso = 1
+    xvel = xvel + xace
+    if xvel>3:
+      xvel=3
+    xpos = xpos + int ((xvel*paso)/3)
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
@@ -273,13 +250,13 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xpos = xpos-2
+                xace = xace-1
             elif event.key == pygame.K_RIGHT:
-                xpos = xpos+2
+                xace = xace+1
             elif event.key == pygame.K_UP:
-                ypos = ypos-2
+                ypos = ypos -1
             elif event.key == pygame.K_DOWN:
-                ypos = ypos+2
+                ypos = ypos +1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -311,15 +288,67 @@ while stay:
 
                 # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
 
-                if gameState[x, y] == 0 and n_neigh == 3:
-                    newGameState[x, y] = 1
+                # if gameState[x, y] == 0 and n_neigh == 3:
+                    # newGameState[x, y] = 1
 
                 # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
 
-                elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
-                    newGameState[x, y] = 0
+                # elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
+                    # newGameState[x, y] = 0
 
             # Calculamos el polígono que forma la celda.
+            
+            
+            
+            
+            
+            newGameState[xpos2+30,ypos2+30] = 0
+            newGameState[xpos2+31,ypos2+31] = 0
+            newGameState[xpos2+32,ypos2+32] = 0
+            newGameState[xpos2+33,ypos2+33] = 0
+            newGameState[xpos2+34,ypos2+34] = 0
+            newGameState[xpos2+35,ypos2+35] = 0
+            newGameState[xpos2+36,ypos2+36] = 0
+            newGameState[xpos2+36,ypos2+37] = 0
+            newGameState[xpos2+37,ypos2+37] = 0
+            newGameState[xpos2+37,ypos2+36] = 0
+            newGameState[xpos2+30,ypos2+28] = 0
+            newGameState[xpos2+30,ypos2+27] = 0
+            newGameState[xpos2+29,ypos2+30] = 0
+            newGameState[xpos2+28,ypos2+30] = 0
+            newGameState[xpos2+30,ypos2+29] = 0
+            newGameState[xpos2+26,ypos2+29] = 0
+            newGameState[xpos2+27,ypos2+30] = 0
+            newGameState[xpos2+25,ypos2+28] = 0
+            newGameState[xpos2+24,ypos2+27] = 0
+            newGameState[xpos2+23,ypos2+26] = 0
+            newGameState[xpos2+22,ypos2+25] = 0
+            newGameState[xpos2+21,ypos2+24] = 0
+            newGameState[xpos2+20,ypos2+23] = 0
+            newGameState[xpos2+19,ypos2+22] = 0
+            newGameState[xpos2+18,ypos2+21] = 0
+            newGameState[xpos2+18,ypos2+20] = 0
+            newGameState[xpos2+18,ypos2+19] = 0
+            newGameState[xpos2+18,ypos2+18] = 0
+            newGameState[xpos2+19,ypos2+18] = 0
+            newGameState[xpos2+20,ypos2+18] = 0
+            newGameState[xpos2+21,ypos2+18] = 0
+            newGameState[xpos2+22,ypos2+19] = 0
+            newGameState[xpos2+23,ypos2+20] = 0
+            newGameState[xpos2+24,ypos2+21] = 0
+            newGameState[xpos2+25,ypos2+22] = 0
+            newGameState[xpos2+26,ypos2+23] = 0
+            newGameState[xpos2+27,ypos2+24] = 0
+            newGameState[xpos2+28,ypos2+25] = 0
+            newGameState[xpos2+29,ypos2+26] = 0
+            
+            
+            
+            
+            
+            
+            
+            
             newGameState[xpos+30,ypos+30] = 1
             newGameState[xpos+31,ypos+31] = 1
             newGameState[xpos+32,ypos+32] = 1
@@ -372,8 +401,10 @@ while stay:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
     # Actualizamos el estado del juego.
-    gameState = np.copy(newGameState)
+    # gameState = np.copy(newGameState)
 
     # Mostramos el resultado
     pygame.display.flip()
+    xpos2 = xpos
+    ypos2 = ypos
 

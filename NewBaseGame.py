@@ -13,7 +13,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 100, 100
+nxC, nyC = 80, 80
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -22,81 +22,18 @@ gameState = np.zeros((nxC,  nyC))
 dimCW = width / nxC
 dimCH = height / nyC
 
-# # Oscilador.
-# gameState[38, 20] = 1
-# gameState[39, 20] = 1
-# gameState[40, 20] = 1
-
-# # Runner 1
-# gameState[10,5] = 1
-# gameState[12,5] = 1
-# gameState[11,6] = 1
-# gameState[12,6] = 1
-# gameState[11,7] = 1
-
-# #Runner 2
-# gameState[5,10] = 1
-# gameState[5,12] = 1
-# gameState[6,11] = 1
-# gameState[6,12] = 1
-# gameState[7,11] = 1
-
-# #Box 1
-# gameState[18,15] = 1
-# gameState[17,16] = 1
-# gameState[17,15] = 1
-# gameState[18,16] = 1
-#
- #Serpent 1
-#gameState[30,20] = 1
-#gameState[31,20] = 1
-#gameState[32,20] = 1
-#gameState[32,19] = 1
-#gameState[33,19] = 1
-#ameState[34,19] = 1
-#
-#mensaje
+xpos = 0 
+ypos = 0
+bxpos = xpos
+bypos = ypos
 
 
 
-
-
-
-#A
-# gameState[20,20] = 1
-# gameState[19,21] = 1
-# gameState[18,22] = 1
-# gameState[17,23] = 1
-# gameState[16,24] = 1
-# gameState[15,25] = 1
-# gameState[15,26] = 1
-# gameState[14,30] = 1
-#
-
-pos=[0,0]
-pos2=[0,0]
-vel=[0,0]
 pauseExect = True
 stay = True
 
 # Bucle de ejecución
 while stay:
-    
-    # gameState[pos[0]+0,pos[1]+0]=1
-    # gameState[pos[0]+1,pos[1]+1]=1
-    # gameState[pos[0]+2,pos[1]-2]=1
-    # gameState[pos[0]+3,pos[1]-3]=1
-    # gameState[pos[0]+4,pos[1]-4]=1
-    # gameState[pos[0]+2,pos[1]-2]=1
-    # gameState[pos[0]+3,pos[1]-3]=1
-    # gameState[pos[0]+5,pos[1]-4]=1
-    # gameState[pos[0]+6,pos[1]-2]=1
-    # gameState[pos[0]+7,pos[1]-3]=1
-    # gameState[pos[0]+8,pos[1]-4]=1
-
-
-    #AVION 2
-
 
     # Copiamos la matriz del estado anterior
     # #para representar la matriz en el nuevo estado
@@ -110,132 +47,104 @@ while stay:
 
     # Registramos eventos de teclado y ratón.
     ev = pygame.event.get()
-    pos[0]=pos[0]+vel[0]
-    pos[1]=pos[1]+vel[1]
+
     # Cada vez que identificamos un evento lo procesamos
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            
             if event.key == pygame.K_LEFT:
-                vel[0]=vel[0]-1
-                pos2[0]=pos[0]+1
-                
+                xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                vel[0]=vel[0]+1
-                pos2[0]=pos[0]-1
-                
+                xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                vel[1]=vel[1]-1
-                pos2[1]=pos[1]+1
-                
+                ypos = ypos - 1
             elif event.key == pygame.K_DOWN:
-                vel[1]=vel[1]+1
-                pos2[1]=pos[1]-1
+                if ypos < nyC-60:
+                    ypos =  ypos + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
+
         # Detectamos si se presiona el ratón.
         mouseClick = pygame.mouse.get_pressed()
 
         if sum(mouseClick) > 0:
             posX, posY = pygame.mouse.get_pos()
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
-            newGameState[celX, celY] = 1
+            gameState[celX, celY] = 1
+    
+    
+    #Borrado y escritura
+    if (xpos != bxpos) or (ypos != bypos):
+        
+        #H
+        gameState[bxpos+5,59+bypos] = 0
+        gameState[bxpos+5,58+bypos] = 0
+        gameState[bxpos+5,57+bypos] = 0
+        gameState[bxpos+5,56+bypos] = 0
+        gameState[bxpos+5,55+bypos] = 0
+        gameState[bxpos+6,57+bypos] = 0
+        gameState[bxpos+7,59+bypos] = 0
+        gameState[bxpos+7,58+bypos] = 0
+        gameState[bxpos+7,57+bypos] = 0
+        gameState[bxpos+7,56+bypos] = 0
+        gameState[bxpos+7,55+bypos] = 0
+        #Alas
+        gameState[bxpos+4,57+bypos] = 0
+        gameState[bxpos+8,57+bypos] = 0
+        gameState[bxpos+4,58+bypos] = 0
+        gameState[bxpos+8,58+bypos] = 0
+        gameState[bxpos+3,58+bypos] = 0
+        gameState[bxpos+9,58+bypos] = 0
+        gameState[bxpos+3,59+bypos] = 0
+        gameState[bxpos+9,59+bypos] = 0
+
+        
+        #H
+        gameState[xpos+5,59+ypos] = 1
+        gameState[xpos+5,58+ypos] = 1
+        gameState[xpos+5,57+ypos] = 1
+        gameState[xpos+5,56+ypos] = 1
+        gameState[xpos+5,55+ypos] = 1
+        gameState[xpos+6,57+ypos] = 1
+        gameState[xpos+7,59+ypos] = 1
+        gameState[xpos+7,58+ypos] = 1
+        gameState[xpos+7,57+ypos] = 1
+        gameState[xpos+7,56+ypos] = 1
+        gameState[xpos+7,55+ypos] = 1
+        #Alas
+        gameState[xpos+4,57+ypos] = 1
+        gameState[xpos+8,57+ypos] = 1
+        gameState[xpos+4,58+ypos] = 1
+        gameState[xpos+8,58+ypos] = 1
+        gameState[xpos+3,58+ypos] = 1
+        gameState[xpos+9,58+ypos] = 1
+        gameState[xpos+3,59+ypos] = 1
+        gameState[xpos+9,59+ypos] = 1
+    
+    #Actualizamos la posicion de borrado
+    bxpos = xpos
+    bypos = ypos
+    
 
     for y in range(0, nxC):
         for x in range (0, nyC):
-
-            # if not pauseExect:
-
-            #     # Calculamos el número de vecinos cercanos.
-            #     n_neigh =   gameState[(x - 1) % nxC, (y - 1)  % nyC] + \
-            #                 gameState[(x)     % nxC, (y - 1)  % nyC] + \
-            #                 gameState[(x + 1) % nxC, (y - 1)  % nyC] + \
-            #                 gameState[(x - 1) % nxC, (y)      % nyC] + \
-            #                 gameState[(x + 1) % nxC, (y)      % nyC] + \
-            #                 gameState[(x - 1) % nxC, (y + 1)  % nyC] + \
-            #                 gameState[(x)     % nxC, (y + 1)  % nyC] + \
-            #                 gameState[(x + 1) % nxC, (y + 1)  % nyC]
-
-            #     # Regla #1 : Una celda muerta con exactamente 3 vecinas vivas, "revive".
-
-            #     if gameState[x, y] == 0 and n_neigh == 3:
-            #         newGameState[x, y] = 1
-
-            #     # Regla #2 : Una celda viva con menos de 2 o más 3 vecinas vinas, "muere".
-
-            #     elif gameState[x, y] == 1 and (n_neigh < 2 or n_neigh > 3):
-            #         newGameState[x, y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
                     ((x+1) * dimCW, y * dimCH),
                     ((x+1) * dimCW, (y+1) * dimCH),
                     ((x)   * dimCW, (y+1) * dimCH)]
-            
-            newGameState[pos2[0]+50,pos2[1]+50] = 0
-            newGameState[pos2[0]+50,pos2[1]+51] = 0
-            newGameState[pos2[0]+50,pos2[1]+52] = 0
-            newGameState[pos2[0]+50,pos2[1]+53] = 0
-            newGameState[pos2[0]+50,pos2[1]+54] = 0
-            newGameState[pos2[0]+50,pos2[1]+55] = 0
-            newGameState[pos2[0]+50,pos2[1]+56] = 0
-            newGameState[pos2[0]+50,pos2[1]+57] = 0
-            newGameState[pos2[0]+50,pos2[1]+58] = 0
-            newGameState[pos2[0]+50,pos2[1]+59] = 0
-            newGameState[pos2[0]+60,pos2[1]+60] = 0
-            
-            #alas
-            newGameState[pos2[0]+51,pos2[1]+56] = 0
-            newGameState[pos2[0]+49,pos2[1]+56] = 0
-            newGameState[pos2[0]+52,pos2[1]+55] = 0
-            newGameState[pos2[0]+48,pos2[1]+55] = 0
-            newGameState[pos2[0]+53,pos2[1]+54] = 0
-            newGameState[pos2[0]+47,pos2[1]+54] = 0
-            newGameState[pos2[0]+51,pos2[1]+50] = 0
-            newGameState[pos2[0]+49,pos2[1]+50] = 0
 
-
-            newGameState[pos[0]+50,pos[1]+50] = 1
-            newGameState[pos[0]+50,pos[1]+51] = 1
-            newGameState[pos[0]+50,pos[1]+52] = 1
-            newGameState[pos[0]+50,pos[1]+53] = 1
-            newGameState[pos[0]+50,pos[1]+54] = 1
-            newGameState[pos[0]+50,pos[1]+55] = 1
-            newGameState[pos[0]+50,pos[1]+56] = 1
-            newGameState[pos[0]+50,pos[1]+57] = 1
-            newGameState[pos[0]+50,pos[1]+58] = 1
-            newGameState[pos[0]+50,pos[1]+59] = 1
-            newGameState[pos[0]+60,pos[1]+60] = 1
-
-        #alas
-            newGameState[pos[0]+51,pos[1]+56] = 1
-            newGameState[pos[0]+49,pos[1]+56] = 1
-            newGameState[pos[0]+52,pos[1]+55] = 1
-            newGameState[pos[0]+48,pos[1]+55] = 1
-            newGameState[pos[0]+53,pos[1]+54] = 1
-            newGameState[pos[0]+47,pos[1]+54] = 1
-            newGameState[pos[0]+51,pos[1]+50] = 1
-            newGameState[pos[0]+49,pos[1]+50] = 1
-            
             # Si la celda está "muerta" pintamos un recuadro con borde gris
-            #cuerpo
-            
-           # pos2=pos;
-            
-            
-                
-            if newGameState[x, y] == 0:
+            if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             else:
-                pygame.draw.polygon(screen, (200, 200, 100), poly, 0)
+                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
-    # Actualizamos el estado del juego.
-    #gameState = np.copy(newGameState)
 
     # Mostramos el resultado
     pygame.display.flip()
