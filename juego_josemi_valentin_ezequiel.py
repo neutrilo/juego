@@ -12,22 +12,8 @@ bg = 25, 25 ,25
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
-#Juego de la vida 
-#Creado en 1970
-#Automata 
-#Reglas sencillas
-#Comportamiento caotico
-#
-#Reglas 
-#
-#si vivira:Con menor de 2 vecinos vivos , muere (soledad),
-#Con mas de 3 vecinos se muere de sobre poblacion
-#
-
-
-
 # Tamaño de nuestra matriz
-nxC, nyC = 60, 60
+nxC, nyC = 600, 600
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -41,36 +27,36 @@ dimCH = height / nyC
 # gameState[39, 20] = 1
 # gameState[40, 20] = 1
 
-# # Runner 1
-# gameState[10,5] = 1
-# gameState[12,5] = 1
-# gameState[11,6] = 1
-# gameState[12,6] = 1
-# gameState[11,7] = 1
+# # # Runner 1
+# # gameState[10,5] = 1
+# # gameState[12,5] = 1
+# # gameState[11,6] = 1
+# # gameState[12,6] = 1
+# # gameState[11,7] = 1
 
-# #Runner 2
-# gameState[5,10] = 1
-# gameState[5,12] = 1
-# gameState[6,11] = 1
-# gameState[6,12] = 1
-# gameState[7,11] = 1
+# # #Runner 2
+# # gameState[5,10] = 1
+# # gameState[5,12] = 1
+# # gameState[6,11] = 1
+# # gameState[6,12] = 1
+# # gameState[7,11] = 1
 
-# #Box 1
-# gameState[18,15] = 1
-# gameState[17,16] = 1
-# gameState[17,15] = 1
-# gameState[18,16] = 1
+# # #Box 1
+# # gameState[18,15] = 1
+# # gameState[17,16] = 1
+# # gameState[17,15] = 1
+# # gameState[18,16] = 1
 
-# #Serpent 1
-# gameState[30,20] = 1
-# gameState[31,20] = 1
-# gameState[32,20] = 1
-# gameState[32,19] = 1
-# gameState[33,19] = 1
-# gameState[34,19] = 1
+# # #Serpent 1
+# # gameState[30,20] = 1
+# # gameState[31,20] = 1
+# # gameState[32,20] = 1
+# # gameState[32,19] = 1
+# # gameState[33,19] = 1
+# # gameState[34,19] = 1
 
-#mensaje
-#H
+# #mensaje
+# #H
 gameState[5,59] = 1
 gameState[5,58] = 1
 gameState[5,57] = 1
@@ -82,112 +68,129 @@ gameState[7,58] = 1
 gameState[7,57] = 1
 gameState[7,56] = 1
 gameState[7,55] = 1
-#
-#O
-gameState[9,59] = 1
-gameState[9,58] = 1
-gameState[9,57] = 1
-gameState[9,56] = 1
-gameState[9,55] = 1
-gameState[10,59] = 1
-gameState[10,55] = 1
-gameState[11,59] = 1
-gameState[11,58] = 1
-gameState[11,57] = 1
-gameState[11,56] = 1
-gameState[11,55] = 1
-#
-#L
-gameState[13,59] = 1
-gameState[13,58] = 1
-gameState[13,57] = 1
-gameState[13,56] = 1
-gameState[13,55] = 1
-gameState[14,59] = 1
-gameState[15,59] = 1
-#
-#A
-gameState[17,59] = 1
-gameState[17,58] = 1
-gameState[17,57] = 1
-gameState[17,56] = 1
-gameState[17,55] = 1
-gameState[18,55] = 1
-gameState[18,57] = 1
-gameState[19,59] = 1
-gameState[19,58] = 1
-gameState[19,57] = 1
-gameState[19,56] = 1
-gameState[19,55] = 1
-#
-#P
-gameState[22,59] = 1
-gameState[22,58] = 1
-gameState[22,57] = 1
-gameState[22,56] = 1
-gameState[22,55] = 1
-gameState[23,55] = 1
-gameState[24,55] = 1
-gameState[24,56] = 1
-gameState[24,57] = 1
-gameState[23,57] = 1
-#
-#R
-gameState[26,59] = 1
-gameState[26,58] = 1
-gameState[26,57] = 1
-gameState[26,56] = 1
-gameState[26,55] = 1
-gameState[27,55] = 1
-gameState[28,55] = 1
-gameState[28,56] = 1
-gameState[28,57] = 1
-gameState[27,57] = 1
-gameState[27,58] = 1
-gameState[28,59] = 1
-#
-#R
-gameState[30,59] = 1
-gameState[30,58] = 1
-gameState[30,57] = 1
-gameState[30,56] = 1
-gameState[30,55] = 1
-gameState[31,55] = 1
-gameState[32,55] = 1
-gameState[32,56] = 1
-gameState[32,57] = 1
-gameState[31,57] = 1
-gameState[31,58] = 1
-gameState[32,59] = 1
-#
-#O
-gameState[34,59] = 1
-gameState[34,58] = 1
-gameState[34,57] = 1
-gameState[34,56] = 1
-gameState[34,55] = 1
-gameState[35,59] = 1
-gameState[35,55] = 1
-gameState[36,59] = 1
-gameState[36,58] = 1
-gameState[36,57] = 1
-gameState[36,56] = 1
-gameState[36,55] = 1
-#
-#S
-gameState[38,59] = 1
-gameState[38,58] = 0
-gameState[38,57] = 1
-gameState[38,56] = 1
-gameState[38,55] = 1
-gameState[39,59] = 1
-gameState[39,57] = 1
-gameState[39,55] = 1
-gameState[40,59] = 1
-gameState[40,58] = 1
-gameState[40,57] = 1
-gameState[40,56] = 0
-gameState[40,55] = 1
+gameState[32,26] = 1
+gameState[33,25] = 1
+gameState[33,24] = 1
+gameState[31,27] = 1
+gameState[30,27] = 1
+gameState[30,28] = 1
+gameState[30,29] = 1
+gameState[30,30] = 1
+gameState[30,31] = 1
+gameState[30,32] = 1
+gameState[30,33] = 1
+gameState[30,34] = 1
+gameState[30,35] = 1
+gameState[30,36] = 1
+gameState[30,37] = 1
+gameState[30,37] = 1
+gameState[30,37] = 1
+
+# #O
+# gameState[9,59] = 1
+# gameState[9,58] = 1
+# gameState[9,57] = 1
+# gameState[9,56] = 1
+# gameState[9,55] = 1
+# gameState[10,59] = 1
+# gameState[10,55] = 1
+# gameState[11,59] = 1
+# gameState[11,58] = 1
+# gameState[11,57] = 1
+# gameState[11,56] = 1
+# gameState[11,55] = 1
+# #
+# #L
+# gameState[13,59] = 1
+# gameState[13,58] = 1
+# gameState[13,57] = 1
+# gameState[13,56] = 1
+# gameState[13,55] = 1
+# gameState[14,59] = 1
+# gameState[15,59] = 1
+# #
+# #A
+# gameState[17,59] = 1
+# gameState[17,58] = 1
+# gameState[17,57] = 1
+# gameState[17,56] = 1
+# gameState[17,55] = 1
+# gameState[18,55] = 1
+# gameState[18,57] = 1
+# gameState[19,59] = 1
+# gameState[19,58] = 1
+# gameState[19,57] = 1
+# gameState[19,56] = 1
+# gameState[19,55] = 1
+# #
+# #P
+# gameState[22,59] = 1
+# gameState[22,58] = 1
+# gameState[22,57] = 1
+# gameState[22,56] = 1
+# gameState[22,55] = 1
+# gameState[23,55] = 1
+# gameState[24,55] = 1
+# gameState[24,56] = 1
+# gameState[24,57] = 1
+# gameState[23,57] = 1
+# #
+# #R
+# gameState[26,59] = 1
+# gameState[26,58] = 1
+# gameState[26,57] = 1
+# gameState[26,56] = 1
+# gameState[26,55] = 1
+# gameState[27,55] = 1
+# gameState[28,55] = 1
+# gameState[28,56] = 1
+# gameState[28,57] = 1
+# gameState[27,57] = 1
+# gameState[27,58] = 1
+# gameState[28,59] = 1
+# #
+# #R
+# gameState[30,59] = 1
+# gameState[30,58] = 1
+# gameState[30,57] = 1
+# gameState[30,56] = 1
+# gameState[30,55] = 1
+# gameState[31,55] = 1
+# gameState[32,55] = 1
+# gameState[32,56] = 1
+# gameState[32,57] = 1
+# gameState[31,57] = 1
+# gameState[31,58] = 1
+# gameState[32,59] = 1
+# #
+# #O
+# gameState[34,59] = 1
+# gameState[34,58] = 1
+# gameState[34,57] = 1
+# gameState[34,56] = 1
+# gameState[34,55] = 1
+# gameState[35,59] = 1
+# gameState[35,55] = 1
+# gameState[36,59] = 1
+# gameState[36,58] = 1
+# gameState[36,57] = 1
+# gameState[36,56] = 1
+# gameState[36,55] = 1
+# #
+# #S
+# gameState[38,59] = 1
+# gameState[38,58] = 0
+# gameState[38,57] = 1
+# gameState[38,56] = 1
+# gameState[38,55] = 1
+# gameState[39,59] = 1
+# gameState[39,57] = 1
+# gameState[39,55] = 1
+# gameState[40,59] = 1
+# gameState[40,58] = 1
+# gameState[40,57] = 1
+# gameState[40,56] = 0
+# gameState[40,55] = 1
 
 
 
@@ -213,7 +216,7 @@ while stay:
     newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.0001)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -281,4 +284,3 @@ while stay:
 
     # Mostramos el resultado
     pygame.display.flip()
-
