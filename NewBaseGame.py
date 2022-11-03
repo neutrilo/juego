@@ -27,6 +27,10 @@ ypos = 0
 bxpos = xpos
 bypos = ypos
 
+xvel = 0
+yvel = 0
+xtiempo = 0
+ytiempo = 0
 
 
 pauseExect = True
@@ -35,9 +39,24 @@ stay = True
 # Bucle de ejecución
 while stay:
 
-    # Copiamos la matriz del estado anterior
-    # #para representar la matriz en el nuevo estado
-    newGameState = np.copy(gameState)
+    xtiempo = xtiempo+1
+    ytiempo = ytiempo+1
+    
+    periodox=6-abs(xvel)
+    if (periodox == 6):
+        periodox = 999999999999999999999999999999999999999999999
+        
+    periodoy=6-abs(yvel)
+    if (periodoy == 6):
+        periodoy = 999999999999999999999999999999999999999999999
+    
+    if (xtiempo >= periodox):
+        xtiempo = 0
+        xpos = xpos+int(xvel/abs(xvel))
+                
+    if (ytiempo >= periodoy):
+        ytiempo = 0
+        ypos = ypos+int(yvel/abs(yvel)) 
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -53,14 +72,13 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xpos = xpos - 1
+                xvel = xvel - 1
             elif event.key == pygame.K_RIGHT:
-                xpos = xpos + 1
+                xvel = xvel + 1
             elif event.key == pygame.K_UP:
-                ypos = ypos - 1
+                yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                if ypos < nyC-60:
-                    ypos =  ypos + 1                
+                yvel = yvel + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
