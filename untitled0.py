@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 27 11:04:08 2022
+
+@author: gchum
+"""
 import pygame
 import numpy as np #alias de numpy
 import time
@@ -26,37 +31,20 @@ xpos = 0
 ypos = 0
 bxpos = xpos
 bypos = ypos
+xvel=0
+yvel=0
 
-xvel = 0
-yvel = 0
-xtiempo = 0
-ytiempo = 0
 
 
 pauseExect = True
 stay = True
-
+tiempo=0 
 # Bucle de ejecución
 while stay:
-
-    xtiempo = xtiempo+1
-    ytiempo = ytiempo+1
-    
-    periodox=6-abs(xvel)
-    if (periodox == 6):
-        periodox = 999999999999999999999999999999999999999999999
-        
-    periodoy=6-abs(yvel)
-    if (periodoy == 6):
-        periodoy = 999999999999999999999999999999999999999999999
-    
-    if (xtiempo >= periodox):
-        xtiempo = 0
-        xpos = xpos+int(xvel/abs(xvel))
-                
-    if (ytiempo >= periodoy):
-        ytiempo = 0
-        ypos = ypos+int(yvel/abs(yvel)) 
+    tiempo = tiempo+1;
+    # Copiamos la matriz del estado anterior
+    # #para representar la matriz en el nuevo estado
+    newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -72,15 +60,20 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xvel = xvel - 1
+                xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                xvel = xvel + 1
+                xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                yvel = yvel - 1
+                ypos = ypos - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                if ypos < nyC-60:
+                    ypos =  ypos + 1                
             else:
                 pauseExect = not pauseExect
+                
+      
+            
+                
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
@@ -93,7 +86,22 @@ while stay:
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
             gameState[celX, celY] = 1
     
-    
+    periodox=6-abs(xvel)
+    if periodox==6:
+        periodox=99999999      
+                
+    periodoy=6-abs(yvel)
+    if periodoy==6:
+       periodoy=99999999  
+        
+    if tiempox >= periodox:
+        tiempox = 0
+        xpos=xpos+xvel/abs(xvel)
+        
+    if tiempoy >= periodoy:
+        tiempoy = 0
+        ypos=ypos+yvel/abs(yvel)        
+        
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         

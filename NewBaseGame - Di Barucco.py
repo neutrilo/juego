@@ -5,7 +5,7 @@ import time
 
 pygame.init() 
 
-width, height = 400, 400
+width, height = 500, 500
 
 bg = 25, 25, 25
 
@@ -22,15 +22,11 @@ gameState = np.zeros((nxC,  nyC))
 dimCW = width / nxC
 dimCH = height / nyC
 
-xpos = 0 
+xpos = 0
 ypos = 0
 bxpos = xpos
 bypos = ypos
 
-xvel = 0
-yvel = 0
-xtiempo = 0
-ytiempo = 0
 
 
 pauseExect = True
@@ -39,24 +35,9 @@ stay = True
 # Bucle de ejecución
 while stay:
 
-    xtiempo = xtiempo+1
-    ytiempo = ytiempo+1
-    
-    periodox=6-abs(xvel)
-    if (periodox == 6):
-        periodox = 999999999999999999999999999999999999999999999
-        
-    periodoy=6-abs(yvel)
-    if (periodoy == 6):
-        periodoy = 999999999999999999999999999999999999999999999
-    
-    if (xtiempo >= periodox):
-        xtiempo = 0
-        xpos = xpos+int(xvel/abs(xvel))
-                
-    if (ytiempo >= periodoy):
-        ytiempo = 0
-        ypos = ypos+int(yvel/abs(yvel)) 
+    # Copiamos la matriz del estado anterior
+    # #para representar la matriz en el nuevo estado
+    newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -72,13 +53,19 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xvel = xvel - 1
+                pass
+                if ypos < nyC+80:
+                    xpos = xpos -1
             elif event.key == pygame.K_RIGHT:
-                xvel = xvel + 1
+                pass
+                if ypos < nyC-80:
+                    xpos = xpos +1
             elif event.key == pygame.K_UP:
-                yvel = yvel - 1
+                if ypos < nyC+80:
+                    ypos = ypos -1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                if ypos < nyC-80:
+                    ypos =  ypos +1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -93,54 +80,89 @@ while stay:
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
             gameState[celX, celY] = 1
     
-    
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        #H
-        gameState[bxpos+5,59+bypos] = 0
-        gameState[bxpos+5,58+bypos] = 0
-        gameState[bxpos+5,57+bypos] = 0
-        gameState[bxpos+5,56+bypos] = 0
-        gameState[bxpos+5,55+bypos] = 0
-        gameState[bxpos+6,57+bypos] = 0
-        gameState[bxpos+7,59+bypos] = 0
-        gameState[bxpos+7,58+bypos] = 0
-        gameState[bxpos+7,57+bypos] = 0
-        gameState[bxpos+7,56+bypos] = 0
-        gameState[bxpos+7,55+bypos] = 0
-        #Alas
-        gameState[bxpos+4,57+bypos] = 0
-        gameState[bxpos+8,57+bypos] = 0
-        gameState[bxpos+4,58+bypos] = 0
-        gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+3,58+bypos] = 0
-        gameState[bxpos+9,58+bypos] = 0
-        gameState[bxpos+3,59+bypos] = 0
-        gameState[bxpos+9,59+bypos] = 0
-
-        
-        #H
-        gameState[xpos+5,59+ypos] = 1
-        gameState[xpos+5,58+ypos] = 1
-        gameState[xpos+5,57+ypos] = 1
-        gameState[xpos+5,56+ypos] = 1
-        gameState[xpos+5,55+ypos] = 1
-        gameState[xpos+6,57+ypos] = 1
-        gameState[xpos+7,59+ypos] = 1
-        gameState[xpos+7,58+ypos] = 1
-        gameState[xpos+7,57+ypos] = 1
-        gameState[xpos+7,56+ypos] = 1
-        gameState[xpos+7,55+ypos] = 1
-        #Alas
-        gameState[xpos+4,57+ypos] = 1
-        gameState[xpos+8,57+ypos] = 1
-        gameState[xpos+4,58+ypos] = 1
-        gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+3,58+ypos] = 1
-        gameState[xpos+9,58+ypos] = 1
-        gameState[xpos+3,59+ypos] = 1
-        gameState[xpos+9,59+ypos] = 1
+            gameState[bxpos+30,bypos+30] = 0
+            gameState[bxpos+31,bypos+31] = 0
+            gameState[bxpos+32,bypos+32] = 0
+            gameState[bxpos+33,bypos+33] = 0
+            gameState[bxpos+34,bypos+34] = 0
+            gameState[bxpos+35,bypos+35] = 0
+            gameState[bxpos+36,bypos+36] = 0
+            gameState[bxpos+36,bypos+37] = 0
+            gameState[bxpos+37,bypos+37] = 0
+            gameState[bxpos+37,bypos+36] = 0
+            gameState[bxpos+30,bypos+28] = 0
+            gameState[bxpos+30,bypos+27] = 0
+            gameState[bxpos+29,bypos+30] = 0
+            gameState[bxpos+28,bypos+30] = 0
+            gameState[bxpos+30,bypos+29] = 0
+            gameState[bxpos+26,bypos+29] = 0
+            gameState[bxpos+27,bypos+30] = 0
+            gameState[bxpos+25,bypos+28] = 0
+            gameState[bxpos+24,bypos+27] = 0
+            gameState[bxpos+23,bypos+26] = 0
+            gameState[bxpos+22,bypos+25] = 0
+            gameState[bxpos+21,bypos+24] = 0
+            gameState[bxpos+20,bypos+23] = 0
+            gameState[bxpos+19,bypos+22] = 0
+            gameState[bxpos+18,bypos+21] = 0
+            gameState[bxpos+18,bypos+20] = 0
+            gameState[bxpos+18,bypos+19] = 0
+            gameState[bxpos+18,bypos+18] = 0
+            gameState[bxpos+19,bypos+18] = 0
+            gameState[bxpos+20,bypos+18] = 0
+            gameState[bxpos+21,bypos+18] = 0
+            gameState[bxpos+22,bypos+19] = 0
+            gameState[bxpos+23,bypos+20] = 0
+            gameState[bxpos+24,bypos+21] = 0
+            gameState[bxpos+25,bypos+22] = 0
+            gameState[bxpos+26,bypos+23] = 0
+            gameState[bxpos+27,bypos+24] = 0
+            gameState[bxpos+28,bypos+25] = 0
+            gameState[bxpos+29,bypos+26] = 0
+            
+            
+            gameState[xpos+30,ypos+30] = 1
+            gameState[xpos+31,ypos+31] = 1
+            gameState[xpos+32,ypos+32] = 1
+            gameState[xpos+33,ypos+33] = 1
+            gameState[xpos+34,ypos+34] = 1
+            gameState[xpos+35,ypos+35] = 1
+            gameState[xpos+36,ypos+36] = 1
+            gameState[xpos+36,ypos+37] = 1
+            gameState[xpos+37,ypos+37] = 1
+            gameState[xpos+37,ypos+36] = 1
+            gameState[xpos+30,ypos+28] = 1
+            gameState[xpos+30,ypos+27] = 1
+            gameState[xpos+29,ypos+30] = 1
+            gameState[xpos+28,ypos+30] = 1
+            gameState[xpos+30,ypos+29] = 1
+            gameState[xpos+26,ypos+29] = 1
+            gameState[xpos+27,ypos+30] = 1
+            gameState[xpos+25,ypos+28] = 1
+            gameState[xpos+24,ypos+27] = 1
+            gameState[xpos+23,ypos+26] = 1
+            gameState[xpos+22,ypos+25] = 1
+            gameState[xpos+21,ypos+24] = 1
+            gameState[xpos+20,ypos+23] = 1
+            gameState[xpos+19,ypos+22] = 1
+            gameState[xpos+18,ypos+21] = 1
+            gameState[xpos+18,ypos+20] = 1
+            gameState[xpos+18,ypos+19] = 1
+            gameState[xpos+18,ypos+18] = 1
+            gameState[xpos+19,ypos+18] = 1
+            gameState[xpos+20,ypos+18] = 1
+            gameState[xpos+21,ypos+18] = 1
+            gameState[xpos+22,ypos+19] = 1
+            gameState[xpos+23,ypos+20] = 1
+            gameState[xpos+24,ypos+21] = 1
+            gameState[xpos+25,ypos+22] = 1
+            gameState[xpos+26,ypos+23] = 1
+            gameState[xpos+27,ypos+24] = 1
+            gameState[xpos+28,ypos+25] = 1
+            gameState[xpos+29,ypos+26] = 1
     
     #Actualizamos la posicion de borrado
     bxpos = xpos
@@ -161,7 +183,7 @@ while stay:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (200, 10, 10), poly, 0)
 
 
     # Mostramos el resultado

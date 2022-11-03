@@ -26,11 +26,14 @@ xpos = 0
 ypos = 0
 bxpos = xpos
 bypos = ypos
+xvel=0
+yvel=0
+ytiempo=0
+xtiempo=0
 
-xvel = 0
-yvel = 0
-xtiempo = 0
-ytiempo = 0
+xpos = 1 
+ypos = 1
+
 
 
 pauseExect = True
@@ -39,24 +42,12 @@ stay = True
 # Bucle de ejecución
 while stay:
 
-    xtiempo = xtiempo+1
-    ytiempo = ytiempo+1
-    
-    periodox=6-abs(xvel)
-    if (periodox == 6):
-        periodox = 999999999999999999999999999999999999999999999
-        
-    periodoy=6-abs(yvel)
-    if (periodoy == 6):
-        periodoy = 999999999999999999999999999999999999999999999
-    
-    if (xtiempo >= periodox):
-        xtiempo = 0
-        xpos = xpos+int(xvel/abs(xvel))
-                
-    if (ytiempo >= periodoy):
-        ytiempo = 0
-        ypos = ypos+int(yvel/abs(yvel)) 
+    ytiempo=ytiempo+1
+    xtiempo=xtiempo+1
+
+    # Copiamos la matriz del estado anterior
+    # #para representar la matriz en el nuevo estado
+    newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -78,13 +69,16 @@ while stay:
             elif event.key == pygame.K_UP:
                 yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                yvel =  yvel + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
 
+   
+        
+    
         # Detectamos si se presiona el ratón.
         mouseClick = pygame.mouse.get_pressed()
 
@@ -92,55 +86,102 @@ while stay:
             posX, posY = pygame.mouse.get_pos()
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
             gameState[celX, celY] = 1
-    
+            
+                
+    periodox=6-abs(xvel)
+    periodoy=6-abs(yvel)
+     
+    if(periodox==6):
+       periodox=99999999999999999999999999999999999
+      
+    if(periodoy==6):
+        periodoy=99999999999999999999999999999999999
+
+    if(xtiempo>=periodox):    
+        xpos = xpos+(xvel/abs(xvel))
+        
+    if(ytiempo>=periodoy):  
+        ypos = ypos+(yvel/abs(yvel))
     
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        #H
-        gameState[bxpos+5,59+bypos] = 0
-        gameState[bxpos+5,58+bypos] = 0
-        gameState[bxpos+5,57+bypos] = 0
-        gameState[bxpos+5,56+bypos] = 0
-        gameState[bxpos+5,55+bypos] = 0
-        gameState[bxpos+6,57+bypos] = 0
-        gameState[bxpos+7,59+bypos] = 0
-        gameState[bxpos+7,58+bypos] = 0
-        gameState[bxpos+7,57+bypos] = 0
-        gameState[bxpos+7,56+bypos] = 0
-        gameState[bxpos+7,55+bypos] = 0
-        #Alas
-        gameState[bxpos+4,57+bypos] = 0
-        gameState[bxpos+8,57+bypos] = 0
-        gameState[bxpos+4,58+bypos] = 0
-        gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+3,58+bypos] = 0
-        gameState[bxpos+9,58+bypos] = 0
-        gameState[bxpos+3,59+bypos] = 0
-        gameState[bxpos+9,59+bypos] = 0
-
+        gameState[bxpos+20,bypos+11]=0
+        gameState[bxpos+21,bypos+11]=0
+        gameState[bxpos+22,bypos+11]=0
+        gameState[bxpos+23,bypos+11]=0
+        gameState[bxpos+24,bypos+11]=0
+        gameState[bxpos+25,bypos+11]=0
+        gameState[bxpos+26,bypos+11]=0
         
-        #H
-        gameState[xpos+5,59+ypos] = 1
-        gameState[xpos+5,58+ypos] = 1
-        gameState[xpos+5,57+ypos] = 1
-        gameState[xpos+5,56+ypos] = 1
-        gameState[xpos+5,55+ypos] = 1
-        gameState[xpos+6,57+ypos] = 1
-        gameState[xpos+7,59+ypos] = 1
-        gameState[xpos+7,58+ypos] = 1
-        gameState[xpos+7,57+ypos] = 1
-        gameState[xpos+7,56+ypos] = 1
-        gameState[xpos+7,55+ypos] = 1
-        #Alas
-        gameState[xpos+4,57+ypos] = 1
-        gameState[xpos+8,57+ypos] = 1
-        gameState[xpos+4,58+ypos] = 1
-        gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+3,58+ypos] = 1
-        gameState[xpos+9,58+ypos] = 1
-        gameState[xpos+3,59+ypos] = 1
-        gameState[xpos+9,59+ypos] = 1
+        gameState[bxpos+21,bypos+12]=0
+        gameState[bxpos+25,bypos+12]=0
+        
+        gameState[bxpos+21,bypos+13]=0
+        gameState[bxpos+25,bypos+13]=0
+        
+        gameState[bxpos+20,bypos+14]=0
+        gameState[bxpos+22,bypos+14]=0
+        gameState[bxpos+24,bypos+14]=0
+        gameState[bxpos+26,bypos+14]=0
+    
+        
+        
+        gameState[bxpos+21,bypos+10]=0
+        gameState[bxpos+22,bypos+10]=0
+        gameState[bxpos+23,bypos+10]=0
+        gameState[bxpos+24,bypos+10]=0
+        gameState[bxpos+25,bypos+10]=0
+    
+        gameState[bxpos+22,bypos+9]=0
+        gameState[bxpos+23,bypos+9]=0
+        gameState[bxpos+24,bypos+9]=0
+    
+        
+        gameState[bxpos+22,bypos+9]=0
+        
+        gameState[bxpos+23,bypos+8]=0
+        
+        #####################
+
+        gameState[xpos+20,ypos+11]=1
+        gameState[xpos+21,ypos+11]=1
+        gameState[xpos+22,ypos+11]=1
+        gameState[xpos+23,ypos+11]=1
+        gameState[xpos+24,ypos+11]=1
+        gameState[xpos+25,ypos+11]=1
+        gameState[xpos+26,ypos+11]=1
+        
+        gameState[xpos+21,ypos+12]=1
+        gameState[xpos+25,ypos+12]=1
+        
+        gameState[xpos+21,ypos+13]=1
+        gameState[xpos+25,ypos+13]=1
+        
+        gameState[xpos+20,ypos+14]=1
+        gameState[xpos+22,ypos+14]=1
+        gameState[xpos+24,ypos+14]=1
+        gameState[xpos+26,ypos+14]=1
+        
+        
+        
+        gameState[xpos+21,ypos+10]=1
+        gameState[xpos+22,ypos+10]=1
+        gameState[xpos+23,ypos+10]=1
+        gameState[xpos+24,ypos+10]=1
+        gameState[xpos+25,ypos+10]=1
+        
+        gameState[xpos+22,ypos+9]=1
+        gameState[xpos+23,ypos+9]=1
+        gameState[xpos+24,ypos+9]=1
+        
+        
+        gameState[xpos+22,ypos+9]=1
+        
+        gameState[xpos+23,ypos+8]=1
+        
+        #############################################################
+       
     
     #Actualizamos la posicion de borrado
     bxpos = xpos
