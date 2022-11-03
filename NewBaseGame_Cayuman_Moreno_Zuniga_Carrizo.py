@@ -24,12 +24,13 @@ dimCH = height / nyC
 
 xpos = 0 
 ypos = 0
-xvel = 0
-yvel = 0 
-xace = 0
 bxpos = xpos
 bypos = ypos
-paso=0
+
+xvel = 0
+yvel = 0 
+xtiempo = 0
+ytiempo = 0
 
 
 pauseExect = True
@@ -37,17 +38,25 @@ stay = True
 
 # Bucle de ejecución
 while stay:
-    paso=paso+1
-    if paso == 4:
-        paso = 1
-    xvel = xvel + xace
-    if xvel>3:
-        xvel=3
-    xpos = xpos +int ((xvel*paso)/3)
 
-    # Copiamos la matriz del estado anterior
-    # #para representar la matriz en el nuevo estado
-    gameState = np.copy(gameState)
+    xtiempo = xtiempo+1
+    ytiempo = ytiempo+1
+    
+    periodox=6-abs(xvel)
+    if (periodox == 6):
+        periodox = 999999999999999999999999999999999999999999999
+        
+    periodoy=6-abs(yvel)
+    if (periodoy == 6):
+        periodoy = 999999999999999999999999999999999999999999999
+    
+    if (xtiempo >= periodox):
+        xtiempo = 0
+        xpos = xpos+int(xvel/abs(xvel))
+                
+    if (ytiempo >= periodoy):
+        ytiempo = 0
+        ypos = ypos+int(yvel/abs(yvel)) 
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -62,17 +71,18 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT: #limite 70
+                xvel = xvel - 1
+                if xpos > -nxC+20:
+                  xpos = xpos -1
+            elif event.key == pygame.K_RIGHT:#limite 2
+                xvel = xvel + 1
                 if xpos > -nxC+2:
-                    xpos = xpos - 1
-            elif event.key == pygame.K_RIGHT:
-                if xpos < nxC-11:
                     xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                if ypos > -nyC+15:
-                    ypos = ypos - 1
+                yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                    ypos =  ypos + 1                
+                yvel = yvel + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -276,11 +286,7 @@ while stay:
             gameState[xpos+6,ypos-10]=1
             gameState[xpos+5,ypos-10]=1
             gameState[xpos+4,ypos-10]=1
-    
-    
-    
-    
-    
+
     #Actualizamos la posicion de borrado
     bxpos = xpos
     bypos = ypos
