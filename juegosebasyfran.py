@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 27 10:33:54 2022
+
+@author: micae
+"""
+
+# -*- coding: utf-8 -*-
 import pygame
 import numpy as np #alias de numpy
 import time
@@ -31,32 +38,18 @@ xvel = 0
 yvel = 0
 xtiempo = 0
 ytiempo = 0
-
-
 pauseExect = True
 stay = True
 
 # Bucle de ejecución
 while stay:
-
+    
     xtiempo = xtiempo+1
     ytiempo = ytiempo+1
     
-    periodox=6-abs(xvel)
-    if (periodox == 6):
-        periodox = 999999999999999999999999999999999999999999999
-        
-    periodoy=6-abs(yvel)
-    if (periodoy == 6):
-        periodoy = 999999999999999999999999999999999999999999999
-    
-    if (xtiempo >= periodox):
-        xtiempo = 0
-        xpos = xpos+int(xvel/abs(xvel))
-                
-    if (ytiempo >= periodoy):
-        ytiempo = 0
-        ypos = ypos+int(yvel/abs(yvel)) 
+    # Copiamos la matriz del estado anterior
+    # #para representar la matriz en el nuevo estado
+    gameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -84,63 +77,82 @@ while stay:
         if event.type == pygame.QUIT:
             stay = False
             pygame.quit()
+            
+    
 
         # Detectamos si se presiona el ratón.
         mouseClick = pygame.mouse.get_pressed()
-
+        
+        
         if sum(mouseClick) > 0:
             posX, posY = pygame.mouse.get_pos()
             celX, celY = int(np.floor(posX / dimCW)), int(np.floor(posY / dimCH))
             gameState[celX, celY] = 1
     
+    periodox=6-abs(xvel)
+    if (periodox == 6):
+        periodox = 999999999999999999999999999999999999999999999
+        
+    periodoy=6-abs(yvel)
+    if (periodoy == 6):
+        periodoy = 999999999999999999999999999999999999999999999
     
+    if (xtiempo >= periodox):
+        xtiempo = 0
+        xpos = xpos+(xvel/abs(xvel))
+                
+    if (ytiempo >= periodoy):
+        ytiempo = 0
+        xpos = xpos+(xvel/abs(xvel))    
+        
+        
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        #H
-        gameState[bxpos+5,59+bypos] = 0
-        gameState[bxpos+5,58+bypos] = 0
-        gameState[bxpos+5,57+bypos] = 0
-        gameState[bxpos+5,56+bypos] = 0
-        gameState[bxpos+5,55+bypos] = 0
-        gameState[bxpos+6,57+bypos] = 0
-        gameState[bxpos+7,59+bypos] = 0
-        gameState[bxpos+7,58+bypos] = 0
-        gameState[bxpos+7,57+bypos] = 0
-        gameState[bxpos+7,56+bypos] = 0
-        gameState[bxpos+7,55+bypos] = 0
-        #Alas
-        gameState[bxpos+4,57+bypos] = 0
-        gameState[bxpos+8,57+bypos] = 0
-        gameState[bxpos+4,58+bypos] = 0
-        gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+3,58+bypos] = 0
-        gameState[bxpos+9,58+bypos] = 0
-        gameState[bxpos+3,59+bypos] = 0
-        gameState[bxpos+9,59+bypos] = 0
-
+        gameState[bxpos+50,bypos+50] = 0
+        gameState[bxpos+50,bypos+51] = 0
+        gameState[bxpos+50,bypos+52] = 0
+        gameState[bxpos+50,bypos+53] = 0
+        gameState[bxpos+50,bypos+54] = 0
+        gameState[bxpos+50,bypos+55] = 0
+        gameState[bxpos+50,bypos+56] = 0
+        gameState[bxpos+50,bypos+57] = 0
+        gameState[bxpos+50,bypos+58] = 0
+        gameState[bxpos+50,bypos+59] = 0
+        gameState[bxpos+60,bypos+60] = 0
         
-        #H
-        gameState[xpos+5,59+ypos] = 1
-        gameState[xpos+5,58+ypos] = 1
-        gameState[xpos+5,57+ypos] = 1
-        gameState[xpos+5,56+ypos] = 1
-        gameState[xpos+5,55+ypos] = 1
-        gameState[xpos+6,57+ypos] = 1
-        gameState[xpos+7,59+ypos] = 1
-        gameState[xpos+7,58+ypos] = 1
-        gameState[xpos+7,57+ypos] = 1
-        gameState[xpos+7,56+ypos] = 1
-        gameState[xpos+7,55+ypos] = 1
-        #Alas
-        gameState[xpos+4,57+ypos] = 1
-        gameState[xpos+8,57+ypos] = 1
-        gameState[xpos+4,58+ypos] = 1
-        gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+3,58+ypos] = 1
-        gameState[xpos+9,58+ypos] = 1
-        gameState[xpos+3,59+ypos] = 1
-        gameState[xpos+9,59+ypos] = 1
+        #alas
+        gameState[bxpos+51,bypos+56] = 0
+        gameState[bxpos+49,bypos+56] = 0
+        gameState[bxpos+52,bypos+55] = 0
+        gameState[bxpos+48,bypos+55] = 0
+        gameState[bxpos+53,bypos+54] = 0
+        gameState[bxpos+47,bypos+54] = 0
+        gameState[bxpos+51,bypos+50] = 0
+        gameState[bxpos+49,bypos+50] = 0
+
+
+        gameState[xpos+50,ypos+50] = 1
+        gameState[xpos+50,ypos+51] = 1
+        gameState[xpos+50,ypos+52] = 1
+        gameState[xpos+50,ypos+53] = 1
+        gameState[xpos+50,ypos+54] = 1
+        gameState[xpos+50,ypos+55] = 1
+        gameState[xpos+50,ypos+56] = 1
+        gameState[xpos+50,ypos+57] = 1
+        gameState[xpos+50,ypos+58] = 1
+        gameState[xpos+50,ypos+59] = 1
+        
+
+    #alas
+        gameState[xpos+51,ypos+56] = 1
+        gameState[xpos+49,ypos+56] = 1
+        gameState[xpos+52,ypos+55] = 1
+        gameState[xpos+48,ypos+55] = 1
+        gameState[xpos+53,ypos+54] = 1
+        gameState[xpos+47,ypos+54] = 1
+        gameState[xpos+51,ypos+50] = 1
+        gameState[xpos+49,ypos+50] = 1
     
     #Actualizamos la posicion de borrado
     bxpos = xpos

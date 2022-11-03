@@ -27,10 +27,6 @@ ypos = 0
 bxpos = xpos
 bypos = ypos
 
-xvel = 0
-yvel = 0
-xtiempo = 0
-ytiempo = 0
 
 
 pauseExect = True
@@ -39,24 +35,9 @@ stay = True
 # Bucle de ejecución
 while stay:
 
-    xtiempo = xtiempo+1
-    ytiempo = ytiempo+1
-    
-    periodox=6-abs(xvel)
-    if (periodox == 6):
-        periodox = 999999999999999999999999999999999999999999999
-        
-    periodoy=6-abs(yvel)
-    if (periodoy == 6):
-        periodoy = 999999999999999999999999999999999999999999999
-    
-    if (xtiempo >= periodox):
-        xtiempo = 0
-        xpos = xpos+int(xvel/abs(xvel))
-                
-    if (ytiempo >= periodoy):
-        ytiempo = 0
-        ypos = ypos+int(yvel/abs(yvel)) 
+    # Copiamos la matriz del estado anterior
+    # #para representar la matriz en el nuevo estado
+    newGameState = np.copy(gameState)
 
     # Ralentizamos la ejecución a 0.1 segundos
     time.sleep(0.1)
@@ -72,13 +53,14 @@ while stay:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                xvel = xvel - 1
+                xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                xvel = xvel + 1
+                xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                yvel = yvel - 1
+                ypos = ypos - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                if ypos < nyC-60:
+                    ypos =  ypos + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -97,13 +79,16 @@ while stay:
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        #H
         gameState[bxpos+5,59+bypos] = 0
         gameState[bxpos+5,58+bypos] = 0
         gameState[bxpos+5,57+bypos] = 0
         gameState[bxpos+5,56+bypos] = 0
         gameState[bxpos+5,55+bypos] = 0
+        gameState[bxpos+6,54+bypos] = 0
+        gameState[bxpos+6,53+bypos] = 0
+        gameState[bxpos+6,52+bypos] = 0
         gameState[bxpos+6,57+bypos] = 0
+        gameState[bxpos+6,55+bypos] = 0
         gameState[bxpos+7,59+bypos] = 0
         gameState[bxpos+7,58+bypos] = 0
         gameState[bxpos+7,57+bypos] = 0
@@ -114,10 +99,17 @@ while stay:
         gameState[bxpos+8,57+bypos] = 0
         gameState[bxpos+4,58+bypos] = 0
         gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+3,58+bypos] = 0
+        gameState[bxpos+4,59+bypos] = 0
+        gameState[bxpos+4,60+bypos] = 0
+        gameState[bxpos+4,61+bypos] = 0
+        gameState[bxpos+3,62+bypos] = 0
         gameState[bxpos+9,58+bypos] = 0
         gameState[bxpos+3,59+bypos] = 0
         gameState[bxpos+9,59+bypos] = 0
+        gameState[bxpos+9,60+bypos] = 0
+        gameState[bxpos+9,61+bypos] = 0
+        
+
 
         
         #H
@@ -126,7 +118,11 @@ while stay:
         gameState[xpos+5,57+ypos] = 1
         gameState[xpos+5,56+ypos] = 1
         gameState[xpos+5,55+ypos] = 1
+        gameState[xpos+6,54+ypos] = 1
+        gameState[xpos+6,53+ypos] = 1
+        gameState[xpos+6,52+ypos] = 1
         gameState[xpos+6,57+ypos] = 1
+        gameState[xpos+6,55+ypos] = 1
         gameState[xpos+7,59+ypos] = 1
         gameState[xpos+7,58+ypos] = 1
         gameState[xpos+7,57+ypos] = 1
@@ -137,10 +133,15 @@ while stay:
         gameState[xpos+8,57+ypos] = 1
         gameState[xpos+4,58+ypos] = 1
         gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+3,58+ypos] = 1
+        gameState[xpos+4,59+ypos] = 1
+        gameState[xpos+4,60+ypos] = 1
+        gameState[xpos+4,61+ypos] = 1
+        gameState[xpos+3,62+ypos] = 1
         gameState[xpos+9,58+ypos] = 1
         gameState[xpos+3,59+ypos] = 1
         gameState[xpos+9,59+ypos] = 1
+        gameState[xpos+9,60+ypos] = 1
+        gameState[xpos+9,61+ypos] = 1
     
     #Actualizamos la posicion de borrado
     bxpos = xpos
