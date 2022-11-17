@@ -3,7 +3,27 @@ import pygame
 import numpy as np #alias de numpy
 import time
 
+from pygame import mixer
+
 pygame.init() 
+
+
+
+#Instantiate mixer
+mixer.init()
+
+#Load audio file
+mixer.music.load('song.mp3')
+
+print("music started playing....")
+
+#Set preferred volume
+mixer.music.set_volume(0.2)
+
+#Play the music
+mixer.music.play()
+
+
 
 width, height = 400, 400
 
@@ -32,13 +52,15 @@ yvel = 0
 xtiempo = 0
 ytiempo = 0
 
+xpos_canon = xpos + 6
+ypos_canon = ypos + 52
 
 pauseExect = True
 stay = True
 
 # Bucle de ejecución
 while stay:
-
+    #Actualizacion de posicion 
     xtiempo = xtiempo+1
     ytiempo = ytiempo+1
     
@@ -58,8 +80,12 @@ while stay:
         ytiempo = 0
         ypos = ypos+int(yvel/abs(yvel)) 
 
+    xpos_canon = xpos + 6
+    ypos_canon = ypos + 52
+    
+    
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.02)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -78,7 +104,9 @@ while stay:
             elif event.key == pygame.K_UP:
                 yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                yvel = yvel + 1          
+            elif event.key == pygame.K_SPACE:
+                gameState[xpos_canon,ypos_canon] = 2
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -146,9 +174,21 @@ while stay:
     bxpos = xpos
     bypos = ypos
     
+    
+    
+
+  
+    
+    
+    
 
     for y in range(0, nxC):
         for x in range (0, nyC):
+            #fisica del disparo
+            if (y in range(79)) and (gameState[x,y] == 0) and (gameState[x,y+1] == 2):
+                gameState[x,y] = 2
+            if (y in range(79)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
+                gameState[x,y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
