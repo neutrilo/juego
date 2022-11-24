@@ -2,6 +2,7 @@
 import pygame
 import numpy as np #alias de numpy
 import time
+import os
 
 from pygame import mixer
 
@@ -44,13 +45,14 @@ dimCH = height / nyC
 
 xpos = 0 
 ypos = 0
-bxpos = xpos
+bxpos = xpos+1
 bypos = ypos
 
 xvel = 0
 yvel = 0
 xtiempo = 0
 ytiempo = 0
+tiempo_global = 0
 
 xpos_canon = xpos + 6
 ypos_canon = ypos + 52
@@ -58,11 +60,14 @@ ypos_canon = ypos + 52
 pauseExect = True
 stay = True
 
+hit_count = 0
+
 # Bucle de ejecución
 while stay:
     #Actualizacion de posicion 
     xtiempo = xtiempo+1
     ytiempo = ytiempo+1
+    tiempo_global += 1
     
     periodox=6-abs(xvel)
     if (periodox == 6):
@@ -177,16 +182,41 @@ while stay:
     
     
 
-  
+    if tiempo_global % 24 == 0:
+        gameState[:,0] = np.heaviside(np.random.rand(1,nxC)-0.9,1) * 3
+
+            
+        
     
     
     
 
     for y in range(0, nxC):
         for x in range (0, nyC):
+            
+            #Movimiento de escombros
+            if tiempo_global % 6 == 0:
+                if (y in range(79))  and (gameState[x,y] == 3):
+                    gameState[x,y] = 0
+                    gameState[x,y+1] = 4
+                if (y in range(79))  and (gameState[x,y] == 4):
+                    gameState[x,y] = 3
+            
+            
+            
             #fisica del disparo
-            if (y in range(79)) and (gameState[x,y] == 0) and (gameState[x,y+1] == 2):
-                gameState[x,y] = 2
+            if (y in range(79))  and (gameState[x,y+1] == 2):
+                if gameState[x,y] == 3:
+                    gameState[x,y] = 0
+                    gameState[x,y-1] = 0
+                    gameState[x+1,y] = 0
+                    gameState[x-1,y] = 0
+                    gameState[x+1,y-1] = 0
+                    gameState[x-1,y-1] = 0
+                    hit_count += 1
+                else:
+                    gameState[x,y] = 2
+                    
             if (y in range(79)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
                 gameState[x,y] = 0
 
@@ -200,8 +230,21 @@ while stay:
             if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
+            elif gameState[x, y] == 3:
+                pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
             else:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+
+    if tiempo_global>30 and 1 not in gameState:
+        pygame.quit()
+        print('Tu puntuacion fue de', hit_count,' puntos.')
+        username = input("Ingresa su nombre para guardar, o N para no hacerlo")
+        if username != 'N':
+            file = open("scores.txt", "w")
+            to_save = str([username,hit_count])
+            file.write(to_save + os.linesep)
+            file.close()
+
 
 
     # Mostramos el resultado
