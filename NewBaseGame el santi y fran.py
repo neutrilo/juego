@@ -2,29 +2,8 @@
 import pygame
 import numpy as np #alias de numpy
 import time
-import os
-
-from pygame import mixer
 
 pygame.init() 
-
-
-
-#Instantiate mixer
-mixer.init()
-
-#Load audio file
-mixer.music.load('song.mp3') # musica
-
-print("music started playing....")
-
-#Set preferred volume
-mixer.music.set_volume(0.2)
-
-#Play the music
-mixer.music.play()
-
-
 
 width, height = 400, 400
 
@@ -45,29 +24,23 @@ dimCH = height / nyC
 
 xpos = 0 
 ypos = 0
-bxpos = xpos+1
+bxpos = xpos
 bypos = ypos
 
 xvel = 0
 yvel = 0
 xtiempo = 0
 ytiempo = 0
-tiempo_global = 0
 
-xpos_canon = xpos + 6
-ypos_canon = ypos + 52
 
 pauseExect = True
 stay = True
 
-hit_count = 0
-
 # Bucle de ejecución
 while stay:
-    #Actualizacion de posicion 
+
     xtiempo = xtiempo+1
     ytiempo = ytiempo+1
-    tiempo_global += 1
     
     periodox=6-abs(xvel)
     if (periodox == 6):
@@ -85,12 +58,8 @@ while stay:
         ytiempo = 0
         ypos = ypos+int(yvel/abs(yvel)) 
 
-    xpos_canon = xpos + 6
-    ypos_canon = ypos + 52
-    
-    
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.02)
+    time.sleep(0.1)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -109,9 +78,7 @@ while stay:
             elif event.key == pygame.K_UP:
                 yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1          
-            elif event.key == pygame.K_SPACE:
-                gameState[xpos_canon,ypos_canon] = 2
+                yvel = yvel + 1                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -127,117 +94,117 @@ while stay:
             gameState[celX, celY] = 1
     
     
-    #Borrado y escritura, figura de la nave
+    #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        gameState[bxpos+5,59+bypos] = 0
-        gameState[bxpos+5,58+bypos] = 0
-        gameState[bxpos+5,57+bypos] = 0
-        gameState[bxpos+5,56+bypos] = 0
-        gameState[bxpos+5,55+bypos] = 0
-        gameState[bxpos+6,54+bypos] = 0
-        gameState[bxpos+6,53+bypos] = 0
-        gameState[bxpos+6,52+bypos] = 0
-        gameState[bxpos+6,57+bypos] = 0
-        gameState[bxpos+6,55+bypos] = 0
-        gameState[bxpos+7,59+bypos] = 0
-        gameState[bxpos+7,58+bypos] = 0
-        gameState[bxpos+7,57+bypos] = 0
-        gameState[bxpos+7,56+bypos] = 0
-        gameState[bxpos+7,55+bypos] = 0
-        #Alas
-        gameState[bxpos+4,57+bypos] = 0
-        gameState[bxpos+8,57+bypos] = 0
-        gameState[bxpos+4,58+bypos] = 0
-        gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+4,59+bypos] = 0
-        gameState[bxpos+4,60+bypos] = 0
-        gameState[bxpos+4,61+bypos] = 0
-        gameState[bxpos+3,62+bypos] = 0
-        gameState[bxpos+9,58+bypos] = 0
-        gameState[bxpos+3,59+bypos] = 0
-        gameState[bxpos+9,59+bypos] = 0
-        gameState[bxpos+9,60+bypos] = 0
-        gameState[bxpos+9,61+bypos] = 0
+        #H
         
-
-
+        #Alas
+        gameState[bxpos+20,20+bypos] = 0
+        gameState[bxpos+19,20+bypos] = 0
+        gameState[bxpos+18,20+bypos] = 0
+        gameState[bxpos+17,20+bypos] = 0
+        gameState[bxpos+16,20+bypos] = 0
+        gameState[bxpos+15,20+bypos] = 0
+        gameState[bxpos+14,20+bypos] = 0
+        gameState[bxpos+13,20+bypos] = 0
+        gameState[bxpos+12,20+bypos] = 0
+        gameState[bxpos+11,20+bypos] = 0
+        gameState[bxpos+10,20+bypos] = 0
+        gameState[bxpos+20,30+bypos] = 0
+        gameState[bxpos+19,30+bypos] = 0
+        gameState[bxpos+18,30+bypos] = 0
+        gameState[bxpos+17,30+bypos] = 0
+        gameState[bxpos+16,30+bypos] = 0
+        gameState[bxpos+15,30+bypos] = 0
+        gameState[bxpos+14,30+bypos] = 0
+        gameState[bxpos+13,30+bypos] = 0
+        gameState[bxpos+12,30+bypos] = 0
+        gameState[bxpos+11,30+bypos] = 0
+        gameState[bxpos+10,30+bypos] = 0
+        
+        gameState[bxpos+10,20+bypos] = 0
+        gameState[bxpos+10,21+bypos] = 0
+        gameState[bxpos+10,22+bypos] = 0
+        gameState[bxpos+10,23+bypos] = 0
+        gameState[bxpos+10,24+bypos] = 0
+        gameState[bxpos+10,25+bypos] = 0
+        gameState[bxpos+10,26+bypos] = 0
+        gameState[bxpos+10,27+bypos] = 0
+        gameState[bxpos+10,28+bypos] = 0
+        gameState[bxpos+10,29+bypos] = 0
+        gameState[bxpos+10,30+bypos] = 0
+        gameState[bxpos+10,20+bypos] = 0
+        gameState[bxpos+20,20+bypos] = 0
+        gameState[bxpos+20,21+bypos] = 0
+        gameState[bxpos+20,22+bypos] = 0
+        gameState[bxpos+20,23+bypos] = 0
+        gameState[bxpos+20,24+bypos] = 0
+        gameState[bxpos+20,25+bypos] = 0
+        gameState[bxpos+20,26+bypos] = 0
+        gameState[bxpos+20,27+bypos] = 0
+        gameState[bxpos+20,28+bypos] = 0
+        gameState[bxpos+20,29+bypos] = 0
+        gameState[bxpos+20,30+bypos] = 0
+        gameState[bxpos+20,20+bypos] = 0
+#-----------------------------------------------------------------------------
         
         #H
-        gameState[xpos+5,59+ypos] = 1
-        gameState[xpos+5,58+ypos] = 1
-        gameState[xpos+5,57+ypos] = 1
-        gameState[xpos+5,56+ypos] = 1
-        gameState[xpos+5,55+ypos] = 1
-        gameState[xpos+6,54+ypos] = 1
-        gameState[xpos+6,53+ypos] = 1
-        gameState[xpos+6,52+ypos] = 1
-        gameState[xpos+6,57+ypos] = 1
-        gameState[xpos+6,55+ypos] = 1
-        gameState[xpos+7,59+ypos] = 1
-        gameState[xpos+7,58+ypos] = 1
-        gameState[xpos+7,57+ypos] = 1
-        gameState[xpos+7,56+ypos] = 1
-        gameState[xpos+7,55+ypos] = 1
-        #Alas
-        gameState[xpos+4,57+ypos] = 1
-        gameState[xpos+8,57+ypos] = 1
-        gameState[xpos+4,58+ypos] = 1
-        gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+4,59+ypos] = 1
-        gameState[xpos+4,60+ypos] = 1
-        gameState[xpos+4,61+ypos] = 1
-        gameState[xpos+3,62+ypos] = 1
-        gameState[xpos+9,58+ypos] = 1
-        gameState[xpos+3,59+ypos] = 1
-        gameState[xpos+9,59+ypos] = 1
-        gameState[xpos+9,60+ypos] = 1
-        gameState[xpos+9,61+ypos] = 1
+        gameState[xpos+20,20+ypos] = 1
+        gameState[xpos+19,20+ypos] = 1
+        gameState[xpos+18,20+ypos] = 1
+        gameState[xpos+17,20+ypos] = 1
+        gameState[xpos+16,20+ypos] = 1
+        gameState[xpos+15,20+ypos] = 1
+        gameState[xpos+14,20+ypos] = 1
+        gameState[xpos+13,20+ypos] = 1
+        gameState[xpos+12,20+ypos] = 1
+        gameState[xpos+11,20+ypos] = 1
+        gameState[xpos+10,20+ypos] = 1
+        gameState[xpos+20,30+ypos] = 1
+        gameState[xpos+19,30+ypos] = 1
+        gameState[xpos+18,30+ypos] = 1
+        gameState[xpos+17,30+ypos] = 1
+        gameState[xpos+16,30+ypos] = 1
+        gameState[xpos+15,30+ypos] = 1
+        gameState[xpos+14,30+ypos] = 1
+        gameState[xpos+13,30+ypos] = 1
+        gameState[xpos+12,30+ypos] = 1
+        gameState[xpos+11,30+ypos] = 1
+        gameState[xpos+10,30+ypos] = 1
+        
+        gameState[xpos+10,20+ypos] = 1
+        gameState[xpos+10,21+ypos] = 1
+        gameState[xpos+10,22+ypos] = 1
+        gameState[xpos+10,23+ypos] = 1
+        gameState[xpos+10,24+ypos] = 1
+        gameState[xpos+10,25+ypos] = 1
+        gameState[xpos+10,26+ypos] = 1
+        gameState[xpos+10,27+ypos] = 1
+        gameState[xpos+10,28+ypos] = 1
+        gameState[xpos+10,29+ypos] = 1
+        gameState[xpos+10,30+ypos] = 1
+        gameState[xpos+10,20+ypos] = 1
+        gameState[xpos+20,20+ypos] = 1
+        gameState[xpos+20,21+ypos] = 1
+        gameState[xpos+20,22+ypos] = 1
+        gameState[xpos+20,23+ypos] = 1
+        gameState[xpos+20,24+ypos] = 1
+        gameState[xpos+20,25+ypos] = 1
+        gameState[xpos+20,26+ypos] = 1
+        gameState[xpos+20,27+ypos] = 1
+        gameState[xpos+20,28+ypos] = 1
+        gameState[xpos+20,29+ypos] = 1
+        gameState[xpos+20,30+ypos] = 1
+        gameState[xpos+20,20+ypos] = 1
     
     #Actualizamos la posicion de borrado
     bxpos = xpos
     bypos = ypos
     
-    
-    
-
-    if tiempo_global % 24 == 0:
-        gameState[:,0] = np.heaviside(np.random.rand(1,nxC)-0.9,1) * 3
-
-            
-        
-    
-    
-    
 
     for y in range(0, nxC):
         for x in range (0, nyC):
-            
-            #Movimiento de escombros
-            if tiempo_global % 6 == 0:
-                if (y in range(79))  and (gameState[x,y] == 3):
-                    gameState[x,y] = 0
-                    gameState[x,y+1] = 4
-                if (y in range(79))  and (gameState[x,y] == 4):
-                    gameState[x,y] = 3
-            
-            
-            
-            #fisica del disparo
-            if (y in range(79))  and (gameState[x,y+1] == 2):
-                if gameState[x,y] == 3:
-                    gameState[x,y] = 0
-                    gameState[x,y-1] = 0
-                    gameState[x+1,y] = 0
-                    gameState[x-1,y] = 0
-                    gameState[x+1,y-1] = 0
-                    gameState[x-1,y-1] = 0
-                    hit_count += 1
-                else:
-                    gameState[x,y] = 2
-                    
-            if (y in range(79)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
-                gameState[x,y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
@@ -249,28 +216,12 @@ while stay:
             if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
-            elif gameState[x, y] == 3:
-                pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0) #color
-
-    if tiempo_global>30 and 1 not in gameState:
-        pygame.quit()
-        print('Tu puntuacion fue de', hit_count,' puntos.')
-        username = input("Ingresa su nombre para guardar, o N para no hacerlo")
-        if username != 'N':
-            file = open("scores.txt", "w")
-            to_save = str([username,hit_count])
-            file.write(to_save + os.linesep)
-            file.close()
-
+                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
 
     # Mostramos el resultado
     pygame.display.flip()
-    
-    
-    
 
 #Lista de teclas y como llamarlas
 # pygame

@@ -11,18 +11,18 @@ pygame.init()
 
 
 #Instantiate mixer
-mixer.init()
+#mixer.init()
 
 #Load audio file
-mixer.music.load('song.mp3') # musica
+#mixer.music.load('song.mp3')
 
-print("music started playing....")
+#print("music started playing....")
 
 #Set preferred volume
-mixer.music.set_volume(0.2)
+#mixer.music.set_volume(0.2)
 
 #Play the music
-mixer.music.play()
+#mixer.music.play()
 
 
 
@@ -127,74 +127,75 @@ while stay:
             gameState[celX, celY] = 1
     
     
-    #Borrado y escritura, figura de la nave
+    #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
         
-        gameState[bxpos+5,59+bypos] = 0
-        gameState[bxpos+5,58+bypos] = 0
-        gameState[bxpos+5,57+bypos] = 0
-        gameState[bxpos+5,56+bypos] = 0
-        gameState[bxpos+5,55+bypos] = 0
-        gameState[bxpos+6,54+bypos] = 0
-        gameState[bxpos+6,53+bypos] = 0
-        gameState[bxpos+6,52+bypos] = 0
-        gameState[bxpos+6,57+bypos] = 0
-        gameState[bxpos+6,55+bypos] = 0
-        gameState[bxpos+7,59+bypos] = 0
-        gameState[bxpos+7,58+bypos] = 0
-        gameState[bxpos+7,57+bypos] = 0
-        gameState[bxpos+7,56+bypos] = 0
-        gameState[bxpos+7,55+bypos] = 0
+        #H
+        # gameState[bxpos+5,59+bypos] = 0
+        # gameState[bxpos+5,58+bypos] = 0
+        # gameState[bxpos+5,57+bypos] = 0
+        # gameState[bxpos+5,56+bypos] = 0
+        # gameState[bxpos+5,55+bypos] = 0
+        # gameState[bxpos+6,57+bypos] = 0
+        # gameState[bxpos+7,59+bypos] = 0
+        # gameState[bxpos+7,58+bypos] = 0
+        # gameState[bxpos+7,57+bypos] = 0
+        # gameState[bxpos+7,56+bypos] = 0
+        # gameState[bxpos+7,55+bypos] = 0
         #Alas
-        gameState[bxpos+4,57+bypos] = 0
-        gameState[bxpos+8,57+bypos] = 0
-        gameState[bxpos+4,58+bypos] = 0
-        gameState[bxpos+8,58+bypos] = 0
-        gameState[bxpos+4,59+bypos] = 0
-        gameState[bxpos+4,60+bypos] = 0
-        gameState[bxpos+4,61+bypos] = 0
-        gameState[bxpos+3,62+bypos] = 0
-        gameState[bxpos+9,58+bypos] = 0
-        gameState[bxpos+3,59+bypos] = 0
-        gameState[bxpos+9,59+bypos] = 0
-        gameState[bxpos+9,60+bypos] = 0
-        gameState[bxpos+9,61+bypos] = 0
-        
-
+        # gameState[bxpos+4,57+bypos] = 0
+        # gameState[bxpos+8,57+bypos] = 0
+        # gameState[bxpos+4,58+bypos] = 0
+        # gameState[bxpos+8,58+bypos] = 0
+        # gameState[bxpos+3,58+bypos] = 0
+        # gameState[bxpos+9,58+bypos] = 0
+        # gameState[bxpos+3,59+bypos] = 0
+        # gameState[bxpos+9,59+bypos] = 0
 
         
         #H
-        gameState[xpos+5,59+ypos] = 1
-        gameState[xpos+5,58+ypos] = 1
-        gameState[xpos+5,57+ypos] = 1
-        gameState[xpos+5,56+ypos] = 1
-        gameState[xpos+5,55+ypos] = 1
-        gameState[xpos+6,54+ypos] = 1
-        gameState[xpos+6,53+ypos] = 1
-        gameState[xpos+6,52+ypos] = 1
-        gameState[xpos+6,57+ypos] = 1
-        gameState[xpos+6,55+ypos] = 1
-        gameState[xpos+7,59+ypos] = 1
-        gameState[xpos+7,58+ypos] = 1
-        gameState[xpos+7,57+ypos] = 1
-        gameState[xpos+7,56+ypos] = 1
-        gameState[xpos+7,55+ypos] = 1
+        # gameState[xpos+5,59+ypos] = 1
+        # gameState[xpos+5,58+ypos] = 1
+        # gameState[xpos+5,57+ypos] = 1
+        # gameState[xpos+5,56+ypos] = 1
+        # gameState[xpos+5,55+ypos] = 1
+        # gameState[xpos+6,57+ypos] = 1
+        # gameState[xpos+7,59+ypos] = 1
+        # gameState[xpos+7,58+ypos] = 1
+        # gameState[xpos+7,57+ypos] = 1
+        # gameState[xpos+7,56+ypos] = 1
+        # gameState[xpos+7,55+ypos] = 1
         #Alas
-        gameState[xpos+4,57+ypos] = 1
-        gameState[xpos+8,57+ypos] = 1
-        gameState[xpos+4,58+ypos] = 1
-        gameState[xpos+8,58+ypos] = 1
-        gameState[xpos+4,59+ypos] = 1
-        gameState[xpos+4,60+ypos] = 1
-        gameState[xpos+4,61+ypos] = 1
-        gameState[xpos+3,62+ypos] = 1
-        gameState[xpos+9,58+ypos] = 1
-        gameState[xpos+3,59+ypos] = 1
-        gameState[xpos+9,59+ypos] = 1
-        gameState[xpos+9,60+ypos] = 1
-        gameState[xpos+9,61+ypos] = 1
+        # gameState[xpos+4,57+ypos] = 1
+        # gameState[xpos+8,57+ypos] = 1
+        # gameState[xpos+4,58+ypos] = 1
+        # gameState[xpos+8,58+ypos] = 1
+        # gameState[xpos+3,58+ypos] = 1
+        # gameState[xpos+9,58+ypos] = 1
+        # gameState[xpos+3,59+ypos] = 1
+        # gameState[xpos+9,59+ypos] = 1
     
-    #Actualizamos la posicion de borrado
+        #ALAS IZQ
+        gameState[bxpos+6,59+ypos] = 1
+        gameState[bxpos+5,58+ypos] = 1
+        gameState[bxpos+4,57+ypos] = 1
+        gameState[bxpos+3,56+ypos] = 1
+        gameState[bxpos+4,60+ypos] = 1
+        gameState[bxpos+5,61+ypos] = 1
+        gameState[bxpos+6,62+ypos] = 1
+        #ALAS DER
+        gameState[bxpos+10,59+ypos] = 1
+        gameState[bxpos+11,58+ypos] = 1
+        gameState[bxpos+12,57+ypos] = 1
+        gameState[bxpos+13,56+ypos] = 1
+        gameState[bxpos+12,60+ypos] = 1
+        gameState[bxpos+11,61+ypos] = 1
+        gameState[bxpos+10,62+ypos] = 1
+        #CUERPO
+        gameState[bxpos+6,59+ypos] = 1
+        
+
+#Actualizamos la posicion de borrado
     bxpos = xpos
     bypos = ypos
     
@@ -252,7 +253,7 @@ while stay:
             elif gameState[x, y] == 3:
                 pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0) #color
+                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
     if tiempo_global>30 and 1 not in gameState:
         pygame.quit()
@@ -268,9 +269,6 @@ while stay:
 
     # Mostramos el resultado
     pygame.display.flip()
-    
-    
-    
 
 #Lista de teclas y como llamarlas
 # pygame
