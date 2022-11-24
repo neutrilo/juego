@@ -14,7 +14,8 @@ pygame.init()
 mixer.init()
 
 #Load audio file
-mixer.music.load('song.mp3')
+mixer.music.load('salgo.mp3')
+
 
 print("music started playing....")
 
@@ -55,7 +56,7 @@ ytiempo = 0
 tiempo_global = 0
 
 xpos_canon = xpos + 6
-ypos_canon = ypos + 52
+ypos_canon = ypos + 49
 
 pauseExect = True
 stay = True
@@ -86,7 +87,7 @@ while stay:
         ypos = ypos+int(yvel/abs(yvel)) 
 
     xpos_canon = xpos + 6
-    ypos_canon = ypos + 52
+    ypos_canon = ypos + 49
     
     
     # Ralentizamos la ejecución a 0.1 segundos
@@ -112,6 +113,17 @@ while stay:
                 yvel = yvel + 1          
             elif event.key == pygame.K_SPACE:
                 gameState[xpos_canon,ypos_canon] = 2
+                mixer.music.load('shoot.mp3')
+
+
+                print("shoot started playing....")
+
+                #Set preferred volume
+                mixer.music.set_volume(0.2)
+
+                #Play the music
+                mixer.music.play()
+                
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -129,6 +141,8 @@ while stay:
     
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
+        
+        #H
         
         gameState[bxpos+5,59+bypos] = 0
         gameState[bxpos+5,58+bypos] = 0
@@ -251,6 +265,10 @@ while stay:
            # Si la celda está "viva" pintamos un recuadro relleno de color
             elif gameState[x, y] == 3:
                 pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
+                
+            elif gameState[x, y] == 2:
+                pygame.draw.polygon(screen, (255, 255, 255), poly, 0)
+                
             else:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
@@ -269,8 +287,57 @@ while stay:
     # Mostramos el resultado
     pygame.display.flip()
     
-    
-    
+    #mensaje
+    #H
+    gameState[5,59] = 1
+    gameState[5,58] = 1
+    gameState[5,57] = 1
+    gameState[5,56] = 1
+    gameState[5,55] = 1
+    gameState[6,57] = 1
+    gameState[7,59] = 1
+    gameState[7,58] = 1
+    gameState[7,57] = 1
+    gameState[7,56] = 1
+    gameState[7,55] = 1
+    #
+    #O
+    gameState[9,59] = 1
+    gameState[9,58] = 1
+    gameState[9,57] = 1
+    gameState[9,56] = 1
+    gameState[9,55] = 1
+    gameState[10,59] = 1
+    gameState[10,55] = 1
+    gameState[11,59] = 1
+    gameState[11,58] = 1
+    gameState[11,57] = 1
+    gameState[11,56] = 1
+    gameState[11,55] = 1
+    #
+    #L
+    gameState[13,59] = 1
+    gameState[13,58] = 1
+    gameState[13,57] = 1
+    gameState[13,56] = 1
+    gameState[13,55] = 1
+    gameState[14,59] = 1
+    gameState[15,59] = 1
+    #
+    #A
+    gameState[17,59] = 1
+    gameState[17,58] = 1
+    gameState[17,57] = 1
+    gameState[17,56] = 1
+    gameState[17,55] = 1
+    gameState[18,55] = 1
+    gameState[18,57] = 1
+    gameState[19,59] = 1
+    gameState[19,58] = 1
+    gameState[19,57] = 1
+    gameState[19,56] = 1
+    gameState[19,55] = 1
+    #
 
 #Lista de teclas y como llamarlas
 # pygame
