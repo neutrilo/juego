@@ -32,6 +32,8 @@ dimCH = height / nyC
 
 xpos = 0
 ypos = 0
+xvel = 0
+yvel = 0
 bxpos = xpos
 bypos = ypos
 
@@ -60,26 +62,25 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                if ypos < nyC+80:
-                    xpos = xpos -1
-                    if xpos == -81 or -82:
-                        xpos =  xpos +1
+            if event.key == pygame.K_LEFT: #limite 70
+                xvel = xvel - 1
+                if xpos > -nxC+62:
+                  xpos = xpos -1
+            elif event.key == pygame.K_RIGHT:#limite 2
+                xvel = xvel + 1
+                #if xpos > -nxC+37:
+                    #xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                if ypos < nyC-80:
-                    xpos = xpos +1
-                    if xpos == 81 or 82:
-                        xpos = 79
+                if xpos < nxC-38:
+                    xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                if ypos < nyC+80:
-                    if ypos == -81 or -82:
-                        ypos = -79
-                    ypos = ypos +1
+                if ypos > -nyC+62:
+                    ypos = ypos - 1
+                    yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                if ypos < nyC-80:
-                    ypos =  ypos +1
-                    if ypos == 81 or 82:
-                        ypos = ypos -1
+                if ypos > -nyC-52:
+                    ypos =  ypos + 1
+                    yvel = yvel + 1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:

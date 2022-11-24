@@ -14,7 +14,7 @@ pygame.init()
 mixer.init()
 
 #Load audio file
-mixer.music.load('song.mp3')
+mixer.music.load('song.mp3') # musica
 
 print("music started playing....")
 
@@ -127,7 +127,7 @@ while stay:
             gameState[celX, celY] = 1
     
     
-    #Borrado y escritura
+    #Borrado y escritura, figura de la nave
     if (xpos != bxpos) or (ypos != bypos):
         
         #H
@@ -233,7 +233,7 @@ while stay:
             elif gameState[x, y] == 3:
                 pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (200, 100, 100), poly, 0) #color
 
     if tiempo_global>30 and 1 not in gameState:
         pygame.quit()
