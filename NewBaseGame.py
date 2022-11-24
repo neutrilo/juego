@@ -2,8 +2,29 @@
 import pygame
 import numpy as np #alias de numpy
 import time
+import os
+
+from pygame import mixer
 
 pygame.init() 
+
+
+
+#Instantiate mixer
+mixer.init()
+
+#Load audio file
+mixer.music.load('song.mp3') # musica
+
+print("music started playing....")
+
+#Set preferred volume
+mixer.music.set_volume(0.2)
+
+#Play the music
+mixer.music.play()
+
+
 
 width, height = 400, 400
 
@@ -24,23 +45,29 @@ dimCH = height / nyC
 
 xpos = 0 
 ypos = 0
-bxpos = xpos
+bxpos = xpos+1
 bypos = ypos
 
 xvel = 0
 yvel = 0
 xtiempo = 0
 ytiempo = 0
+tiempo_global = 0
 
+xpos_canon = xpos + 6
+ypos_canon = ypos + 52
 
 pauseExect = True
 stay = True
 
+hit_count = 0
+
 # Bucle de ejecución
 while stay:
-
+    #Actualizacion de posicion 
     xtiempo = xtiempo+1
     ytiempo = ytiempo+1
+    tiempo_global += 1
     
     periodox=6-abs(xvel)
     if (periodox == 6):
@@ -58,8 +85,12 @@ while stay:
         ytiempo = 0
         ypos = ypos+int(yvel/abs(yvel)) 
 
+    xpos_canon = xpos + 6
+    ypos_canon = ypos + 52
+    
+    
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.1)
+    time.sleep(0.02)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -78,7 +109,9 @@ while stay:
             elif event.key == pygame.K_UP:
                 yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                yvel = yvel + 1                
+                yvel = yvel + 1          
+            elif event.key == pygame.K_SPACE:
+                gameState[xpos_canon,ypos_canon] = 2
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -94,7 +127,7 @@ while stay:
             gameState[celX, celY] = 1
     
     
-    #Borrado y escritura
+    #Borrado y escritura, figura de la nave
     if (xpos != bxpos) or (ypos != bypos):
         
         #H
@@ -146,9 +179,46 @@ while stay:
     bxpos = xpos
     bypos = ypos
     
+    
+    
+
+    if tiempo_global % 24 == 0:
+        gameState[:,0] = np.heaviside(np.random.rand(1,nxC)-0.9,1) * 3
+
+            
+        
+    
+    
+    
 
     for y in range(0, nxC):
         for x in range (0, nyC):
+            
+            #Movimiento de escombros
+            if tiempo_global % 6 == 0:
+                if (y in range(79))  and (gameState[x,y] == 3):
+                    gameState[x,y] = 0
+                    gameState[x,y+1] = 4
+                if (y in range(79))  and (gameState[x,y] == 4):
+                    gameState[x,y] = 3
+            
+            
+            
+            #fisica del disparo
+            if (y in range(79))  and (gameState[x,y+1] == 2):
+                if gameState[x,y] == 3:
+                    gameState[x,y] = 0
+                    gameState[x,y-1] = 0
+                    gameState[x+1,y] = 0
+                    gameState[x-1,y] = 0
+                    gameState[x+1,y-1] = 0
+                    gameState[x-1,y-1] = 0
+                    hit_count += 1
+                else:
+                    gameState[x,y] = 2
+                    
+            if (y in range(79)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
+                gameState[x,y] = 0
 
             # Calculamos el polígono que forma la celda.
             poly = [((x)   * dimCW, y * dimCH),
@@ -160,8 +230,21 @@ while stay:
             if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
            # Si la celda está "viva" pintamos un recuadro relleno de color
+            elif gameState[x, y] == 3:
+                pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
             else:
-                pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
+                pygame.draw.polygon(screen, (200, 100, 100), poly, 0) #color
+
+    if tiempo_global>30 and 1 not in gameState:
+        pygame.quit()
+        print('Tu puntuacion fue de', hit_count,' puntos.')
+        username = input("Ingresa su nombre para guardar, o N para no hacerlo")
+        if username != 'N':
+            file = open("scores.txt", "w")
+            to_save = str([username,hit_count])
+            file.write(to_save + os.linesep)
+            file.close()
+
 
 
     # Mostramos el resultado

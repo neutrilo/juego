@@ -103,7 +103,7 @@ while stay:
                 
     if (ytiempo >= periodoy):
         ytiempo = 0
-        xpos = xpos+(xvel/abs(xvel))    
+        ypos = ypos+(yvel/abs(yvel))    
         
         
     #Borrado y escritura

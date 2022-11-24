@@ -15,6 +15,14 @@ screen.fill(bg)
 # Tamaño de nuestra matriz
 nxC, nyC = 80, 80
 
+tiempo = np.linspace (0,72,73)
+velocidad = np.zeros (np.size(tiempo))
+for i in range (72):
+              if i == 1 or i== 62:
+                  a=10
+              else:a=0
+              velocidad[i+1]=velocidad[i]+a
+
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
 
@@ -24,6 +32,8 @@ dimCH = height / nyC
 
 xpos = 0
 ypos = 0
+xvel = 0
+yvel = 0
 bxpos = xpos
 bypos = ypos
 
@@ -52,20 +62,25 @@ while stay:
     for event in ev:
         # Detectamos si se presiona una tecla.
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                pass
-                if ypos < nyC+80:
-                    xpos = xpos -1
+            if event.key == pygame.K_LEFT: #limite 70
+                xvel = xvel - 1
+                if xpos > -nxC+62:
+                  xpos = xpos -1
+            elif event.key == pygame.K_RIGHT:#limite 2
+                xvel = xvel + 1
+                #if xpos > -nxC+37:
+                    #xpos = xpos - 1
             elif event.key == pygame.K_RIGHT:
-                pass
-                if ypos < nyC-80:
-                    xpos = xpos +1
+                if xpos < nxC-38:
+                    xpos = xpos + 1
             elif event.key == pygame.K_UP:
-                if ypos < nyC+80:
-                    ypos = ypos -1
+                if ypos > -nyC+62:
+                    ypos = ypos - 1
+                    yvel = yvel - 1
             elif event.key == pygame.K_DOWN:
-                if ypos < nyC-80:
-                    ypos =  ypos +1
+                if ypos > -nyC-52:
+                    ypos =  ypos + 1
+                    yvel = yvel + 1
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
