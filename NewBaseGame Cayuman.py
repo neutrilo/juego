@@ -11,24 +11,24 @@ pygame.init()
 
 
 #Instantiate mixer
-#mixer.init()
+mixer.init()
 
 #Load audio file
-#mixer.music.load('song.mp3')
+mixer.music.load('song.mp3')
 
-#print("music started playing....")
+print("music started playing....")
 
 #Set preferred volume
-#mixer.music.set_volume(0.2)
+mixer.music.set_volume(0.2)
 
 #Play the music
-#mixer.music.play()
+mixer.music.play()
 
 
 
 width, height = 400, 400
 
-bg = 25, 25, 25
+bg = 25, 25, 75
 
 screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
@@ -54,8 +54,8 @@ xtiempo = 0
 ytiempo = 0
 tiempo_global = 0
 
-xpos_canon = xpos + 6
-ypos_canon = ypos + 52
+xpos_canon = xpos + 9
+ypos_canon = ypos + 54
 
 pauseExect = True
 stay = True
@@ -85,8 +85,8 @@ while stay:
         ytiempo = 0
         ypos = ypos+int(yvel/abs(yvel)) 
 
-    xpos_canon = xpos + 6
-    ypos_canon = ypos + 52
+    xpos_canon = xpos + 9
+    ypos_canon = ypos + 54
     
     
     # Ralentizamos la ejecución a 0.1 segundos
@@ -112,6 +112,13 @@ while stay:
                 yvel = yvel + 1          
             elif event.key == pygame.K_SPACE:
                 gameState[xpos_canon,ypos_canon] = 2
+                mixer.music.load()
+                
+                print("shoot started playing....")
+                
+                mixer.music.set_volumen(0.2)
+                
+                mixer.music.play()
             else:
                 pauseExect = not pauseExect
         if event.type == pygame.QUIT:
@@ -129,71 +136,89 @@ while stay:
     
     #Borrado y escritura
     if (xpos != bxpos) or (ypos != bypos):
-        
-        #H
-        # gameState[bxpos+5,59+bypos] = 0
-        # gameState[bxpos+5,58+bypos] = 0
-        # gameState[bxpos+5,57+bypos] = 0
-        # gameState[bxpos+5,56+bypos] = 0
-        # gameState[bxpos+5,55+bypos] = 0
-        # gameState[bxpos+6,57+bypos] = 0
-        # gameState[bxpos+7,59+bypos] = 0
-        # gameState[bxpos+7,58+bypos] = 0
-        # gameState[bxpos+7,57+bypos] = 0
-        # gameState[bxpos+7,56+bypos] = 0
-        # gameState[bxpos+7,55+bypos] = 0
-        #Alas
-        # gameState[bxpos+4,57+bypos] = 0
-        # gameState[bxpos+8,57+bypos] = 0
-        # gameState[bxpos+4,58+bypos] = 0
-        # gameState[bxpos+8,58+bypos] = 0
-        # gameState[bxpos+3,58+bypos] = 0
-        # gameState[bxpos+9,58+bypos] = 0
-        # gameState[bxpos+3,59+bypos] = 0
-        # gameState[bxpos+9,59+bypos] = 0
+        #ALAS IZQ
+        gameState[bxpos+8,58+bypos] = 0
+        gameState[bxpos+7,58+bypos] = 0
+        gameState[bxpos+6,59+bypos] = 0
+        gameState[bxpos+5,60+bypos] = 0
+        gameState[bxpos+4,61+bypos] = 0
+        gameState[bxpos+3,62+bypos] = 0
+        gameState[bxpos+3,63+bypos] = 0
+        gameState[bxpos+3,63+bypos] = 0
+        gameState[bxpos+4,63+bypos] = 0
+        gameState[bxpos+5,63+bypos] = 0
+        gameState[bxpos+6,63+bypos] = 0
+        gameState[bxpos+7,63+bypos] = 0
+        gameState[bxpos+8,63+bypos] = 0
+        #ALAS DER
+        gameState[bxpos+9,58+bypos] = 0
+        gameState[bxpos+10,58+bypos] = 0
+        gameState[bxpos+11,59+bypos] = 0
+        gameState[bxpos+12,60+bypos] = 0
+        gameState[bxpos+13,61+bypos] = 0
+        gameState[bxpos+14,62+bypos] = 0
+        gameState[bxpos+14,63+bypos] = 0
+        gameState[bxpos+13,63+bypos] = 0
+        gameState[bxpos+12,63+bypos] = 0
+        gameState[bxpos+11,63+bypos] = 0
+        gameState[bxpos+10,63+bypos] = 0
+        gameState[bxpos+9,63+bypos] = 0
+        #CUERPO
+        gameState[bxpos+9,57+bypos] = 0
+        gameState[bxpos+9,59+bypos] = 0
+        gameState[bxpos+9,60+bypos] = 0
+        gameState[bxpos+9,61+bypos] = 0
+        gameState[bxpos+9,62+bypos] = 0
+        gameState[bxpos+9,64+bypos] = 0
+        gameState[bxpos+8,57+bypos] = 0
+        gameState[bxpos+8,59+bypos] = 0
+        gameState[bxpos+8,60+bypos] = 0
+        gameState[bxpos+8,61+bypos] = 0
+        gameState[bxpos+8,62+bypos] = 0
+        gameState[bxpos+8,64+bypos] = 0
 
-        
-        #H
-        # gameState[xpos+5,59+ypos] = 1
-        # gameState[xpos+5,58+ypos] = 1
-        # gameState[xpos+5,57+ypos] = 1
-        # gameState[xpos+5,56+ypos] = 1
-        # gameState[xpos+5,55+ypos] = 1
-        # gameState[xpos+6,57+ypos] = 1
-        # gameState[xpos+7,59+ypos] = 1
-        # gameState[xpos+7,58+ypos] = 1
-        # gameState[xpos+7,57+ypos] = 1
-        # gameState[xpos+7,56+ypos] = 1
-        # gameState[xpos+7,55+ypos] = 1
-        #Alas
-        # gameState[xpos+4,57+ypos] = 1
-        # gameState[xpos+8,57+ypos] = 1
-        # gameState[xpos+4,58+ypos] = 1
-        # gameState[xpos+8,58+ypos] = 1
-        # gameState[xpos+3,58+ypos] = 1
-        # gameState[xpos+9,58+ypos] = 1
-        # gameState[xpos+3,59+ypos] = 1
-        # gameState[xpos+9,59+ypos] = 1
     
         #ALAS IZQ
-        gameState[bxpos+6,59+ypos] = 1
-        gameState[bxpos+5,58+ypos] = 1
-        gameState[bxpos+4,57+ypos] = 1
-        gameState[bxpos+3,56+ypos] = 1
-        gameState[bxpos+4,60+ypos] = 1
-        gameState[bxpos+5,61+ypos] = 1
-        gameState[bxpos+6,62+ypos] = 1
+        gameState[xpos+8,58+ypos] = 1
+        gameState[xpos+7,58+ypos] = 1
+        gameState[xpos+6,59+ypos] = 1
+        gameState[xpos+5,60+ypos] = 1
+        gameState[xpos+4,61+ypos] = 1
+        gameState[xpos+3,62+ypos] = 1
+        gameState[xpos+3,63+ypos] = 1
+        gameState[xpos+3,63+ypos] = 1
+        gameState[xpos+4,63+ypos] = 1
+        gameState[xpos+5,63+ypos] = 1
+        gameState[xpos+6,63+ypos] = 1
+        gameState[xpos+7,63+ypos] = 1
+        gameState[xpos+8,63+ypos] = 1
         #ALAS DER
-        gameState[bxpos+10,59+ypos] = 1
-        gameState[bxpos+11,58+ypos] = 1
-        gameState[bxpos+12,57+ypos] = 1
-        gameState[bxpos+13,56+ypos] = 1
-        gameState[bxpos+12,60+ypos] = 1
-        gameState[bxpos+11,61+ypos] = 1
-        gameState[bxpos+10,62+ypos] = 1
+        gameState[xpos+9,58+ypos] = 1
+        gameState[xpos+10,58+ypos] = 1
+        gameState[xpos+11,59+ypos] = 1
+        gameState[xpos+12,60+ypos] = 1
+        gameState[xpos+13,61+ypos] = 1
+        gameState[xpos+14,62+ypos] = 1
+        gameState[xpos+14,63+ypos] = 1
+        gameState[xpos+13,63+ypos] = 1
+        gameState[xpos+12,63+ypos] = 1
+        gameState[xpos+11,63+ypos] = 1
+        gameState[xpos+10,63+ypos] = 1
+        gameState[xpos+9,63+ypos] = 1
         #CUERPO
-        gameState[bxpos+6,59+ypos] = 1
-        
+        gameState[xpos+9,57+ypos] = 1
+        gameState[xpos+9,59+ypos] = 1
+        gameState[xpos+9,60+ypos] = 1
+        gameState[xpos+9,61+ypos] = 1
+        gameState[xpos+9,62+ypos] = 1
+        gameState[xpos+9,64+ypos] = 1
+        gameState[xpos+8,57+ypos] = 1
+        gameState[xpos+8,59+ypos] = 1
+        gameState[xpos+8,60+ypos] = 1
+        gameState[xpos+8,61+ypos] = 1
+        gameState[xpos+8,62+ypos] = 1
+        gameState[xpos+8,64+ypos] = 1
+
 
 #Actualizamos la posicion de borrado
     bxpos = xpos
@@ -249,6 +274,8 @@ while stay:
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
+            elif gameState[x, y] == 2:
+                 pygame.draw.polygon(screen, (102, 90, 0), poly, 0)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             elif gameState[x, y] == 3:
                 pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
