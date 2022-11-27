@@ -14,7 +14,7 @@ pygame.init()
 mixer.init()
 
 #Load audio file
-mixer.music.load('song.mp3')
+mixer.music.load('cancioncita.mp3')
 
 print("music started playing....")
 
@@ -61,6 +61,125 @@ pauseExect = True
 stay = True
 
 hit_count = 0
+
+ #mensaje SUERTE
+#S
+gameState[25,50]=4
+gameState[26,50]=4
+gameState[27,50]=4
+gameState[28,50]=4
+gameState[24,51]=4
+gameState[24,52]=4
+gameState[24,53]=4
+gameState[25,54]=4
+gameState[26,54]=4
+gameState[27,54]=4
+gameState[28,54]=4
+gameState[29,55]=4
+gameState[29,56]=4
+gameState[29,57]=4
+gameState[25,58]=4
+gameState[26,58]=4
+gameState[27,58]=4
+gameState[28,58]=4
+#U
+gameState[31,50]=4
+gameState[31,51]=4
+gameState[31,52]=4
+gameState[31,53]=4
+gameState[31,54]=4
+gameState[31,55]=4
+gameState[31,56]=4
+gameState[31,57]=4
+gameState[32,58]=4
+gameState[33,58]=4
+gameState[34,58]=4
+gameState[35,58]=4
+gameState[36,50]=4
+gameState[36,51]=4
+gameState[36,52]=4 
+gameState[36,53]=4
+gameState[36,54]=4
+gameState[36,55]=4
+gameState[36,56]=4
+gameState[36,57]=4
+#E
+gameState[38,50]=4
+gameState[38,51]=4
+gameState[38,52]=4
+gameState[38,53]=4
+gameState[38,54]=4
+gameState[38,55]=4
+gameState[38,56]=4
+gameState[38,57]=4
+gameState[38,58]=4
+gameState[39,50]=4
+gameState[40,50]=4
+gameState[41,50]=4
+gameState[39,58]=4
+gameState[40,58]=4
+gameState[41,58]=4
+gameState[39,54]=4
+gameState[40,54]=4
+gameState[41,54]=4
+#R
+gameState[43,50]=4
+gameState[43,51]=4
+gameState[43,52]=4
+gameState[43,53]=4
+gameState[43,54]=4
+gameState[43,55]=4
+gameState[43,56]=4
+gameState[43,57]=4
+gameState[43,58]=4
+gameState[44,50]=4
+gameState[45,50]=4
+gameState[46,50]=4
+gameState[47,51]=4
+gameState[47,52]=4
+gameState[47,53]=4
+gameState[44,54]=4
+gameState[45,54]=4
+gameState[46,54]=4
+gameState[47,55]=4
+gameState[47,56]=4
+gameState[47,57]=4
+gameState[47,58]=4
+#T
+gameState[49,50]=4
+gameState[50,50]=4
+gameState[51,50]=4
+gameState[52,50]=4  
+gameState[53,50]=4
+gameState[54,50]=4
+gameState[55,50]=4 
+gameState[52,51]=4
+gameState[52,52]=4
+gameState[52,53]=4
+gameState[52,54]=4
+gameState[52,55]=4
+gameState[52,56]=4
+gameState[52,57]=4
+gameState[52,58]=4
+#E
+gameState[57,50]=4
+gameState[57,51]=4
+gameState[57,52]=4
+gameState[57,53]=4
+gameState[57,54]=4
+gameState[57,55]=4
+gameState[57,56]=4
+gameState[57,57]=4
+gameState[57,58]=4
+gameState[58,50]=4
+gameState[59,50]=4
+gameState[60,50]=4
+gameState[58,58]=4
+gameState[59,58]=4
+gameState[60,58]=4
+gameState[58,54]=4
+gameState[59,54]=4
+gameState[60,54]=4
 
 # Bucle de ejecución
 while stay:
@@ -112,11 +231,12 @@ while stay:
                 yvel = yvel + 1          
             elif event.key == pygame.K_SPACE:
                 gameState[xpos_canon,ypos_canon] = 2
-                mixer.music.load()
+                
+                mixer.music.load('piu disparo.mp3')
                 
                 print("shoot started playing....")
                 
-                mixer.music.set_volumen(0.2)
+                mixer.music.set_volume(0.2)
                 
                 mixer.music.play()
             else:
@@ -230,12 +350,6 @@ while stay:
     if tiempo_global % 24 == 0:
         gameState[:,0] = np.heaviside(np.random.rand(1,nxC)-0.9,1) * 3
 
-            
-        
-    
-    
-    
-
     for y in range(0, nxC):
         for x in range (0, nyC):
             
@@ -274,11 +388,15 @@ while stay:
             # Si la celda está "muerta" pintamos un recuadro con borde gris
             if gameState[x, y] == 0:
                 pygame.draw.polygon(screen, (40, 40, 40), poly, 1)
+            elif gameState[x, y] == 1:
+                 pygame.draw.polygon(screen, (0, 250, 0), poly, 0)    
             elif gameState[x, y] == 2:
-                 pygame.draw.polygon(screen, (102, 90, 0), poly, 0)
+                 pygame.draw.polygon(screen, (200,0, 200), poly, 0)
            # Si la celda está "viva" pintamos un recuadro relleno de color
             elif gameState[x, y] == 3:
-                pygame.draw.polygon(screen, (200, 100, 0), poly, 0)
+                pygame.draw.polygon(screen, (200,0, 0), poly, 0)
+            elif gameState[x, y] == 4:
+                    pygame.draw.polygon(screen, (0,0,200), poly, 0)
             else:
                 pygame.draw.polygon(screen, (200, 100, 100), poly, 0)
 
