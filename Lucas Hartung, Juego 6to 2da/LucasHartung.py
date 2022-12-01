@@ -371,7 +371,7 @@ while stay:
                 
             elif gameState[x, y] == 3:
                 #Celda viva
-                pygame.draw.polygon(screen, (0, 0, 255), poly, 0)
+                pygame.draw.polygon(screen, (0, 234, 255), poly, 0)
                 #Color de disparos
             elif gameState[x, y] == 2:
                 pygame.draw.polygon(screen, (255, 192, 0), poly, 0)
