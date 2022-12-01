@@ -35,7 +35,7 @@ screen  = pygame.display.set_mode((height, width))
 screen.fill(bg)
 
 # Tamaño de nuestra matriz
-nxC, nyC = 80, 80
+nxC, nyC = 70, 70
 
 # Estado de las celdas. Viva = 1 / Muerta = 0
 gameState = np.zeros((nxC,  nyC))
@@ -44,7 +44,7 @@ gameState = np.zeros((nxC,  nyC))
 dimCW = width / nxC
 dimCH = height / nyC
 
-xpos = 0 
+xpos = 40 
 ypos = 0
 bxpos = xpos+1
 bypos = ypos
@@ -62,6 +62,92 @@ pauseExect = True
 stay = True
 
 hit_count = 0
+
+#mensaje
+#B
+gameState[5,59] = 5
+gameState[5,58] = 5
+gameState[5,57] = 5
+gameState[5,56] = 5
+gameState[5,55] = 5
+gameState[6,57] = 5
+gameState[6,55] = 5
+gameState[6,59] = 5
+gameState[7,58] = 5
+gameState[7,57] = 5
+gameState[7,56] = 5
+
+#
+#O
+gameState[9,59] = 5
+gameState[9,58] = 5
+gameState[9,57] = 5
+gameState[9,56] = 5
+gameState[9,55] = 5
+gameState[10,59] = 5
+gameState[10,55] = 5
+gameState[11,59] = 5
+gameState[11,58] = 5
+gameState[11,57] = 5
+gameState[11,56] = 5
+gameState[11,55] = 5
+#
+#M
+gameState[13,59] = 5
+gameState[13,58] = 5
+gameState[13,57] = 5
+gameState[13,56] = 5
+gameState[13,55] = 5
+gameState[14,55] = 5
+gameState[15,55] = 5
+gameState[15,56] = 5
+gameState[15,57] = 5
+gameState[15,58] = 5
+gameState[15,59] = 5
+gameState[16,55] = 5
+gameState[17,55] = 5
+gameState[17,56] = 5
+gameState[17,57] = 5
+gameState[17,58] = 5
+gameState[17,59] = 5
+#
+
+#D
+gameState[22,59] = 5
+gameState[22,58] = 5
+gameState[22,57] = 5
+gameState[22,56] = 5
+gameState[22,55] = 5
+gameState[23,55] = 5
+gameState[24,58] = 5
+gameState[24,56] = 5
+gameState[24,57] = 5
+gameState[23,59] = 5
+#
+#I
+gameState[26,59] = 5
+gameState[26,58] = 5
+gameState[26,57] = 5
+gameState[26,55] = 5
+
+#
+#A
+gameState[28,59] = 5
+gameState[28,58] = 5
+gameState[28,57] = 5
+gameState[28,56] = 5
+gameState[28,55] = 5
+gameState[29,55] = 5
+gameState[29,57] = 5
+gameState[30,59] = 5
+gameState[30,58] = 5
+gameState[30,57] = 5
+gameState[30,56] = 5
+gameState[30,55] = 5
+
+
+
+
 
 # Bucle de ejecución
 while stay:
@@ -91,7 +177,7 @@ while stay:
     
     
     # Ralentizamos la ejecución a 0.1 segundos
-    time.sleep(0.02)
+    time.sleep(0.001)
 
     # Limpiamos la pantalla
     screen.fill(bg)
@@ -132,33 +218,101 @@ while stay:
     #Borrado y escritura, figura de la nave
     if (xpos != bxpos) or (ypos != bypos):
     
+        gameState[bxpos + 5, 61 + bypos] = 0
+        gameState[bxpos + 5, 60 + bypos] = 0
         gameState[bxpos + 5, 59 + bypos] = 0
         gameState[bxpos + 5, 58 + bypos] = 0
         gameState[bxpos + 5, 57 + bypos] = 0
         gameState[bxpos + 5, 56 + bypos] = 0
         gameState[bxpos + 5, 55 + bypos] = 0
+        
         gameState[bxpos + 6, 54 + bypos] = 0
+        gameState[bxpos + 6, 55 + bypos] = 0
         gameState[bxpos + 6, 59 + bypos] = 0
+        gameState[bxpos + 6, 58 + bypos] = 0
+        gameState[bxpos + 6, 60 + bypos] = 0
+        gameState[bxpos + 6, 61 + bypos] = 0
+        gameState[bxpos + 6, 62 + bypos] = 0
+
+        gameState[bxpos + 7, 61 + bypos] = 0
+        gameState[bxpos + 7, 60 + bypos] = 0
         gameState[bxpos + 7, 59 + bypos] = 0
         gameState[bxpos + 7, 58 + bypos] = 0
         gameState[bxpos + 7, 57 + bypos] = 0
         gameState[bxpos + 7, 56 + bypos] = 0
         gameState[bxpos + 7, 55 + bypos] = 0
+        
+        gameState[bxpos + 4, 60 + bypos] = 0
+        gameState[bxpos + 4, 59 + bypos] = 0
+        
+        gameState[bxpos + 8, 60 + bypos] = 0
+        gameState[bxpos + 8, 59 + bypos] = 0
+        
+        gameState[bxpos + 3, 61 + bypos] = 0
+        gameState[bxpos + 3, 60 + bypos] = 0
+        gameState[bxpos + 3, 59 + bypos] = 0
+        gameState[bxpos + 3, 58 + bypos] = 0
+        
+        gameState[bxpos + 9, 61 + bypos] = 0
+        gameState[bxpos + 9, 60 + bypos] = 0
+        gameState[bxpos + 9, 59 + bypos] = 0
+        gameState[bxpos + 9, 58 + bypos] = 0
+        
+        gameState[bxpos + 2, 61 + bypos] = 0
+        gameState[bxpos + 2, 60 + bypos] = 0
+        gameState[bxpos + 2, 59 + bypos] = 0
+        
+        gameState[bxpos + 10, 61 + bypos] = 0
+        gameState[bxpos + 10, 60 + bypos] = 0
+        gameState[bxpos + 10, 59 + bypos] = 0
 
+        gameState[xpos+5,61+ypos] = 1
+        gameState[xpos+5,60+ypos] = 1
         gameState[xpos+5,59+ypos] = 1
         gameState[xpos+5,58+ypos] = 1
         gameState[xpos+5,57+ypos] = 1
         gameState[xpos+5,56+ypos] = 1
         gameState[xpos+5,55+ypos] = 1
+        
         gameState[xpos+6,54+ypos] = 1
-
+        gameState[xpos+6,58+ypos] = 1
+        gameState[xpos+6,55+ypos] = 1
         gameState[xpos+6,59+ypos] = 1
+        gameState[xpos+6,60+ypos] = 1
+        gameState[xpos+6,61+ypos] = 1
+        gameState[xpos+6,62+ypos] = 1
+     
+        gameState[xpos+7,61+ypos] = 1
+        gameState[xpos+7,60+ypos] = 1
         gameState[xpos+7,59+ypos] = 1
         gameState[xpos+7,58+ypos] = 1
         gameState[xpos+7,57+ypos] = 1
         gameState[xpos+7,56+ypos] = 1
         gameState[xpos+7,55+ypos] = 1
+        
+        gameState[xpos+4,60+ypos] = 1
+        gameState[xpos+4,59+ypos] = 1
+        
+        gameState[xpos+8,60+ypos] = 1
+        gameState[xpos+8,59+ypos] = 1
 
+        gameState[xpos+3,61+ypos] = 1
+        gameState[xpos+3,60+ypos] = 1
+        gameState[xpos+3,59+ypos] = 1
+        gameState[xpos+3,58+ypos] = 1
+        
+        gameState[xpos+9,61+ypos] = 1
+        gameState[xpos+9,60+ypos] = 1
+        gameState[xpos+9,59+ypos] = 1
+        gameState[xpos+9,58+ypos] = 1
+        
+        gameState[xpos+2,61+ypos] = 1
+        gameState[xpos+2,60+ypos] = 1
+        gameState[xpos+2,59+ypos] = 1
+        
+        gameState[xpos+10,61+ypos] = 1
+        gameState[xpos+10,60+ypos] = 1
+        gameState[xpos+10,59+ypos] = 1
     
     #Actualizamos la posicion de borrado
     bxpos = xpos
@@ -181,16 +335,16 @@ while stay:
             
             #Movimiento de escombros
             if tiempo_global % 6 == 0:
-                if (y in range(79))  and (gameState[x,y] == 3):
+                if (y in range(69))  and (gameState[x,y] == 3):
                     gameState[x,y] = 0
                     gameState[x,y+1] = 4
-                if (y in range(79))  and (gameState[x,y] == 4):
+                if (y in range(69))  and (gameState[x,y] == 4):
                     gameState[x,y] = 3
             
             
             
             #fisica del disparo
-            if (y in range(79))  and (gameState[x,y+1] == 2):
+            if (y in range(69))  and (gameState[x,y+1] == 2):
                 if gameState[x,y] == 3:
                     gameState[x,y] = 0
                     gameState[x,y-1] = 0
@@ -202,7 +356,7 @@ while stay:
                 else:
                     gameState[x,y] = 2
                     
-            if (y in range(79)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
+            if (y in range(69)) and (gameState[x,y] == 2) and (gameState[x,y+1] == 0):
                 gameState[x,y] = 0
 
             # Calculamos el polígono que forma la celda.
@@ -217,13 +371,16 @@ while stay:
                 
             elif gameState[x, y] == 3:
                 #Celda viva
-                pygame.draw.polygon(screen, (20, 250, 243), poly, 0)
+                pygame.draw.polygon(screen, (0, 0, 255), poly, 0)
                 #Color de disparos
             elif gameState[x, y] == 2:
                 pygame.draw.polygon(screen, (255, 192, 0), poly, 0)
+                #Color mensaje
+            elif gameState[x, y] == 5:
+                pygame.draw.polygon(screen, (255, 0, 0), poly, 0)
                 #Color de la nave
             else:
-                pygame.draw.polygon(screen, (0, 0, 255), poly, 0) 
+                pygame.draw.polygon(screen, (0, 255, 0), poly, 0) 
 
     if tiempo_global>30 and 1 not in gameState:
         pygame.quit()
@@ -239,6 +396,7 @@ while stay:
 
     # Mostramos el resultado
     pygame.display.flip()
+
 
 #Lista de teclas y como llamarlas
 # pygame
